@@ -82,17 +82,6 @@ public class LoginActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
 
-        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(LoginActivity.this, new OnSuccessListener<InstanceIdResult>() {
-            @Override
-            public void onSuccess(InstanceIdResult instanceIdResult) {
-                String refreshedToken = instanceIdResult.getToken();
-
-                databaseReference = firebaseDatabase.getReference("PG/" + mFirebaseAuth.getCurrentUser().getUid());
-                databaseReference.child("Token").child("tokenId").setValue(refreshedToken);
-
-            }
-        });
-
         //If user kills the app without logging out, he/she should not need to login again.
         if(mFirebaseUser!=null){
             finish();
@@ -118,6 +107,18 @@ public class LoginActivity extends AppCompatActivity {
                                 progressDialog.dismiss();
 
                                 mFirebaseUser = mFirebaseAuth.getCurrentUser();
+
+                                FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(LoginActivity.this, new OnSuccessListener<InstanceIdResult>() {
+                                    @Override
+                                    public void onSuccess(InstanceIdResult instanceIdResult) {
+                                        String refreshedToken = instanceIdResult.getToken();
+
+                                        databaseReference = firebaseDatabase.getReference("PG/" + mFirebaseAuth.getCurrentUser().getUid());
+                                        databaseReference.child("Token").child("tokenId").setValue(refreshedToken);
+
+                                    }
+                                });
+
                                 startActivity(new Intent(LoginActivity.this, HomePageActivity.class));
                                 finish();
 
