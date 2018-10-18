@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,8 +54,8 @@ public class TenantDetailList extends ArrayAdapter<TenantDetails> {
     public static final String EXTRA_MESSAGE5 = "com.example.myfirstapp.MESSAGE5";
 
     public String id;
-    private Button callButton, paymentButton;
-    private Button fineButton, messageButton;
+    private LinearLayout callButton, paymentButton;
+    private LinearLayout messageButton;
     private TextView rentAmount;
 
     public TenantDetailList(Activity context, List<TenantDetails> tenantList) {
@@ -73,10 +74,9 @@ public class TenantDetailList extends ArrayAdapter<TenantDetails> {
 
         View listViewItemTenant = inflater.inflate(R.layout.tenant_row, null, true);
 
-        callButton = listViewItemTenant.findViewById(R.id.callButton);
-        paymentButton = listViewItemTenant.findViewById(R.id.paymentButton);
-        fineButton = listViewItemTenant.findViewById(R.id.fineButton);
-        messageButton = listViewItemTenant.findViewById(R.id.messageButton);
+        callButton = listViewItemTenant.findViewById(R.id.callLL);
+        paymentButton = listViewItemTenant.findViewById(R.id.paymentLL);
+        messageButton = listViewItemTenant.findViewById(R.id.textLL);
         rentAmount = listViewItemTenant.findViewById(R.id.rentAmount);
 
         input = new EditText(context);
@@ -160,31 +160,6 @@ public class TenantDetailList extends ArrayAdapter<TenantDetails> {
             }
         });
 
-        fineButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                /*AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setView(dialogFine);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        String fine = fineEditText.getText().toString();
-                        String fineId = databaseReference.push().getKey();
-
-                        databaseReference = firebaseDatabase.getReference("Tenants/" + tenantDetails.id + "/");
-                        databaseReference.child("Accounts").child("Fine").child(fineId).setValue(fine);
-                    }
-                });
-                builder.setNegativeButton("Cancel", null);
-                builder.show();*/
-                Intent intent = new Intent(context, FineActivity.class);
-                intent.putExtra(EXTRA_MESSAGE, tenantDetails.id);
-                intent.putExtra(EXTRA_MESSAGE2, tenantDetails.room);
-                context.startActivity(intent);
-                context.finish();
-            }
-        });
 
         /*billButton.setOnClickListener(new View.OnClickListener() {
             @Override

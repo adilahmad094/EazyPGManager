@@ -64,11 +64,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Log.e("Notification", remoteMessage.getNotification().getBody() + "");
 
         pushNotification(remoteMessage.getNotification().getTitle(),
-                            remoteMessage.getNotification().getBody(),
-                            remoteMessage.getData());
+                remoteMessage.getNotification().getBody(),
+                remoteMessage.getData());
     }
 
-    private void pushNotification(String title, String body, Map<String,String> data) {
+    private void pushNotification(String title, String body, Map<String, String> data) {
 
         Intent intent;
         PendingIntent pendingIntent;
@@ -83,48 +83,45 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
             if (mChannel == null) {
                 NotificationChannel mChannel = new NotificationChannel("0", title, NotificationManager.IMPORTANCE_DEFAULT);
-                mChannel.setDescription (body);
-                mChannel.enableVibration (true);
-                mChannel.setVibrationPattern (new long[] {100, 200, 300, 400, 500, 400, 300, 200, 400});
-                notifManager.createNotificationChannel (mChannel);
+                mChannel.setDescription(body);
+                mChannel.enableVibration(true);
+                mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+                notifManager.createNotificationChannel(mChannel);
             }
 
-            builder = new NotificationCompat.Builder (this, "0");
+            builder = new NotificationCompat.Builder(this, "0");
 
-            intent.setFlags (Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            pendingIntent = PendingIntent.getActivity (this, 0, intent, 0);
-            builder.setContentTitle (title)  // flare_icon_30
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+            builder.setContentTitle(title)  // flare_icon_30
 
-                    .setSmallIcon (R.drawable.notification) // required
-
-                    .setContentText (body)  // required
-
-                    .setDefaults (Notification.DEFAULT_ALL)
-                    .setAutoCancel (true)
-                    .setLargeIcon (BitmapFactory.decodeResource(getResources (), R.drawable.icon_logo))
-                    .setBadgeIconType (R.drawable.icon_logo)
-                    .setContentIntent (pendingIntent)
-                    .setSound (RingtoneManager.getDefaultUri (RingtoneManager.TYPE_NOTIFICATION))
-                    .setVibrate (new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+                    .setSmallIcon(R.drawable.notification)
+                    .setContentText(body)
+                    .setDefaults(Notification.DEFAULT_ALL)
+                    .setAutoCancel(true)
+                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.icon_logo))
+                    .setBadgeIconType(R.drawable.icon_logo)
+                    .setContentIntent(pendingIntent)
+                    .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                    .setVibrate(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
         } else {
 
-            builder = new NotificationCompat.Builder (this);
+            builder = new NotificationCompat.Builder(this);
 
-            intent.setFlags (Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            pendingIntent = PendingIntent.getActivity (this, 0, intent, 0);
-            builder.setContentTitle (title)
-                    .setSmallIcon (R.drawable.icon_logo) // required
-                    .setContentText (body)  // required
-                    .setDefaults (Notification.DEFAULT_ALL)
-                    .setAutoCancel (true)
-                    .setContentIntent (pendingIntent)
-                    .setSound (RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                    .setVibrate (new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400})
-                    .setPriority (Notification.PRIORITY_HIGH);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+            builder.setContentTitle(title)
+                    .setSmallIcon(R.drawable.icon_logo) // required
+                    .setContentText(body)  // required
+                    .setDefaults(Notification.DEFAULT_ALL)
+                    .setAutoCancel(true)
+                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.icon_logo))
+                    .setContentIntent(pendingIntent)
+                    .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                    .setVibrate(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400})
+                    .setPriority(Notification.PRIORITY_HIGH);
         } // else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        Notification notification = builder.build ();
-        notifManager.notify (0, notification);
+        Notification notification = builder.build();
+        notifManager.notify(0, notification);
     }
-
-
 }

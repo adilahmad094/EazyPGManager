@@ -80,12 +80,13 @@ public class TenantActivity extends AppCompatActivity {
     DatabaseReference databaseReference, databaseReference1, databaseReference2;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
-    ImageView addTenant, qrImage;
+    ImageView qrImage;
+    Button addTenant;
 
     Button previousTenants , ok , cancel;
     EditText name, phone, room, rentAmount , email;
 
-    TextView dateOfJoining;
+    TextView dateOfJoining, totalBedTextView, vacantBedTextView;
 
     Snackbar snackbar;
     View view;
@@ -111,6 +112,9 @@ public class TenantActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.tenantToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        totalBedTextView = findViewById(R.id.totalBedTextView);
+        vacantBedTextView = findViewById(R.id.vacantBedTextView);
 
         listView = findViewById(R.id.listViewTenant);
         emptyList = findViewById(R.id.emptyListTenant);
@@ -164,7 +168,12 @@ public class TenantActivity extends AppCompatActivity {
 
                     TenantDetails tenantDetails = dataSnapshotTenant.getValue(TenantDetails.class);
                     tenantDetailsList.add(tenantDetails);
+
+
                 }
+
+                totalBedTextView.setText("50");
+                vacantBedTextView.setText(Integer.toString(50 - tenantDetailsList.size()));
 
                 TenantDetailList adapter = new TenantDetailList(TenantActivity.this, tenantDetailsList);
                 listView.setAdapter(adapter);

@@ -101,7 +101,7 @@ public class FeedbackActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Tenants/CurrentTenants/");
         databaseReference2 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Feedback/");
 
-        final ProgressDialog progressDialog = ProgressDialog.show(FeedbackActivity.this, "Loading", "Please wait..", true);
+        /*final ProgressDialog progressDialog = ProgressDialog.show(FeedbackActivity.this, "Loading", "Please wait..", true);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -124,7 +124,7 @@ public class FeedbackActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
 
         databaseReference2.addValueEventListener(new ValueEventListener() {
@@ -143,8 +143,6 @@ public class FeedbackActivity extends AppCompatActivity {
                         sum += Float.parseFloat(feedbackRating.rating);
                         count++;
                     }
-
-
 
                 }
 
@@ -322,7 +320,7 @@ public class FeedbackActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                databaseReference1 = firebaseDatabase.getReference("Tenants/");
+                databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
 
                 if(input1.getParent()!=null) {
                     ((ViewGroup) input1.getParent()).removeView(input1);
@@ -343,14 +341,13 @@ public class FeedbackActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        for (String id : ids) {
 
                             String newRef = databaseReference.push().getKey();
 
                             Notifs notifs = new Notifs("Others", input1.getText().toString());
-                            databaseReference1.child(id).child("Notification").child(newRef).setValue(notifs);
+                            databaseReference1.child("Feedback").child(newRef).setValue(notifs);
 
-                        }
+
 
                         Toast.makeText(FeedbackActivity.this, "Feedback Question Sent", Toast.LENGTH_SHORT).show();
 
@@ -376,7 +373,7 @@ public class FeedbackActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                databaseReference1 = firebaseDatabase.getReference("Tenants/");
+                databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
 
                 if(input2.getParent()!=null) {
                     ((ViewGroup) input2.getParent()).removeView(input2);
@@ -397,12 +394,12 @@ public class FeedbackActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        for (String id : ids) {
+
 
                             String newRef = databaseReference.push().getKey();
                             Notifs notifs= new Notifs("Comfort", input2.getText().toString());
-                            databaseReference1.child(id).child("Notification").child(newRef).setValue(notifs);
-                        }
+                            databaseReference1.child("Feedback").child(newRef).setValue(notifs);
+
 
                         Toast.makeText(FeedbackActivity.this, "Feedback Question Sent", Toast.LENGTH_SHORT).show();
                         dialog.cancel();
@@ -427,7 +424,7 @@ public class FeedbackActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                databaseReference1 = firebaseDatabase.getReference("Tenants/");
+                databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
 
                 if(input3.getParent()!=null) {
                     ((ViewGroup) input3.getParent()).removeView(input3);
@@ -448,12 +445,12 @@ public class FeedbackActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        for (String id : ids) {
+
 
                             String newRef = databaseReference.push().getKey();
                             Notifs notifs = new Notifs("Management", input3.getText().toString());
-                            databaseReference1.child(id).child("Notification").child(newRef).setValue(notifs);
-                        }
+                            databaseReference1.child("Feedback").child(newRef).setValue(notifs);
+
 
                         Toast.makeText(FeedbackActivity.this, "Feedback Question Sent", Toast.LENGTH_SHORT).show();
                         dialog.cancel();
@@ -477,7 +474,7 @@ public class FeedbackActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                databaseReference1 = firebaseDatabase.getReference("Tenants/");
+                databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
 
                 if(input4.getParent()!=null) {
                     ((ViewGroup) input4.getParent()).removeView(input4);
@@ -497,12 +494,12 @@ public class FeedbackActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        for (String id : ids) {
+
 
                             String newRef = databaseReference.push().getKey();
                             Notifs notifs = new Notifs("Hygiene", input4.getText().toString());
-                            databaseReference1.child(id).child("Notification").child(newRef).setValue(notifs);
-                        }
+                            databaseReference1.child("Feedback").child(newRef).setValue(notifs);
+
                         Toast.makeText(FeedbackActivity.this, "Feedback Question Sent", Toast.LENGTH_SHORT).show();
 
                         dialog.cancel();
@@ -526,7 +523,7 @@ public class FeedbackActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                databaseReference1 = firebaseDatabase.getReference("Tenants/");
+                databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
 
                 if(input5.getParent()!=null) {
                     ((ViewGroup) input5.getParent()).removeView(input5);
@@ -547,12 +544,11 @@ public class FeedbackActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        for (String id : ids) {
 
                             String newRef = databaseReference.push().getKey();
                             Notifs notifs = new Notifs("Room", input5.getText().toString());
-                            databaseReference1.child(id).child("Notification").child(newRef).setValue(notifs);
-                        }
+                            databaseReference1.child("Feedback").child(newRef).setValue(notifs);
+
                         Toast.makeText(FeedbackActivity.this, "Feedback Question Sent", Toast.LENGTH_SHORT).show();
 
                         dialog.cancel();
@@ -576,7 +572,7 @@ public class FeedbackActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                databaseReference1 = firebaseDatabase.getReference("Tenants/");
+                databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
 
                 if(input6.getParent()!=null) {
                     ((ViewGroup) input6.getParent()).removeView(input6);
@@ -596,12 +592,11 @@ public class FeedbackActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        for (String id : ids) {
 
                             String newRef = databaseReference.push().getKey();
                             Notifs notifs = new Notifs("Others", input6.getText().toString());
-                            databaseReference1.child(id).child("Notification").child(newRef).setValue(notifs);
-                        }
+                            databaseReference1.child("Feedback").child(newRef).setValue(notifs);
+
                         Toast.makeText(FeedbackActivity.this, "Feedback Question Sent", Toast.LENGTH_SHORT).show();
 
                         dialog.cancel();

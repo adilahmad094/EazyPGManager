@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="5dp"
+    app:cardCornerRadius="8dp"
     android:layout_margin="10dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    app:cardElevation="10dp">
+    app:cardElevation="8dp">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -47,69 +47,122 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginBottom="16dp"
             android:gravity="center"
             android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView27"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView27">
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent">
 
-            <Button
-                android:id="@+id/callButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="4dp"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/phone"
-                android:clickable="true"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="173dp" />
+            <LinearLayout
+                android:id="@+id/callLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/messageButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="4dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/message"
-                android:clickable="true" />
+                <Button
+                    android:id="@+id/tenant1CallButton"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/ic_call_blue_24dp"
+                    android:clickable="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tenant1NameTextView"
+                    app:layout_constraintVertical_bias="0.0" />
 
-            <Button
-                android:id="@+id/fineButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="4dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/fine"
-                android:clickable="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/productsansbold"
+                    android:text="Call"
+                    android:textColor="#1565C0"
+                    android:textSize="13sp" />
 
-            <Button
-                android:id="@+id/paymentButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="4dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/rewards"
-                android:clickable="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/callButton"
-                app:layout_constraintStart_toEndOf="@+id/thirdTextView" />
+            </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/textLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/tenant1MessageButton"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/ic_chat_blue_24dp"
+                    android:clickable="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tenant1AddFineButton"
+                    app:layout_constraintTop_toBottomOf="@+id/tenant1RentPaidOrUnpaidTextView" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/productsansbold"
+                    android:text="Text"
+                    android:textColor="#1565C0"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/paymentLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="200dp"
+                tools:layout_editor_absoluteY="142dp">
+
+                <Button
+                    android:id="@+id/tenant1AddFineButton"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/fine_blue"
+                    android:clickable="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tenant1CallButton"
+                    app:layout_constraintTop_toBottomOf="@+id/tenant1NameTextView"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/productsansbold"
+                    android:text="Payments"
+                    android:textColor="#1565C0"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
         </LinearLayout>
+
 
         <TextView
             android:id="@+id/thirdTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:visibility="gone"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/productsans"
             android:text="type"
@@ -126,6 +179,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/productsansmedium"
             android:text="Rent Amount"
+            android:textColor="#212121"
             android:textSize="18dp"
             app:layout_constraintStart_toStartOf="@+id/textView8"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -138,7 +192,7 @@
             android:layout_marginStart="10dp"
             android:fontFamily="@font/productsansbold"
             android:text="amount"
-            android:textSize="24dp"
+            android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView27"
             app:layout_constraintStart_toEndOf="@+id/textView27" />
 
