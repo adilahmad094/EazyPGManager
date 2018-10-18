@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="AC"
+        android:id="@+id/ACItem"/>
+
+    <item
+        android:title="Fan"
+        android:id="@+id/FanItem"/>
+
+    <item
+        android:title="Lift"
+        android:id="@+id/LiftItem"/>
+
+    <item
+        android:title="Geyser"
+        android:id="@+id/GeyserItem"/>
+
+    <item
+        android:title="Washing Machine"
+        android:id="@+id/MachineItem"/>
+
+    <item
+        android:title="RO"
+        android:id="@+id/ROItem"/>
+
+    <item
+        android:title="Dish Washer"
+        android:id="@+id/DishWasherItem"/>
+
+    <item
+        android:title="Microwave"
+        android:id="@+id/MicrowaveItem"/>
+
+    <item
+        android:title="Refrigerator"
+        android:id="@+id/FridgeItem"/>
+
+    <item
+        android:title="TV"
+        android:id="@+id/TVItem"/>
+
+    <item
+        android:title="CCTV"
+        android:id="@+id/CCTVItem"/>
+
+    <item
+        android:title="Iron"
+        android:id="@+id/IronItem"/>
+
+    <item
+        android:title="Induction"
+        android:id="@+id/InductionItem"/>
+
+    <item
+        android:title="Router"
+        android:id="@+id/RouterItem"/>
+
+    <item
+        android:title="Heater"
+        android:id="@+id/HeaterItem"/>
+
+    <item
+        android:title="D2H"
+        android:id="@+id/D2HItem"/>
+
+    <item
+        android:title="Other"
+        android:id="@+id/OtherItem"/>
+
+</menu>

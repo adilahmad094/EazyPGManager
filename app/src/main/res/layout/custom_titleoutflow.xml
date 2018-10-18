@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/titleOutflow"
+    android:layout_width="wrap_content"
+    android:layout_height="50dp"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:paddingTop="17dp"
+    android:paddingStart="17dp"
+    android:layout_marginTop="260dp"
+    android:text=" Add new Debit"
+    android:textSize="25dp"
+    android:textColor="#000000"
+    android:fontFamily="@font/comfortabold"
+    tools:layout_editor_absoluteX="176dp"
+    tools:layout_editor_absoluteY="60dp" />

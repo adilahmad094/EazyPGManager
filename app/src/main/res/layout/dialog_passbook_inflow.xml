@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout17"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginTop="16dp"
+        android:clipChildren="false"
+        app:hintTextAppearance="@style/TextLabel3"
+        android:paddingBottom="1dp"
+        android:textColorHint="#616161"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/inflowAmountEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/login_corners"
+            android:ems="10"
+            android:textSize="16sp"
+            android:fontFamily="@font/productsans"
+            android:hint="Amount in INR"
+            android:inputType="number"
+            android:paddingStart="16dp"
+            android:translationY="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout19"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginTop="8dp"
+        android:clipChildren="false"
+        android:textColorHint="#616161"
+        android:paddingBottom="1dp"
+        app:hintTextAppearance="@style/TextLabel3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout17">
+
+        <EditText
+            android:id="@+id/inflowCategoryEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_corners"
+            android:ems="10"
+            android:textSize="16sp"
+            android:fontFamily="@font/productsans"
+            android:hint="Category"
+            android:inputType="textPersonName"
+            android:paddingStart="16dp"
+            android:translationY="4dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="127dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="64dp"
+        android:layout_marginStart="16dp"
+        app:hintTextAppearance="@style/TextLabel3"
+        android:layout_marginTop="8dp"
+        android:textColorHint="#616161"
+        android:clipChildren="false"
+        android:paddingBottom="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout19">
+
+        <EditText
+            android:id="@+id/inflowDescriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_corners"
+            android:ems="10"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/productsans"
+            android:hint="Description"
+            android:inputType="textMultiLine"
+            android:paddingStart="16dp"
+            android:translationY="4dp"
+            android:textSize="16dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="268dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout20"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginTop="12dp"
+        android:clipChildren="false"
+        app:hintTextAppearance="@style/TextLabel3"
+        android:textColorHint="#616161"
+        android:paddingBottom="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout18">
+
+        <EditText
+            android:id="@+id/inflowPaidByEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_corners"
+            android:ems="10"
+            android:fontFamily="@font/productsans"
+            android:hint="Paid By"
+            android:textSize="16sp"
+            android:translationY="4dp"
+            android:inputType="textPersonName"
+            android:paddingStart="16dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="417dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+</android.support.constraint.ConstraintLayout>

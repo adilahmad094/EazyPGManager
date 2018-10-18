@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg"
+    android:paddingStart="0dp"
+    android:paddingEnd="8dp"
+    android:paddingBottom="8dp"
+    android:paddingTop="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:clipChildren="false"
+        android:textColorHint="#757575"
+        app:hintTextAppearance="@style/TextLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+        <EditText
+            android:id="@+id/tenantNameEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/dialog_corners"
+            android:ems="10"
+            android:fontFamily="@font/productsans"
+            android:hint="Name"
+            android:textSize="18dp"
+            android:inputType="textPersonName"
+            android:paddingStart="10dp"
+            android:translationY="4dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:clipChildren="false"
+        android:textColorHint="#757575"
+        app:hintTextAppearance="@style/TextLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
+
+        <EditText
+            android:id="@+id/tenantPhoneEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/dialog_corners"
+            android:ems="10"
+            android:maxLength="10"
+            android:fontFamily="@font/productsans"
+            android:hint="Phone"
+            android:textSize="18dp"
+            android:inputType="phone"
+            android:paddingStart="10dp"
+            android:translationY="4dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:clipChildren="false"
+        android:textColorHint="#757575"
+        app:hintTextAppearance="@style/TextLabel2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
+
+        <EditText
+            android:id="@+id/tenantEmailEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/dialog_corners"
+            android:ems="10"
+            android:fontFamily="@font/productsans"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:paddingStart="10dp"
+            android:translationY="4dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColorHint="#757575"
+        android:layout_marginTop="8dp"
+        android:clipChildren="false"
+        app:hintTextAppearance="@style/TextLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10">
+
+        <EditText
+            android:id="@+id/tenantRoomEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/dialog_corners"
+            android:ems="10"
+            android:textSize="18dp"
+            android:fontFamily="@font/productsans"
+            android:hint="Room No."
+            android:inputType="text"
+            android:paddingStart="10dp"
+            android:translationY="4dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/dateOfJoining"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/dialog_corners"
+        android:ems="10"
+        android:fontFamily="@font/productsans"
+        android:hint="Date of joining"
+        android:textColorHint="#636363"
+        android:inputType="date"
+        android:paddingStart="10dp"
+        android:textSize="18dp"
+        android:translationY="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout14" />
+
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:clipChildren="false"
+        android:textColorHint="#757575"
+        app:hintTextAppearance="@style/TextLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout13">
+
+        <EditText
+            android:id="@+id/tenantRentEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/dialog_corners"
+            android:ems="10"
+            android:textSize="18dp"
+            android:fontFamily="@font/productsans"
+            android:hint="Rent Amount"
+            android:inputType="number"
+            android:paddingStart="10dp"
+            android:translationY="4dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/okButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/transparent"
+        android:elevation="24dp"
+        android:fontFamily="@font/productsansbold"
+        android:text="ADD"
+        android:inputType="number"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintStart_toEndOf="@+id/dateOfJoining"
+        app:layout_constraintTop_toBottomOf="@+id/dateOfJoining" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/productsansbold"
+        android:text="CANCEL"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toStartOf="@+id/okButton"
+        app:layout_constraintTop_toBottomOf="@+id/dateOfJoining" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:textSize="22dp"
+        android:fontFamily="@font/productsansbold"
+        android:text="Add new Tenant"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

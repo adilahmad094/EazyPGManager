@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.CardView
+        android:id="@+id/toolbar4"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        app:cardCornerRadius="0dp"
+        android:elevation="100dp"
+        app:cardBackgroundColor="@color/actionBarColor">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="@drawable/ripple"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="6dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_arrow_back_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:fontFamily="@font/productsansmedium"
+            android:text="Appliances"
+            android:layout_gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textSize="18dp" />
+    </android.support.v7.widget.CardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="?android:attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/acButton"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ac"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="AC"
+                        android:textSize="12dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/cctvButton"
+                        android:layout_width="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_height="50dp"
+                        android:background="@drawable/cctv"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="CCTV"
+                        android:textSize="12dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/d2hButton"
+                        android:layout_width="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_height="50dp"
+                        android:background="@drawable/d2h"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="D2H"
+                        android:textSize="12dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="79dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/dishwasherButton"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/dishwashing"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="DISHWASHER"
+                        android:textSize="12dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="18dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/fanButton"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/fan"
+                        app:layout_constraintStart_toEndOf="@+id/dishwasherButton"
+                        app:layout_constraintTop_toBottomOf="@+id/cctvButton" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="FAN"
+                        android:textSize="12dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/geyserButton"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/geyser"
+                        android:layout_gravity="center_horizontal"
+                        app:layout_constraintStart_toEndOf="@+id/fanButton"
+                        app:layout_constraintTop_toBottomOf="@+id/d2hButton" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="GEYSER"
+                        android:textSize="12dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/heaterButton"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/heaterhot"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/dishwasherButton" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="HEATER"
+                        android:gravity="center"
+                        android:textSize="12dp"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/inductionButton"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/induction_hot"
+                        app:layout_constraintStart_toEndOf="@+id/heaterButton"
+                        app:layout_constraintTop_toBottomOf="@+id/fanButton" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="INDUCTION"
+                        android:textSize="12dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="18dp"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/ironButton"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/iron_hot" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="IRON"
+                        android:textSize="12dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/liftButton"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/lift"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/heaterButton" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="LIFT"
+                        android:textSize="12dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/microwaveButton"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/microwave"
+                        app:layout_constraintStart_toEndOf="@+id/liftButton"
+                        app:layout_constraintTop_toBottomOf="@+id/inductionButton" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="MICROWAVE"
+                        android:textSize="12dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/refrigeratorButton"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/fridge"
+                        android:layout_gravity="center_horizontal"
+                        app:layout_constraintStart_toEndOf="@+id/microwaveButton"
+                        app:layout_constraintTop_toBottomOf="@+id/ironButton" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="FRIDGE"
+                        android:textSize="12dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="18dp"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/roButton"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/ro"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/liftButton"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="RO"
+                        android:textSize="12dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/routerButton"
+                        android:layout_width="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_height="50dp"
+                        android:background="@drawable/router"
+                        app:layout_constraintStart_toEndOf="@+id/roButton"
+                        app:layout_constraintTop_toBottomOf="@+id/microwaveButton" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="ROUTER"
+                        android:textSize="12dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/tvButton"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/tv"
+                        app:layout_constraintStart_toEndOf="@+id/routerButton"
+                        app:layout_constraintTop_toBottomOf="@+id/refrigeratorButton" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="TV"
+                        android:textSize="12dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/washingMachineButton"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/washinemachine"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/roButton" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="WASHING\nMACHINE"
+                        android:gravity="center"
+                        android:textSize="12dp"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="16dp"
+                android:layout_height="100dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/otherButton"
+                        android:layout_width="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_height="50dp"
+                        android:background="@drawable/more"
+                        app:layout_constraintStart_toEndOf="@+id/washingMachineButton"
+                        app:layout_constraintTop_toBottomOf="@+id/tvButton" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="MORE"
+                        android:textSize="12dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/productsansmedium"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

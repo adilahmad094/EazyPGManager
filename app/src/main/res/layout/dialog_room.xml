@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingBottom="24dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="16dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/oneBedCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/productsansbold"
+            android:text="One Bed"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <RadioButton
+            android:id="@+id/twoBedCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/productsansbold"
+            android:text="Two Bed"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/oneBedCheckBox" />
+
+        <RadioButton
+            android:id="@+id/threeBedCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/productsansbold"
+            android:text="Three Bed"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/twoBedCheckBox" />
+
+    </RadioGroup>
+
+
+    <EditText
+        android:id="@+id/roomNoEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/solidcorners"
+        android:ems="10"
+        android:fontFamily="@font/productsans"
+        android:hint="Room No."
+        android:textColor="#000000"
+        android:textColorHint="#424242"
+        android:inputType="textPersonName"
+        android:paddingStart="16dp"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+
+</android.support.constraint.ConstraintLayout>

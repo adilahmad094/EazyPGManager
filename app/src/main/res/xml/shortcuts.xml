@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="complaints"
+        android:enabled="true"
+        android:icon="@drawable/complaintsbw"
+        android:shortcutShortLabel="@string/complaints"
+        android:shortcutLongLabel="@string/complaints_long">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="net.eazypg.eazypgmanager.Activities"
+            android:targetClass="net.eazypg.eazypgmanager.Activities.ComplaintActivity" />
+
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="food"
+        android:enabled="true"
+        android:icon="@drawable/covering"
+        android:shortcutShortLabel="@string/foods"
+        android:shortcutLongLabel="@string/food_long">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="net.eazypg.eazypgmanager.Activities"
+            android:targetClass="net.eazypg.eazypgmanager.Activities.FoodActivity" />
+
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="rentAndBill"
+        android:enabled="true"
+        android:icon="@drawable/payment"
+        android:shortcutShortLabel="@string/rents"
+        android:shortcutLongLabel="@string/rent_long">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="net.eazypg.eazypgmanager.Activities"
+            android:targetClass="net.eazypg.eazypgmanager.Activities.RentBillCollectionFragment" />
+
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+</shortcuts>

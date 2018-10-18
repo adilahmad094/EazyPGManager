@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:clipChildren="false"
+        android:textColorHint="#616161"
+        app:hintTextAppearance="@style/TextLabel2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/tenantNameEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/roundedcorners"
+            android:ems="10"
+            android:fontFamily="@font/productsans"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:paddingStart="10dp"
+            android:translationY="2dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:clipChildren="false"
+        android:textColorHint="#616161"
+        app:hintTextAppearance="@style/TextLabel2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
+
+        <EditText
+            android:id="@+id/tenantPhoneEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/roundedcorners"
+            android:ems="10"
+            android:fontFamily="@font/productsans"
+            android:hint="Phone"
+            android:inputType="phone"
+            android:paddingStart="10dp"
+            android:translationY="2dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:textColorHint="#616161"
+        android:clipChildren="false"
+        app:hintTextAppearance="@style/TextLabel2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout14">
+
+
+        <EditText
+            android:id="@+id/tenantDateEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/roundedcorners"
+            android:ems="10"
+            android:fontFamily="@font/productsans"
+            android:hint="Date of joining"
+            android:inputType="date"
+            android:paddingStart="10dp"
+            android:translationY="2dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:clipChildren="false"
+        android:textColorHint="#616161"
+        app:hintTextAppearance="@style/TextLabel2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
+
+        <EditText
+            android:id="@+id/tenantRentEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/roundedcorners"
+            android:ems="10"
+            android:fontFamily="@font/productsans"
+            android:hint="Rent Amount"
+            android:inputType="number"
+            android:paddingStart="10dp"
+            android:translationY="2dp" />
+
+    </android.support.design.widget.TextInputLayout>
+</android.support.constraint.ConstraintLayout>

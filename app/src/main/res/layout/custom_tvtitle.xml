@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/editTVCustomTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginEnd="80dp"
+    android:layout_marginTop="95dp"
+    android:fontFamily="@font/comfortabold"
+    android:paddingStart="17dp"
+    android:paddingTop="17dp"
+    android:text=" Edit TV Details"
+    android:textColor="#000000"
+    android:textSize="22dp" />

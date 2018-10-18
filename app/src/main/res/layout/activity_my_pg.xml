@@ -1,0 +1,1147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myPgLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/productsansbold"
+        android:text="Your PG"
+        android:textColor="@android:color/black"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/propertyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/productsansbold"
+                android:text="PG Property"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/constraintLayout" />
+
+
+            <View
+                android:id="@+id/firstView"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="#E0E0E0"
+                app:layout_constraintTop_toBottomOf="@id/propertyTextView" />
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:clipChildren="false"
+                app:hintTextAppearance="@style/TextLabel4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/firstView">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/pgNameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="28dp"
+                    android:background="@drawable/text_bg_blue"
+                    android:fontFamily="@font/productsans"
+                    android:hint="PG Name"
+                    android:inputType="textPersonName"
+                    android:maxLength="25"
+                    android:text=""
+                    android:textColor="#424242"
+                    android:textSize="17dp"
+                    android:translationY="3dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.206"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout27"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:clipChildren="false"
+                app:hintTextAppearance="@style/TextLabel4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LL1"
+                tools:layout_editor_absoluteY="173dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/bioTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/text_bg_blue"
+                    android:fontFamily="@font/productsans"
+                    android:hint="Bio"
+                    android:maxLength="80"
+                    android:inputType="textMultiLine"
+                    android:paddingBottom="14dp"
+                    android:paddingTop="14dp"
+                    android:text=""
+                    android:textColor="#424242"
+                    android:textSize="17dp"
+                    android:translationY="3dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.964"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/landmarkTextView" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <LinearLayout
+                android:id="@+id/LL2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout27"
+                tools:layout_editor_absoluteX="0dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputLayout29"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout27">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/genderTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:fontFamily="@font/productsans"
+                        android:hint="PG Gender"
+                        android:inputType="text"
+                        android:maxLength="7"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17dp"
+                        android:translationY="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.649"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:layout_editor_absoluteY="452dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    tools:layout_editor_absoluteX="171dp"
+                    tools:layout_editor_absoluteY="206dp">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/maxOccupancyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/locationTextView"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Max Occupancy"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17dp"
+                        android:translationY="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.85"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:layout_editor_absoluteY="242dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:clipChildren="false"
+                app:hintTextAppearance="@style/TextLabel4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout30">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/landmarkTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/genderTextView"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/text_bg_blue"
+                    android:fontFamily="@font/productsans"
+                    android:hint="Nearest Landmark"
+                    android:inputType="textMultiLine"
+                    android:text=""
+                    android:maxLength="80"
+                    android:textColor="#424242"
+                    android:textSize="17dp"
+                    android:translationY="3dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.964"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/locationTextView" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/LL12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout31"
+                tools:layout_editor_absoluteX="0dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout27">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/cityEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:fontFamily="@font/productsans"
+                        android:hint="City"
+                        android:inputType="text"
+                        android:maxLength="20"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17dp"
+                        android:translationY="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.649"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:layout_editor_absoluteY="452dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    tools:layout_editor_absoluteX="171dp"
+                    tools:layout_editor_absoluteY="206dp">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/pincodeEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/locationTextView"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Pincode"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17dp"
+                        android:translationY="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.85"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:layout_editor_absoluteY="242dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/pgServicesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/productsansbold"
+                android:text="PG Services"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/LL12" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="#e0e0e0"
+                app:layout_constraintTop_toBottomOf="@id/pgServicesTextView" />
+
+
+            <LinearLayout
+                android:id="@+id/LL3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/pgServicesTextView"
+                tools:layout_editor_absoluteX="0dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout31">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/lastEntryTimeTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/landmarkTextView"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Last Entry Time"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17dp"
+                        android:translationY="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.964"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    tools:layout_editor_absoluteX="163dp"
+                    tools:layout_editor_absoluteY="405dp">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/staffCountTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/pgContactTextView"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Number of Staff"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="16dp"
+                        android:translationY="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.964"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lastEntryTimeTextView" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:clipChildren="false"
+                app:hintTextAppearance="@style/TextLabel4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LL2"
+                tools:layout_editor_absoluteY="274dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/locationTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/lastEntryTimeTextView"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/text_bg_blue"
+                    android:fontFamily="@font/productsans"
+                    android:hint="Location"
+                    android:maxLength="80"
+                    android:inputType="textMultiLine"
+                    android:text=""
+                    android:textColor="#424242"
+                    android:textSize="17dp"
+                    android:translationY="3dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.964"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <LinearLayout
+                android:id="@+id/LL4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/LL3"
+                tools:layout_editor_absoluteX="28dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="473dp">
+
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/noOfBathroomTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Number of Bathrooms"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17dp"
+                        android:translationY="3dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.964"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/staffCountTextView"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    tools:layout_editor_absoluteX="174dp"
+                    tools:layout_editor_absoluteY="473dp">
+
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/noOfRoomTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Number of Rooms"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17dp"
+                        android:translationY="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.964"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/genderTextView" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/LL1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout23"
+                tools:layout_editor_absoluteX="0dp">
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout23"
+                    tools:layout_editor_absoluteX="188dp">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/pgContactTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:fontFamily="@font/productsans"
+                        android:hint="PG Contact"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17dp"
+                        android:translationY="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.964"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout31">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/pgEmailEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/landmarkTextView"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:fontFamily="@font/productsans"
+                        android:hint="PG Email"
+                        android:inputType="text"
+                        android:maxLength="30"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17dp"
+                        android:translationY="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.964"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/LL4"
+                tools:layout_editor_absoluteX="0dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout23">
+
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/billDueDateEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:clickable="true"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Bill due Date"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17dp"
+                        android:translationY="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.758"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:layout_editor_absoluteY="284dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout23"
+                    tools:layout_editor_absoluteX="188dp">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/rentDueDateEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Rent Due Date"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17dp"
+                        android:translationY="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.964"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout8"
+                tools:layout_editor_absoluteX="8dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout31">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/electricityUnitCostEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/landmarkTextView"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Electricity Unit Cost"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17dp"
+                        android:translationY="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.964"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LL10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout9"
+                tools:layout_editor_absoluteX="8dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout31">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/gasRateEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/landmarkTextView"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Gas Unit Cost"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17dp"
+                        android:translationY="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.964"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/LL5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/LL10"
+                tools:layout_editor_absoluteX="0dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout31">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/messTypeEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/landmarkTextView"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Mess Type (B/L/D)"
+                        android:inputType="text"
+                        android:maxLength="30"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17dp"
+                        android:translationY="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.964"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout31">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/messRateEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/landmarkTextView"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Mess Rate"
+                        android:inputType="numberDecimal"
+                        android:maxLength="10"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17dp"
+                        android:translationY="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.964"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/billTakeLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/text_bg"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LL5">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/productsans"
+                        android:text="Bills you take"
+                        android:textColor="#9E9E9E"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="50dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/billFirstTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/productsans"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/personalDetailsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/productsansbold"
+                android:text="Personal Details"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/billTakeLinearLayout" />
+
+            <View
+                android:id="@+id/afterPersonalView"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e0e0e0"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/personalDetailsTextView"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/ownerNameTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:clipChildren="false"
+                app:hintTextAppearance="@style/TextLabel4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/afterPersonalView">
+
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/ownerNameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/text_bg_blue"
+                    android:fontFamily="@font/productsans"
+                    android:hint="Owner Name"
+                    android:inputType="textPersonName"
+                    android:maxLength="50"
+                    android:text=""
+                    android:textColor="#424242"
+                    android:textSize="17dp"
+                    android:translationY="3dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.758"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="284dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/personalContactTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:clipChildren="false"
+                app:hintTextAppearance="@style/TextLabel4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ownerNameTextInputLayout">
+
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/ownerPersonalContactTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/text_bg_blue"
+                    android:fontFamily="@font/productsans"
+                    android:hint="Personal Contact"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:text=""
+                    android:textColor="#424242"
+                    android:textSize="17dp"
+                    android:translationY="3dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.758"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="284dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/LL6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="80dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/personalContactTextInputLayout"
+                tools:layout_editor_absoluteX="0dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:clipChildren="false"
+                    app:hintTextAppearance="@style/TextLabel4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout31">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/personalEmailEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/landmarkTextView"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg_blue"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Personal Email"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text=""
+                        android:textColor="#424242"
+                        android:textSize="17dp"
+                        android:translationY="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.964"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+
+
+
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/saveButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:elevation="10dp"
+        android:focusable="true"
+        android:src="@drawable/ic_check_white_24dp"
+        app:backgroundTint="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/setLocationButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/location"
+        android:fontFamily="@font/productsans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/productsansmedium"
+        android:text="Set PG site"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/setLocationButton"
+        app:layout_constraintStart_toStartOf="@+id/setLocationButton"
+        app:layout_constraintTop_toBottomOf="@+id/setLocationButton" />
+
+
+</android.support.constraint.ConstraintLayout>

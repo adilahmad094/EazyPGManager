@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/productsansbold"
+        android:text="Profile"
+        android:textColor="@android:color/black"
+        android:textSize="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/profile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="26dp"
+        android:fontFamily="@font/productsansmedium"
+        android:text=""
+        android:textColor="#212121"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/circleImageView"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+    <TextView
+        android:id="@+id/emailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/productsans"
+        android:text=""
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/circleImageView"
+        app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+
+    <TextView
+        android:id="@+id/phoneTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/productsans"
+        android:text=""
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/circleImageView"
+        app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/callParentConstraintLayout"
+        android:layout_width="50dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView">
+
+        <Button
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/ic_call_blue_24dp"
+            android:clickable="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/productsansbold"
+            android:text="Call Parent"
+            android:textAlignment="center"
+            android:textColor="#1565C0"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="200dp"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/youTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/productsansmedium"
+                android:text="About Tenant"
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="16dp"
+                android:elevation="10000dp"
+                android:background="#E0E0E0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/youTextView" />
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view2">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputLayout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="0.9"
+                    android:clipChildren="false"
+                    android:textColorHint="#01579B"
+                    app:hintTextAppearance="@style/TextLabel2">
+
+                    <EditText
+                        android:id="@+id/dobEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg"
+                        android:focusable="false"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Date of Birth"
+                        android:paddingBottom="8dp"
+                        android:inputType="number"
+                        android:paddingEnd="16dp"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Date of Birth"
+                        android:textSize="16dp"
+                        android:translationY="4dp"
+                        tools:layout_editor_absoluteX="31dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputLayout11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:clipChildren="false"
+                    android:layout_weight="1"
+                    android:textColorHint="#01579B"
+                    app:hintTextAppearance="@style/TextLabel2">
+
+                    <EditText
+                        android:id="@+id/bloodGroupEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg"
+                        android:focusable="false"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Blood Group"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Blood Group"
+                        android:textSize="16dp"
+                        android:translationY="4dp"
+                        tools:layout_editor_absoluteX="31dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:clipChildren="false"
+                android:textColorHint="#01579B"
+                app:hintTextAppearance="@style/TextLabel2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
+
+                <EditText
+                    android:id="@+id/permanentAddressEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/text_bg"
+                    android:focusable="false"
+                    android:fontFamily="@font/productsans"
+                    android:hint="Permanent Address"
+                    android:inputType="textMultiLine"
+                    android:paddingBottom="13dp"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="8dp"
+                    android:paddingTop="13dp"
+                    android:text="Permanent Address"
+                    android:textSize="16dp"
+                    android:translationY="4dp"
+                    tools:layout_editor_absoluteX="31dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:clipChildren="false"
+                android:textColorHint="#01579B"
+                app:hintTextAppearance="@style/TextLabel2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
+
+                <EditText
+                    android:id="@+id/currentAddressEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/text_bg"
+                    android:focusable="false"
+                    android:fontFamily="@font/productsans"
+                    android:hint="Current Address"
+                    android:inputType="textMultiLine"
+                    android:paddingBottom="13dp"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="8dp"
+                    android:paddingTop="13dp"
+                    android:text="Current Address"
+                    android:textSize="16dp"
+                    android:translationY="4dp"
+                    tools:layout_editor_absoluteX="31dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/nationality"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:clipChildren="false"
+                    android:layout_weight="0.9"
+                    android:textColorHint="#01579B"
+                    app:hintTextAppearance="@style/TextLabel2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
+
+                    <EditText
+                        android:id="@+id/nationalityEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg"
+                        android:focusable="false"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Nationality"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Nationality"
+                        android:textSize="16dp"
+                        android:translationY="4dp"
+                        tools:layout_editor_absoluteX="31dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputLayout12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    android:textColorHint="#01579B"
+                    app:hintTextAppearance="@style/TextLabel2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
+
+                    <EditText
+                        android:id="@+id/motherTongueEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg"
+                        android:focusable="false"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Mother Tongue"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Mother Tongue"
+                        android:textSize="16dp"
+                        android:translationY="4dp"
+                        tools:layout_editor_absoluteX="31dp" />
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:clipChildren="false"
+                android:textColorHint="#01579B"
+                app:hintTextAppearance="@style/TextLabel2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linearLayout2">
+
+                <EditText
+                    android:id="@+id/aadharEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/text_bg"
+                    android:focusable="false"
+                    android:fontFamily="@font/productsans"
+                    android:hint="Aadhar Number"
+                    android:paddingBottom="8dp"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="8dp"
+                    android:paddingTop="8dp"
+                    android:text="Aadhar"
+                    android:textSize="16dp"
+                    android:translationY="4dp"
+                    tools:layout_editor_absoluteX="31dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout8">
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputLayout6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="0.9"
+                    android:layout_marginTop="16dp"
+                    android:textColorHint="#01579B"
+                    app:hintTextAppearance="@style/TextLabel2"
+                    android:clipChildren="false"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <EditText
+                        android:id="@+id/universityEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg"
+                        android:focusable="false"
+                        android:fontFamily="@font/productsans"
+                        android:hint="University"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:text="University"
+                        android:textSize="16dp"
+                        android:translationY="4dp"
+                        tools:layout_editor_absoluteX="31dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:textColorHint="#01579B"
+                    app:hintTextAppearance="@style/TextLabel2"
+                    android:clipChildren="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout8">
+
+                    <EditText
+                        android:id="@+id/yearEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg"
+                        android:focusable="false"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Course Year"
+                        android:inputType="number"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Course Year"
+                        android:textSize="16dp"
+                        android:translationY="4dp"
+                        tools:layout_editor_absoluteX="31dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/fatherTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/productsansmedium"
+                android:text="Father's Details"
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#E0E0E0"
+                android:layout_marginTop="16dp"
+                android:elevation="10000dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fatherTextView" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:clipChildren="false"
+                android:layout_marginEnd="16dp"
+                android:textColorHint="#01579B"
+                app:hintTextAppearance="@style/TextLabel2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view3">
+
+                <EditText
+                    android:id="@+id/fatherNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/text_bg"
+                    android:focusable="false"
+                    android:fontFamily="@font/productsans"
+                    android:hint="Father's Name"
+                    android:paddingBottom="8dp"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="8dp"
+                    android:paddingTop="8dp"
+                    android:text="Father's name"
+                    android:textSize="16dp"
+                    android:translationY="4dp"
+                    tools:layout_editor_absoluteX="31dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:clipChildren="false"
+                android:textColorHint="#01579B"
+                app:hintTextAppearance="@style/TextLabel2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout10">
+
+                <EditText
+                    android:id="@+id/fatherOfficeAddressEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/text_bg"
+                    android:focusable="false"
+                    android:fontFamily="@font/productsans"
+                    android:hint="Office Address"
+                    android:inputType="textMultiLine"
+                    android:paddingBottom="13dp"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="8dp"
+                    android:paddingTop="13dp"
+                    android:text="Office Address"
+                    android:textSize="16dp"
+                    android:translationY="4dp"
+                    tools:layout_editor_absoluteX="31dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:clipChildren="false"
+                    android:layout_weight="0.9"
+                    android:textColorHint="#01579B"
+                    app:hintTextAppearance="@style/TextLabel2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+
+                    <EditText
+                        android:id="@+id/fatherOccupationEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg"
+                        android:focusable="false"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Occupation"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Occupation"
+                        android:textSize="16dp"
+                        android:translationY="4dp"
+                        tools:layout_editor_absoluteX="31dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInputLayout13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    android:textColorHint="#01579B"
+                    app:hintTextAppearance="@style/TextLabel2"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <EditText
+                        android:id="@+id/fatherMobileEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg"
+                        android:focusable="false"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Mobile"
+                        android:maxLength="10"
+                        android:inputType="number"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Mobile"
+                        android:textSize="16dp"
+                        android:translationY="4dp"
+                        tools:layout_editor_absoluteX="31dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/productsansmedium"
+                android:text="Mother's Details"
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="16dp"
+                android:background="#E0E0E0"
+                android:elevation="10000dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view5">
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:clipChildren="false"
+                    android:layout_weight="0.9"
+                    android:textColorHint="#01579B"
+                    app:hintTextAppearance="@style/TextLabel2"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <EditText
+                        android:id="@+id/motherNameEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg"
+                        android:focusable="false"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Mother's Name"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Mother's name"
+                        android:textSize="16dp"
+                        android:translationY="4dp"
+                        tools:layout_editor_absoluteX="31dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:textColorHint="#01579B"
+                    app:hintTextAppearance="@style/TextLabel2"
+                    android:clipChildren="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view5">
+
+                    <EditText
+                        android:id="@+id/motherMobileEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg"
+                        android:focusable="false"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Mobile"
+                        android:maxLength="10"
+                        android:inputType="number"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Mobile"
+                        android:textSize="16dp"
+                        android:translationY="4dp"
+                        tools:layout_editor_absoluteX="31dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/productsansmedium"
+                android:text="Local Guardian's Details"
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="16dp"
+                android:background="#E0E0E0"
+                android:elevation="10000dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view6">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:clipChildren="false"
+                    android:layout_weight="0.9"
+                    android:textColorHint="#01579B"
+                    app:hintTextAppearance="@style/TextLabel2"                app:layout_constraintStart_toStartOf="parent">
+
+                    <EditText
+                        android:id="@+id/guardianNameEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg"
+                        android:focusable="false"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Guardian Name"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Guardian name"
+                        android:textSize="16dp"
+                        android:translationY="4dp"
+                        tools:layout_editor_absoluteX="31dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:textColorHint="#01579B"
+                    app:hintTextAppearance="@style/TextLabel2"
+                    android:clipChildren="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view5">
+
+                    <EditText
+                        android:id="@+id/guardianMobileEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/text_bg"
+                        android:focusable="false"
+                        android:fontFamily="@font/productsans"
+                        android:hint="Mobile"
+                        android:maxLength="10"
+                        android:inputType="number"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Mobile"
+                        android:textSize="16dp"
+                        android:translationY="4dp"
+                        tools:layout_editor_absoluteX="31dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/guardianAddressTextinputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:clipChildren="false"
+                android:textColorHint="#01579B"
+                app:hintTextAppearance="@style/TextLabel2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linearLayout6">
+
+                <EditText
+                    android:id="@+id/guardianOfficeAddressEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/text_bg"
+                    android:focusable="false"
+                    android:fontFamily="@font/productsans"
+                    android:hint="Guardian Address"
+                    android:inputType="textMultiLine"
+                    android:paddingBottom="13dp"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="8dp"
+                    android:paddingTop="13dp"
+                    android:text="Guardian Address"
+                    android:textSize="16dp"
+                    android:translationY="4dp"
+                    tools:layout_editor_absoluteX="31dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

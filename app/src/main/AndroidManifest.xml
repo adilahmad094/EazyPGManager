@@ -2,20 +2,154 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.eazypg.eazypgmanager">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INSTALL_SHORTCUT"/>
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/eazypgmanager"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".Activities.MyApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id"/>
+
+        <service android:name=".Activities.FirebaseIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <service android:name=".Activities.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="false" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <activity android:name="net.eazypg.eazypgmanager.Activities.RentCollectionActivity"/>
+
+        <activity android:name=".MyIntro"/>
+
+        <receiver
+            android:name=".Activities.ConnectivityReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="net.eazypg.eazypgmanager.Activities.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+
         </activity>
+
+        <activity
+            android:name="net.eazypg.eazypgmanager.Activities.SignupActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="net.eazypg.eazypgmanager.Activities.LoginActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name="net.eazypg.eazypgmanager.Activities.AccountsFragmentActivity"/>
+        <activity android:name="net.eazypg.eazypgmanager.Activities.RentBillCollectionFragment"/>
+        <activity android:name="net.eazypg.eazypgmanager.Activities.TenantDocumentsActivity"/>
+        <activity android:name="net.eazypg.eazypgmanager.Activities.LogFragmentActivity"/>
+        <activity
+            android:name="net.eazypg.eazypgmanager.Activities.HomePageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="net.eazypg.eazypgmanager.Activities.TenantActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="net.eazypg.eazypgmanager.Activities.StaffActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="net.eazypg.eazypgmanager.Activities.MyPGActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="net.eazypg.eazypgmanager.Activities.ComplaintActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="net.eazypg.eazypgmanager.Activities.SubscriptionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="net.eazypg.eazypgmanager.Activities.ApplianceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="net.eazypg.eazypgmanager.Activities.ExpenseActivity"
+            android:screenOrientation="portrait" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name="net.eazypg.eazypgmanager.Activities.ApplianceDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="net.eazypg.eazypgmanager.Activities.PassbookActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="net.eazypg.eazypgmanager.Activities.PaymentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="net.eazypg.eazypgmanager.Activities.RoomsActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name="net.eazypg.eazypgmanager.Activities.TenantDashboardFragmentActivity"/>
+        <activity android:name="net.eazypg.eazypgmanager.Activities.FoodActivity" />
+        <activity android:name="net.eazypg.eazypgmanager.Activities.RoomApplianceDetailsActivity" />
+        <activity android:name="net.eazypg.eazypgmanager.Activities.RoomTenantDetailsActivity" />
+        <activity android:name="net.eazypg.eazypgmanager.Activities.PreviousTenantsActivity" />
+        <activity android:name="net.eazypg.eazypgmanager.Activities.PreviousRoomTenantsActivity" />
+        <activity android:name="net.eazypg.eazypgmanager.Activities.LateCheckinLogActivity" />
+        <activity android:name="net.eazypg.eazypgmanager.Activities.BedroomComplaintsFragmentActivity" />
+        <activity android:name="net.eazypg.eazypgmanager.Activities.FacilityComplaintsFragmentActivity" />
+        <activity android:name="net.eazypg.eazypgmanager.Activities.FoodComplaintsFragmentActivity" />
+        <activity android:name="net.eazypg.eazypgmanager.Activities.SecurityComplaintsFragmentActivity" />
+        <activity android:name="net.eazypg.eazypgmanager.Activities.TenantDashboardProfile" />
+        <activity android:name="net.eazypg.eazypgmanager.Activities.AddBillActivity"/>
+        <activity android:name="net.eazypg.eazypgmanager.Activities.AddBillRoomActivity"/>
+        <activity android:name="net.eazypg.eazypgmanager.Activities.FineRentBillActivity"/>
+        <activity android:name="net.eazypg.eazypgmanager.Activities.FeedbackActivity"/>
+        <activity android:name="net.eazypg.eazypgmanager.Activities.FineActivity"/>
+        <activity android:name="net.eazypg.eazypgmanager.Activities.RoomClickActivity"/>
+
     </application>
 
 </manifest>

@@ -1,0 +1,805 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/toolbar4"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="11dp"
+        app:cardBackgroundColor="@color/actionBarColor">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_arrow_back_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:fontFamily="@font/productsansmedium"
+            android:text="Feedback"
+            android:layout_gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textSize="18dp" />
+    </android.support.v7.widget.CardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:layout_height="match_parent">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayoutImprove"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="34dp">
+
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/productsansbold"
+                android:text="Take feedback to improve your rating"
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/subheadingTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/productsans"
+                android:text="Tap on item to customize Feedback Message"
+                android:textSize="13dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/comfortButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="36dp"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/comfort"
+                app:layout_constraintEnd_toStartOf="@+id/managementButton"
+                app:layout_constraintStart_toEndOf="@+id/foodButton"
+                app:layout_constraintTop_toBottomOf="@+id/subheadingTextView" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/foodButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="36dp"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/food"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/subheadingTextView" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/roomButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/room"
+                app:layout_constraintEnd_toStartOf="@+id/othersButton"
+                app:layout_constraintStart_toEndOf="@+id/hygieneButton"
+                app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/hygieneButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="24dp"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/hygiene"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/othersButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginTop="24dp"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/more"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/managementButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginTop="36dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:elevation="5dp"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/management"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/subheadingTextView" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/productsansbold"
+                android:text="Others"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/othersButton"
+                app:layout_constraintStart_toStartOf="@+id/othersButton"
+                app:layout_constraintTop_toBottomOf="@+id/othersButton" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/productsansbold"
+                android:text="Rooms"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/roomButton"
+                app:layout_constraintStart_toStartOf="@+id/roomButton"
+                app:layout_constraintTop_toBottomOf="@+id/roomButton" />
+
+            <TextView
+                android:id="@+id/hyegineImprovementTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/productsansbold"
+                android:text="Hyegine"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/hygieneButton"
+                app:layout_constraintStart_toStartOf="@+id/hygieneButton"
+                app:layout_constraintTop_toBottomOf="@+id/hygieneButton" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/productsansbold"
+                android:text="Management"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/managementButton"
+                app:layout_constraintStart_toStartOf="@+id/managementButton"
+                app:layout_constraintTop_toBottomOf="@+id/managementButton" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/productsansbold"
+                android:text="Comfort"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/comfortButton"
+                app:layout_constraintStart_toStartOf="@+id/comfortButton"
+                app:layout_constraintTop_toBottomOf="@+id/comfortButton" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="Food"
+                android:textSize="14sp"
+                android:fontFamily="@font/productsansbold"
+                app:layout_constraintEnd_toEndOf="@+id/foodButton"
+                app:layout_constraintStart_toStartOf="@+id/foodButton"
+                app:layout_constraintTop_toBottomOf="@+id/foodButton" />
+
+
+            <View
+                android:id="@+id/viewSeparator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e0e0e0"
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@+id/hyegineImprovementTextView"/>
+
+
+            <TextView
+                android:id="@+id/currentRatingTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/productsansbold"
+                android:text="Current Ratings"
+                android:textColor="#424242"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/viewSeparator" />
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/currentRatingTextView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_horizontal">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="95dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="#ffffff"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="0dp">
+
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/foodImageView"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:src="@drawable/food"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/foodtextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/productsansmedium"
+                                android:text="Food"
+                                android:textColor="#424242"
+                                android:textSize="13dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/foodImageView" />
+
+                            <View
+                                android:id="@+id/view1"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="4dp"
+                                android:background="#E0E0E0"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/foodtextView" />
+
+                            <RatingBar
+                                android:id="@+id/foodRating"
+                                style="?android:attr/ratingBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="16dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:isIndicator="true"
+                                android:numStars="5"
+                                android:progressBackgroundTint="@android:color/black"
+                                android:progressTint="#FFC107"
+                                android:rating="3"
+                                android:stepSize="0.1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/view1" />
+
+
+                        </android.support.constraint.ConstraintLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="95dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="#ffffff"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="0dp">
+
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/comfortRatingImageView"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:src="@drawable/comfort"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/comfortRatingTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/productsansmedium"
+                                android:text="Comfort"
+                                android:textColor="#212121"
+                                android:textSize="13dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/comfortRatingImageView" />
+
+
+                            <View
+                                android:id="@+id/view2"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="4dp"
+                                android:background="#E0E0E0"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/comfortRatingTextView" />
+
+                            <RatingBar
+                                android:id="@+id/comfortRating"
+                                style="?android:attr/ratingBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:isIndicator="true"
+                                android:numStars="5"
+                                android:progressBackgroundTint="@android:color/black"
+                                android:progressTint="#FFC107"
+                                android:rating="3"
+                                android:stepSize="0.1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/view2"
+                                tools:layout_editor_absoluteY="82dp" />
+
+
+                        </android.support.constraint.ConstraintLayout>
+
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="95dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="#ffffff"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="0dp">
+
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/managementImageView"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:src="@drawable/management"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/managementTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/productsansmedium"
+                                android:text="Management"
+                                android:textColor="#212121"
+                                android:textSize="13dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/managementImageView" />
+
+                            <View
+                                android:id="@+id/view3"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="3dp"
+                                android:background="#E0E0E0"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/managementTextView" />
+
+                            <RatingBar
+                                android:id="@+id/managementRating"
+                                style="?android:attr/ratingBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="16dp"
+                                android:layout_marginTop="8dp"
+                                android:isIndicator="true"
+                                android:numStars="5"
+                                android:progressBackgroundTint="@android:color/black"
+                                android:progressTint="#FFC107"
+                                android:rating="3"
+                                android:stepSize="0.1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/view3"
+                                tools:layout_editor_absoluteX="12dp"
+                                tools:layout_editor_absoluteY="82dp" />
+
+
+                        </android.support.constraint.ConstraintLayout>
+
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_horizontal">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="95dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="#ffffff"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="0dp">
+
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/hyegineImageView"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:src="@drawable/hygiene"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/hyegineTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/productsansmedium"
+                                android:text="Hygiene"
+                                android:textColor="#212121"
+                                android:textSize="13sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/hyegineImageView" />
+
+                            <View
+                                android:id="@+id/view4"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="2dp"
+                                android:background="#E0E0E0"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/hyegineTextView" />
+
+                            <RatingBar
+                                android:id="@+id/hygieneRating"
+                                style="?android:attr/ratingBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="16dp"
+                                android:layout_marginTop="8dp"
+                                android:isIndicator="true"
+                                android:numStars="5"
+                                android:progressBackgroundTint="@android:color/black"
+                                android:progressTint="#FFC107"
+                                android:rating="3"
+                                android:stepSize="0.1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/view4"
+                                tools:layout_editor_absoluteX="12dp"
+                                tools:layout_editor_absoluteY="82dp" />
+
+
+                        </android.support.constraint.ConstraintLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="95dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="#ffffff"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="0dp">
+
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/roomImageView"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:src="@drawable/room"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/roomTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/productsansmedium"
+                                android:text="Room"
+                                android:textColor="#212121"
+                                android:textSize="13sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/roomImageView" />
+
+                            <View
+                                android:id="@+id/view5"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="3dp"
+                                android:background="#E0E0E0"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/roomTextView" />
+
+                            <RatingBar
+                                android:id="@+id/roomRating"
+                                style="?android:attr/ratingBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="16dp"
+                                android:layout_marginTop="8dp"
+                                android:isIndicator="true"
+                                android:numStars="5"
+                                android:progressBackgroundTint="@android:color/black"
+                                android:progressTint="#FFC107"
+                                android:rating="3"
+                                android:stepSize="0.1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/view5"
+                                tools:layout_editor_absoluteX="12dp"
+                                tools:layout_editor_absoluteY="82dp" />
+
+
+                        </android.support.constraint.ConstraintLayout>
+
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="95dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="#ffffff"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="0dp">
+
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/othersImageView"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:src="@drawable/more"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/othersTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/productsansmedium"
+                                android:text="Others"
+                                android:textColor="#212121"
+                                android:textSize="13sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/othersImageView" />
+
+                            <View
+                                android:id="@+id/view6"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="3dp"
+                                android:background="#E0E0E0"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/othersTextView" />
+
+                            <RatingBar
+                                android:id="@+id/othersRating"
+                                style="?android:attr/ratingBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="16dp"
+                                android:layout_marginTop="8dp"
+                                android:isIndicator="true"
+                                android:numStars="5"
+                                android:progressBackgroundTint="@android:color/black"
+                                android:progressTint="#FFC107"
+                                android:rating="3"
+                                android:stepSize="0.1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/view6"
+                                tools:layout_editor_absoluteX="12dp"
+                                tools:layout_editor_absoluteY="82dp" />
+
+
+                        </android.support.constraint.ConstraintLayout>
+
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

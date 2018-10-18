@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    android:layout_width="wrap_content"
+    android:id="@+id/addStaffCustomTitle"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="50dp"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:fontFamily="@font/comfortabold"
+    android:textColor="#000000"
+    android:paddingStart="17dp"
+    android:paddingTop="17dp"
+    android:text=" Add Staff Details"
+    android:textSize="25dp" />

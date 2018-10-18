@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:clipChildren="false"
+        android:textColorHint="#616161"
+        app:hintTextAppearance="@style/TextLabel2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/staffNameEditText"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/login_corners"
+            android:ems="10"
+            android:fontFamily="@font/productsans"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:maxLength="20"
+            android:paddingStart="10dp"
+            android:textColorHint="#616161"
+            android:textSize="18dp"
+            android:translationY="4dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:clipChildren="false"
+        android:textColorHint="#616161"
+        app:hintTextAppearance="@style/TextLabel2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+
+        <EditText
+            android:id="@+id/jobDescEditText"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_corners"
+            android:ems="10"
+            android:fontFamily="@font/productsans"
+            android:hint="Job Description"
+            android:inputType="textPersonName"
+            android:maxLength="10"
+            android:paddingStart="10dp"
+            android:layout_marginStart="16dp"
+            android:textColorHint="#616161"
+            android:textSize="18dp"
+            android:translationY="4dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="359dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:clipChildren="false"
+        android:textColorHint="#616161"
+        app:hintTextAppearance="@style/TextLabel2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
+
+        <EditText
+            android:id="@+id/contactEditText"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_corners"
+            android:ems="10"
+            android:fontFamily="@font/productsans"
+            android:hint="Contact"
+            android:inputType="number"
+            android:maxLength="10"
+            android:paddingStart="10dp"
+            android:layout_marginStart="16dp"
+            android:textColorHint="#616161"
+            android:textSize="18dp"
+            android:translationY="4dp"
+            tools:layout_editor_absoluteX="3dp"
+            tools:layout_editor_absoluteY="144dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout5"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:clipChildren="false"
+        android:textColorHint="#616161"
+        app:hintTextAppearance="@style/TextLabel2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+
+        <EditText
+            android:id="@+id/salaryEditText"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/login_corners"
+            android:ems="10"
+            android:fontFamily="@font/productsans"
+            android:hint="Salary"
+            android:inputType="number"
+            android:maxLength="10"
+            android:paddingStart="10dp"
+            android:textColorHint="#616161"
+            android:textSize="18dp"
+            android:translationY="4dp"
+            tools:layout_editor_absoluteX="3dp"
+            tools:layout_editor_absoluteY="189dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout6"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:clipChildren="false"
+        android:textColorHint="#616161"
+        app:hintTextAppearance="@style/TextLabel2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
+
+        <TextView
+            android:id="@+id/dateOfJoiningEditText"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/login_corners"
+            android:ems="10"
+            android:fontFamily="@font/productsans"
+            android:hint="Date of Joining (DD/MM/YY)"
+            android:inputType="date"
+            android:maxLength="10"
+            android:paddingStart="10dp"
+            android:textColorHint="#616161"
+            android:textSize="18dp"
+            android:translationY="4dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="276dp" />
+    </android.support.design.widget.TextInputLayout>
+
+</android.support.constraint.ConstraintLayout>

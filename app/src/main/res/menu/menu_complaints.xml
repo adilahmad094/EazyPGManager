@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Acknowledged (By Management)"
+        android:id="@+id/acknowledged"/>
+
+    <item
+        android:title="Verified (By Staff)"
+        android:id="@+id/verified"/>
+
+    <item
+        android:title="Tenant Availability Time Requested"
+        android:id="@+id/tenantTime"/>
+
+    <item
+        android:title="More Details/Time Required"
+        android:id="@+id/moreDetails"/>
+
+    <item
+        android:title="Service Person Assigned"
+        android:id="@+id/servicePerson"/>
+
+    <item
+        android:title="Complaint Resolved"
+        android:id="@+id/complaintResolved"/>
+
+</menu>
