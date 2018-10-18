@@ -72,6 +72,12 @@ public class TenantDashboardProfile extends AppCompatActivity {
 
         final ProgressDialog progressDialog = ProgressDialog.show(this, "Loading", "Please Wait..", true);
 
+        if(storageReference.child(id).child("Selfie") == null)
+        {
+            progressDialog.dismiss();
+
+        }
+
         storageReference.child(id).child("Selfie").getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
