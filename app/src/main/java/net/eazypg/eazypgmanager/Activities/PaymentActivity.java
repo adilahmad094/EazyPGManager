@@ -72,14 +72,14 @@ public class PaymentActivity extends AppCompatActivity {
 
         paymentList = new ArrayList<>();
 
-        backButton.findViewById(R.id.backButton);
+        /*backButton.findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(PaymentActivity.this, HomePageActivity.class));
                 finish();
             }
-        });
+        });*/
         Intent intent = getIntent();
         String message = intent.getStringExtra(TenantDetailList.EXTRA_MESSAGE);
 

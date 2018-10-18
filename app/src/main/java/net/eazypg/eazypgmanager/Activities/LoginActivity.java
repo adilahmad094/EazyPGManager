@@ -23,10 +23,15 @@ import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import net.eazypg.eazypgmanager.R;
 
@@ -37,6 +42,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
     private EditText etUserEmail,etUserPassword;
     private ImageView btnSignIn;
@@ -51,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Fabric.with(this, new Crashlytics());
 
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -73,12 +82,22 @@ public class LoginActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
 
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(LoginActivity.this, new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                String refreshedToken = instanceIdResult.getToken();
+
+                databaseReference = firebaseDatabase.getReference("PG/" + mFirebaseAuth.getCurrentUser().getUid());
+                databaseReference.child("Token").child("tokenId").setValue(refreshedToken);
+
+            }
+        });
+
         //If user kills the app without logging out, he/she should not need to login again.
         if(mFirebaseUser!=null){
             finish();
             startActivity(new Intent(LoginActivity.this,HomePageActivity.class));
         }
-
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override

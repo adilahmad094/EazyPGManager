@@ -19,7 +19,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/eazypgmanager"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/eazypgmanager"
         android:supportsRtl="true"
         android:name=".Activities.MyApplication"
         android:theme="@style/AppTheme">

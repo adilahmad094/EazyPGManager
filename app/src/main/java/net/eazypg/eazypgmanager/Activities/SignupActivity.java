@@ -17,11 +17,14 @@ import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import net.eazypg.eazypgmanager.R;
 
@@ -122,14 +125,19 @@ public class SignupActivity extends AppCompatActivity {
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Feedback").child("Final Rating").setValue("0");
 
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("email").setValue(etUserEmail.getText().toString());
-                                databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("location").setValue(etUserLocality.getText().toString());
-                                databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("pgContact").setValue(etUserLocality.getText().toString());
+                                databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("pgContact").setValue(etUserContact.getText().toString());
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("landmark").setValue(etUserLocality.getText().toString());
 
+                                FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(SignupActivity.this, new OnSuccessListener<InstanceIdResult>() {
+                                    @Override
+                                    public void onSuccess(InstanceIdResult instanceIdResult) {
+                                        String refreshedToken = instanceIdResult.getToken();
 
+                                        databaseReference = firebaseDatabase.getReference("PG/" + mFirebaseAuth.getCurrentUser().getUid());
+                                        databaseReference.child("Token").child("tokenId").setValue(refreshedToken);
 
-
-
+                                    }
+                                });
                                 progressDialog.dismiss();
 
                                 final ProgressDialog progressDialog = ProgressDialog.show(SignupActivity.this, "","Loading..", true);

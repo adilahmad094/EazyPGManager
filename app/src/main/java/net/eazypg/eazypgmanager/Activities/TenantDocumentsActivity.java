@@ -98,6 +98,7 @@ public class TenantDocumentsActivity extends AppCompatActivity {
                 collegeIdBackId = dataSnapshot.child("CollegeID Back").getValue(String.class);
                 collegeIdFrontId = dataSnapshot.child("CollegeID Front").getValue(String.class);
 
+                progressDialog.dismiss();
                 
             }
 

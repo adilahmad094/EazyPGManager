@@ -97,6 +97,8 @@ public class TenantDocumentsFragment extends Fragment {
 
         if (id != null) {
 
+            progressDialog.dismiss();
+
                 storageReference.child(id).child("Aadhar Front").getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                     @Override
                     public void onSuccess(byte[] bytes) {
@@ -131,7 +133,6 @@ public class TenantDocumentsFragment extends Fragment {
                         loaded = true;
                     }
                 });
-
 
                 storageReference.child(id).child("CollegeID Front").getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                     @Override

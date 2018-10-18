@@ -12,6 +12,11 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -24,6 +29,33 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = "MyGcmListenerService";
     private NotificationManager notifManager;
     private NotificationChannel mChannel;
+
+    FirebaseAuth firebaseAuth;
+    FirebaseDatabase firebaseDatabase;
+    FirebaseUser firebaseUser;
+    DatabaseReference databaseReference;
+
+    @Override
+    public void onNewToken(String s) {
+        super.onNewToken(s);
+
+        sendRegistrationToServer(s);
+
+    }
+
+    private void sendRegistrationToServer(String refreshedToken) {
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
+        if (firebaseUser != null) {
+
+            databaseReference = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
+            databaseReference.child("Token").child("tokenId").setValue(refreshedToken);
+
+        }
+    }
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -93,4 +125,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Notification notification = builder.build ();
         notifManager.notify (0, notification);
     }
+
+
 }

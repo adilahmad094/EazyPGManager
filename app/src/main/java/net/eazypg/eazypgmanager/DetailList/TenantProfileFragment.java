@@ -1,18 +1,23 @@
 package net.eazypg.eazypgmanager.DetailList;
 
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,6 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import net.eazypg.eazypgmanager.Activities.TenantDashboardProfile;
 import net.eazypg.eazypgmanager.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -51,10 +57,12 @@ public class TenantProfileFragment extends Fragment {
             fatherName, fatherOfficeAddress, fatherOccupation, fatherMobile,
             motherName, motherMobile, guardianName, guardianMobile,
             guardianOfficeAddress;
-    String id, selfieName;
+    String id, selfieName, parentPhone;
 
     StorageReference storageReference;
     FirebaseStorage storage;
+
+    ConstraintLayout callParentConstraintLayout;
 
     View view;
 
@@ -142,6 +150,29 @@ public class TenantProfileFragment extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Tenants/" + id);
 
+        callParentConstraintLayout = view.findViewById(R.id.callParentConstraintLayout);
+
+        callParentConstraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.e("Clicked", "Clicked");
+
+                try {
+                    Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                    callIntent.setData(Uri.parse("tel:"+parentPhone));
+                    startActivity(callIntent);
+                }
+                catch (ActivityNotFoundException activityException) {
+                    Toast.makeText(getContext(), "Call failed", Toast.LENGTH_SHORT).show();
+                }
+                catch (SecurityException e) {
+                    Toast.makeText(getContext(), "Call failed!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -149,6 +180,8 @@ public class TenantProfileFragment extends Fragment {
                 nameTextView.setText(dataSnapshot.child("name").getValue(String.class));
                 phoneTextView.setText(dataSnapshot.child("phone").getValue(String.class));
                 emailTextView.setText(dataSnapshot.child("email").getValue(String.class));
+
+                parentPhone = dataSnapshot.child("Personal Detail").child("fatherPhone").getValue(String.class);
 
                 selfieName = dataSnapshot.child("My Docs").child("Selfie").getValue(String.class);
 

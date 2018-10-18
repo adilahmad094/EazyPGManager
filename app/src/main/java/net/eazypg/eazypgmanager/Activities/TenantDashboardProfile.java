@@ -1,14 +1,20 @@
 package net.eazypg.eazypgmanager.Activities;
 
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -50,10 +56,12 @@ public class TenantDashboardProfile extends AppCompatActivity {
             fatherName, fatherOfficeAddress, fatherOccupation, fatherMobile,
             motherName, motherMobile, guardianName, guardianMobile,
             guardianOfficeAddress;
-    String id, selfieName;
+    String id, selfieName, parentPhone;
 
     StorageReference storageReference;
     FirebaseStorage storage;
+
+    ConstraintLayout callParentConstraintLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +69,8 @@ public class TenantDashboardProfile extends AppCompatActivity {
         setContentView(R.layout.activity_tenant_dashboard_profile);
         Fabric.with(this, new Crashlytics());
 
+
+        callParentConstraintLayout = findViewById(R.id.callParentConstraintLayout);
 
         Intent intent = getIntent();
         id = intent.getStringExtra(TenantDetailList.EXTRA_MESSAGE3);
@@ -77,6 +87,27 @@ public class TenantDashboardProfile extends AppCompatActivity {
             progressDialog.dismiss();
 
         }
+
+        callParentConstraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.e("Clicked", "Clicked");
+
+                try {
+                    Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                    callIntent.setData(Uri.parse("tel:"+parentPhone));
+                    startActivity(callIntent);
+                }
+                catch (ActivityNotFoundException activityException) {
+                    Toast.makeText(TenantDashboardProfile.this, "Call failed", Toast.LENGTH_SHORT).show();
+                }
+                catch (SecurityException e) {
+                    Toast.makeText(TenantDashboardProfile.this, "Call failed!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
         storageReference.child(id).child("Selfie").getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
@@ -137,6 +168,10 @@ public class TenantDashboardProfile extends AppCompatActivity {
                 nameTextView.setText(dataSnapshot.child("name").getValue(String.class));
                 phoneTextView.setText(dataSnapshot.child("phone").getValue(String.class));
                 emailTextView.setText(dataSnapshot.child("email").getValue(String.class));
+
+                parentPhone = dataSnapshot.child("Personal Detail").child("fatherPhone").getValue(String.class);
+                Log.e("Clicked", parentPhone + "");
+
 
                 selfieName = dataSnapshot.child("My Docs").child("Selfie").getValue(String.class);
 
