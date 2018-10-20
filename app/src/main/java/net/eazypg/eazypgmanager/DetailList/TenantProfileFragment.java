@@ -30,7 +30,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import net.eazypg.eazypgmanager.Activities.TenantDashboardProfile;
 import net.eazypg.eazypgmanager.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;

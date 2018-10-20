@@ -114,8 +114,6 @@ public class RoomsActivity extends AppCompatActivity {
 
         Fabric.with(this, new Crashlytics());
 
-        CardView toolbar = findViewById(R.id.toolbar4);
-
         addRoom = findViewById(R.id.addRoom);
 
         inflater = getLayoutInflater();
@@ -237,7 +235,7 @@ public class RoomsActivity extends AppCompatActivity {
                                 semiVacantRooms++;
                             }
 
-                            vacantRooms = totalRoom - semiVacantRooms;
+                            vacantRooms = totalRoom - semiVacantRooms - rooms.size();
 
                             totalRoomsTextView.setText(Integer.toString(totalRoom));
                             semiVacantTextView.setText(Integer.toString(semiVacantRooms));

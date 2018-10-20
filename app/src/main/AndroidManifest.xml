@@ -52,7 +52,6 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <activity android:name="net.eazypg.eazypgmanager.Activities.RentCollectionActivity"/>
 
         <activity android:name=".MyIntro"/>
 
@@ -85,7 +84,6 @@
         </activity>
         <activity android:name="net.eazypg.eazypgmanager.Activities.AccountsFragmentActivity"/>
         <activity android:name="net.eazypg.eazypgmanager.Activities.RentBillCollectionFragment"/>
-        <activity android:name="net.eazypg.eazypgmanager.Activities.TenantDocumentsActivity"/>
         <activity android:name="net.eazypg.eazypgmanager.Activities.LogFragmentActivity"/>
         <activity
             android:name="net.eazypg.eazypgmanager.Activities.HomePageActivity"
@@ -109,18 +107,13 @@
         <activity
             android:name="net.eazypg.eazypgmanager.Activities.ApplianceActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name="net.eazypg.eazypgmanager.Activities.ExpenseActivity"
-            android:screenOrientation="portrait" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name="net.eazypg.eazypgmanager.Activities.ApplianceDetailsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.eazypg.eazypgmanager.Activities.PassbookActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="net.eazypg.eazypgmanager.Activities.PaymentActivity"
@@ -134,17 +127,14 @@
         <activity android:name="net.eazypg.eazypgmanager.Activities.RoomTenantDetailsActivity" />
         <activity android:name="net.eazypg.eazypgmanager.Activities.PreviousTenantsActivity" />
         <activity android:name="net.eazypg.eazypgmanager.Activities.PreviousRoomTenantsActivity" />
-        <activity android:name="net.eazypg.eazypgmanager.Activities.LateCheckinLogActivity" />
         <activity android:name="net.eazypg.eazypgmanager.Activities.BedroomComplaintsFragmentActivity" />
         <activity android:name="net.eazypg.eazypgmanager.Activities.FacilityComplaintsFragmentActivity" />
         <activity android:name="net.eazypg.eazypgmanager.Activities.FoodComplaintsFragmentActivity" />
         <activity android:name="net.eazypg.eazypgmanager.Activities.SecurityComplaintsFragmentActivity" />
-        <activity android:name="net.eazypg.eazypgmanager.Activities.TenantDashboardProfile" />
         <activity android:name="net.eazypg.eazypgmanager.Activities.AddBillActivity"/>
         <activity android:name="net.eazypg.eazypgmanager.Activities.AddBillRoomActivity"/>
         <activity android:name="net.eazypg.eazypgmanager.Activities.FineRentBillActivity"/>
         <activity android:name="net.eazypg.eazypgmanager.Activities.FeedbackActivity"/>
-        <activity android:name="net.eazypg.eazypgmanager.Activities.FineActivity"/>
         <activity android:name="net.eazypg.eazypgmanager.Activities.RoomClickActivity"/>
 
     </application>

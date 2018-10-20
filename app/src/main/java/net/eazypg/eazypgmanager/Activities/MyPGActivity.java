@@ -392,7 +392,6 @@ public class MyPGActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addingPg();
-                saveButton.setVisibility(View.VISIBLE);
             }
         });
 

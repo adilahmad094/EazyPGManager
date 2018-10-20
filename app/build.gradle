@@ -6,7 +6,7 @@ android {
         config {
             keyAlias 'key0'
             keyPassword '@asdf#fdsa51'
-            storeFile file('EazyPG Manager')
+            storeFile file('/root/App Certificates/Manager.jks')
             storePassword '@asdf#fdsa51'
         }
     }

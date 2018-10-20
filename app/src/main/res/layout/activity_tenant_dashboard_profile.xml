@@ -822,7 +822,8 @@
                     android:clipChildren="false"
                     android:layout_weight="0.9"
                     android:textColorHint="#01579B"
-                    app:hintTextAppearance="@style/TextLabel2"                app:layout_constraintStart_toStartOf="parent">
+                    app:hintTextAppearance="@style/TextLabel2"
+                    app:layout_constraintStart_toStartOf="parent">
 
                     <EditText
                         android:id="@+id/guardianNameEditText"

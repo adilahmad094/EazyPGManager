@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
+import net.eazypg.eazypgmanager.DetailsClasses.StaffDetails;
 import net.eazypg.eazypgmanager.R;
 
 import java.util.Random;
@@ -127,6 +128,10 @@ public class SignupActivity extends AppCompatActivity {
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("email").setValue(etUserEmail.getText().toString());
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("pgContact").setValue(etUserContact.getText().toString());
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("landmark").setValue(etUserLocality.getText().toString());
+
+                                String staffId = databaseReference.push().getKey();
+                                StaffDetails staffDetails = new StaffDetails(staffId, "", etUserContact.getText().toString(), "Owner Name", "Owner", "");
+                                databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Staff").child(staffId).setValue(staffDetails);
 
                                 FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(SignupActivity.this, new OnSuccessListener<InstanceIdResult>() {
                                     @Override
