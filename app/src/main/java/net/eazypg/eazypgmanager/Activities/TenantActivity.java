@@ -15,9 +15,12 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.InputFilter;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -76,6 +79,8 @@ public class TenantActivity extends AppCompatActivity {
 
     boolean flag;
 
+    EditText input;
+
     FirebaseUser firebaseUser;
     DatabaseReference databaseReference, databaseReference1, databaseReference2;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -112,6 +117,8 @@ public class TenantActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.tenantToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        input = new EditText(this);
 
         totalBedTextView = findViewById(R.id.totalBedTextView);
         vacantBedTextView = findViewById(R.id.vacantBedTextView);
@@ -155,7 +162,7 @@ public class TenantActivity extends AppCompatActivity {
         tenantDetailsList = new ArrayList<>();
 
         databaseReference = firebaseDatabase.getReference("PG/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/Tenants/CurrentTenants/");
-        databaseReference2 = firebaseDatabase.getReference("PG/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/Rooms/");
+        databaseReference2 = firebaseDatabase.getReference("PG/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         databaseReference.addValueEventListener(new ValueEventListener() {
 
@@ -172,9 +179,6 @@ public class TenantActivity extends AppCompatActivity {
 
                 }
 
-                totalBedTextView.setText("50");
-                vacantBedTextView.setText(Integer.toString(50 - tenantDetailsList.size()));
-
                 TenantDetailList adapter = new TenantDetailList(TenantActivity.this, tenantDetailsList);
                 listView.setAdapter(adapter);
 
@@ -187,6 +191,76 @@ public class TenantActivity extends AppCompatActivity {
         });
 
         databaseReference2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.child("PG Details").child("maxOccupancy").getValue(String.class) != null && !dataSnapshot.child("PG Details").child("maxOccupancy").getValue(String.class).isEmpty()) {
+                    String maxOccupancy = dataSnapshot.child("PG Details").child("maxOccupancy").getValue(String.class);
+                    totalBedTextView.setText(maxOccupancy);
+                    vacantBedTextView.setText(Integer.toString(Integer.parseInt(maxOccupancy) - tenantDetailsList.size()));
+                }
+                else if (dataSnapshot.child("PG Details").child("maxOccupancy").getValue(String.class).isEmpty()) {
+
+                    totalBedTextView.setText("Null");
+                    vacantBedTextView.setText("Null");
+
+                }
+                else {
+                    totalBedTextView.setText("Null");
+                    vacantBedTextView.setText("Null");
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        totalBedTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (totalBedTextView.getText().toString().equalsIgnoreCase("Null")) {
+
+                    if(input.getParent()!=null) {
+                        ((ViewGroup) input.getParent()).removeView(input);
+                    }
+
+                    input.setFilters(new InputFilter[] { new InputFilter.LengthFilter(2) });
+                    input.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TenantActivity.this);
+                    builder.setTitle("Total Rooms")
+                            .setIcon(R.drawable.ic_edit_black_24dp)
+                            .setMessage("Enter total number of Rooms : ");
+
+                    builder.setView(input);
+                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            databaseReference2.child("PG Details").child("maxOccupancy").setValue(input.getText().toString());
+                        }
+                    });
+
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                            dialog.dismiss();
+                        }
+                    });
+
+                    builder.create().show();
+                }
+            }
+        });
+
+        databaseReference2.child("Rooms").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
