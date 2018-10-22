@@ -418,7 +418,7 @@ public class TenantActivity extends AppCompatActivity {
                                     if (tenantNumber < roomTypeNumber) {
 
                                         MSG91 msg91 = new MSG91("163776AiifTBEVMZl5aae0bce");
-                                        msg91.composeMessage("EazyPG", "Hi " + name.getText().toString() + ". Welcome to " + pgName + ". Get you EazyPG App. Follow the link: ");
+                                        msg91.composeMessage("EazyPG", "Hi " + name.getText().toString() + ". Welcome to " + pgName + ". Get you EazyPG App. Follow the link: https://goo.gl/M3jEhQ");
                                         msg91.to(phone.getText().toString());
                                         String sendStatus = msg91.send();
 
