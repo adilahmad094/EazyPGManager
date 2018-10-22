@@ -50,8 +50,6 @@ public class LateCheckInLogFragment extends Fragment {
 
         Fabric.with(getContext(), new Crashlytics());
 
-
-
         view = inflater.inflate(R.layout.activity_late_checkin_log, container, false);
 
         recyclerView = view.findViewById(R.id.lateCheckinRecyclerView);
@@ -90,8 +88,6 @@ public class LateCheckInLogFragment extends Fragment {
 
             }
         });
-
-
 
         return view;
 

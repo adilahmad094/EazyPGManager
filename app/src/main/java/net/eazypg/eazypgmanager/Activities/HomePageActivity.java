@@ -77,7 +77,6 @@ public class HomePageActivity extends AppCompatActivity {
 
         overallRating = findViewById(R.id.overallRating);
 
-
         profileCard = findViewById(R.id.profileCard);
         notifications = findViewById(R.id.notificationImage);
         accounts = findViewById(R.id.accountsCardView);

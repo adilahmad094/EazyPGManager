@@ -1,10 +1,12 @@
 package net.eazypg.eazypgmanager.Activities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.firebase.auth.FirebaseAuth;
@@ -112,13 +115,39 @@ public class AddBillRoomActivity extends AppCompatActivity {
                     databaseReference1.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            String unitCost = dataSnapshot.child("Unit Cost").getValue(String.class);
 
-                            addBillRoomElectricityDetailList = new AddBillRoomElectricityDetailList(context, roomsList, roomTypeList, unitCost);
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-                            addBillRoomRecyclerView.setLayoutManager(layoutManager);
-                            addBillRoomRecyclerView.setItemAnimator(new DefaultItemAnimator());
-                            addBillRoomRecyclerView.setAdapter(addBillRoomElectricityDetailList);
+                            if (dataSnapshot.child("electricityUnitCost").getValue(String.class) == null || dataSnapshot.child("electricityUnitCost").getValue(String.class).isEmpty()) {
+
+                                final AlertDialog.Builder builder = new AlertDialog.Builder(AddBillRoomActivity.this);
+                                builder.setTitle("Error");
+                                builder.setMessage("Electricity Unit Cost is not added. Do you want to add it now?");
+                                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                        startActivity(new Intent(AddBillRoomActivity.this, MyPGActivity.class));
+                                        finish();
+                                    }
+                                });
+                                builder.setNegativeButton("Not yet", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                        startActivity(new Intent(AddBillRoomActivity.this, AddBillActivity.class));
+                                        finish();
+                                    }
+                                });
+                                builder.show();
+                            } else {
+
+                                String unitCost = dataSnapshot.child("electricityUnitCost").getValue(String.class);
+
+                                addBillRoomElectricityDetailList = new AddBillRoomElectricityDetailList(context, roomsList, roomTypeList, unitCost);
+                                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+                                addBillRoomRecyclerView.setLayoutManager(layoutManager);
+                                addBillRoomRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                                addBillRoomRecyclerView.setAdapter(addBillRoomElectricityDetailList);
+                            }
                         }
 
                         @Override

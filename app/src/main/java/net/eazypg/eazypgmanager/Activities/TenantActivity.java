@@ -236,7 +236,7 @@ public class TenantActivity extends AppCompatActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(TenantActivity.this);
                     builder.setTitle("Total Rooms")
                             .setIcon(R.drawable.ic_edit_black_24dp)
-                            .setMessage("Enter total number of Rooms : ");
+                            .setMessage("Enter total number of Tenants : ");
 
                     builder.setView(input);
                     builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -430,9 +430,9 @@ public class TenantActivity extends AppCompatActivity {
                                         QRCodeWriter writer = new QRCodeWriter();
                                         try {
 
-                                            String content = FirebaseAuth.getInstance().getCurrentUser().getUid() + " " +
-                                                    name.getText().toString().trim() + " " + phone.getText().toString().trim() + " " + email.getText().toString().trim() + " " +
-                                                    room.getText().toString().trim() + " " + dateOfJoining.getText().toString() + " " +
+                                            String content = FirebaseAuth.getInstance().getCurrentUser().getUid() + "$" +
+                                                    name.getText().toString().trim() + "$" + phone.getText().toString().trim() + "$" + email.getText().toString().trim() + "$" +
+                                                    room.getText().toString().trim() + "$" + dateOfJoining.getText().toString() + "$" +
                                                     rentAmount.getText().toString().trim();
 
                                             BitMatrix bitMatrix = writer.encode(content , BarcodeFormat.QR_CODE, 512, 512);

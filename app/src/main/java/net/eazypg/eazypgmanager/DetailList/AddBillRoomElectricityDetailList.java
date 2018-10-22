@@ -58,6 +58,7 @@ public class AddBillRoomElectricityDetailList extends RecyclerView.Adapter<AddBi
 
         holder.roomNumberTextView.setText(roomNumber);
         holder.roomTypeTextView.setText(roomType);
+        holder.costPerUnit.setText(unitCost);
 
         //final List<TenantDetails> tenantList = new ArrayList<>();
         final List<TenantDetails> tenantRoomList = new ArrayList<>();
@@ -208,13 +209,14 @@ public class AddBillRoomElectricityDetailList extends RecyclerView.Adapter<AddBi
         public TextView roomNumberTextView, roomTypeTextView;
         public EditText unitsEditText;
         public FloatingActionButton saveFab;
+        public TextView costPerUnit;
 
         public MyHolder(View itemView){
             super(itemView);
 
             roomNumberTextView = itemView.findViewById(R.id.thirdTextView);
             roomTypeTextView = itemView.findViewById(R.id.fourthTextView);
-
+            costPerUnit = itemView.findViewById(R.id.costPerUnitTextView);
             unitsEditText = itemView.findViewById(R.id.numberOfUnitsEditText);
 
             saveFab = itemView.findViewById(R.id.saveFab);
