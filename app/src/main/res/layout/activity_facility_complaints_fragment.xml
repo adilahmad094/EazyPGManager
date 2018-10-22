@@ -1,41 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
     >
+
     <android.support.v7.widget.CardView
         android:id="@+id/toolbar4"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        app:cardCornerRadius="0dp"
         android:elevation="100dp"
-        app:cardBackgroundColor="@color/actionBarColor">
+        app:cardBackgroundColor="@color/actionBarColor"
+        app:cardCornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/backButton"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="6dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="8dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
             android:src="@drawable/ic_arrow_back_black_24dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginStart="60dp"
             android:fontFamily="@font/productsansmedium"
             android:text="Facility Complaints"
-            android:layout_gravity="center_vertical"
             android:textColor="@android:color/white"
             android:textSize="18dp" />
     </android.support.v7.widget.CardView>
@@ -47,17 +51,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar4"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbar4"
         app:tabGravity="fill"
         app:tabMode="fixed" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPagerID"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/tabLayoutID"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@id/tabLayoutID"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayoutID" />
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
