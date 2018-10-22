@@ -26,7 +26,6 @@ import java.util.Map;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
-    private static final String TAG = "MyGcmListenerService";
     private NotificationManager notifManager;
     private NotificationChannel mChannel;
 
