@@ -56,13 +56,13 @@ public class FacilityUnresolvedFragment extends Fragment {
 
         Fabric.with(context, new Crashlytics());
 
-
         view = inflater.inflate(R.layout.facility_unresolved_fragment, container, false);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
+        context = getContext();
 
         complaintDetailsList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.facility_unresolved_recycler_view);

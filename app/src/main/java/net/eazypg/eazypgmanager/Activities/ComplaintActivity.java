@@ -2,6 +2,7 @@ package net.eazypg.eazypgmanager.Activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -27,6 +29,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.readystatesoftware.viewbadger.BadgeView;
 
 import net.eazypg.eazypgmanager.DetailList.RecentComplaintDetailList;
 import net.eazypg.eazypgmanager.DetailsClasses.ComplaintDetails;
@@ -49,11 +52,16 @@ public class ComplaintActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
+    long currentBedroomCount, currentFacilitiesCount, currentMessCount, currentSecurityCount;
+    long prevBedroomCount, prevFacilitiesCount, prevMessCount, prevSecurityCount;
+
     RecyclerView recyclerView;
     RecentComplaintDetailList adapter;
     Context context ;
 
-    ConstraintLayout rootLayout;
+    View bedroomComplaintView, foodComplaintView, facilityComplaintView, securityComplaintView;
+
+    public static final String complaintPreference = "compPref" ;
 
     List<ComplaintDetails> complaintDetailsList;
 
@@ -61,8 +69,9 @@ public class ComplaintActivity extends AppCompatActivity {
 
     HorizontalScrollView horizontalScrollView;
 
-    Date date;
     DateFormat dateFormat;
+
+    SharedPreferences sharedPreferences;
 
     ImageView backButton;
 
@@ -103,6 +112,11 @@ public class ComplaintActivity extends AppCompatActivity {
 
         backButton = findViewById(R.id.backButton);
 
+        sharedPreferences = getSharedPreferences(complaintPreference, Context.MODE_PRIVATE);
+        prevBedroomCount = sharedPreferences.getLong("BedroomCount", 0);
+        prevFacilitiesCount = sharedPreferences.getLong("FacilitiesCount", 0);
+        prevMessCount = sharedPreferences.getLong("MessCount", 0);
+        prevSecurityCount = sharedPreferences.getLong("SecurityCount", 0);
 
         databaseReference = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Complaint/Bedroom/");
 
@@ -110,6 +124,27 @@ public class ComplaintActivity extends AppCompatActivity {
         databaseReference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                currentBedroomCount = dataSnapshot.getChildrenCount();
+                Log.e("Bedroom", currentBedroomCount + "");
+
+                if (currentBedroomCount != prevBedroomCount) {
+
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putLong("BedroomCount", currentBedroomCount);
+                    editor.apply();
+
+                    BadgeView badgeView = new BadgeView(ComplaintActivity.this, bedroomComplaint);
+                    badgeView.setText(Long.toString(currentBedroomCount - prevBedroomCount));
+    //                badgeView.show();
+
+                }
+                else {
+
+                    BadgeView badgeView = new BadgeView(ComplaintActivity.this, bedroomComplaint);
+                    badgeView.setText("0");
+    //                badgeView.show();
+                }
 
                 complaintDetailsList.clear();
 
@@ -136,6 +171,28 @@ public class ComplaintActivity extends AppCompatActivity {
         databaseReference2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                currentMessCount = dataSnapshot.getChildrenCount();
+                Log.e("Mess", currentMessCount + "");
+
+                if (currentMessCount != prevMessCount) {
+
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putLong("MessCount", currentMessCount);
+                    editor.apply();
+
+                    BadgeView badgeView = new BadgeView(ComplaintActivity.this, foodComplaint);
+                    badgeView.setText(Long.toString(currentMessCount - prevMessCount));
+     //               badgeView.show();
+                }
+                else {
+
+                    BadgeView badgeView = new BadgeView(ComplaintActivity.this, foodComplaint);
+                    badgeView.setText("0");
+     //               badgeView.show();
+
+                }
+
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
 
                     ComplaintDetails complaintDetails1 = snapshot.getValue(ComplaintDetails.class);
@@ -158,6 +215,29 @@ public class ComplaintActivity extends AppCompatActivity {
         databaseReference3.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                currentFacilitiesCount = dataSnapshot.getChildrenCount();
+                Log.e("Facilities", currentFacilitiesCount + "");
+
+                if (currentFacilitiesCount != prevFacilitiesCount) {
+
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putLong("FacilitiesCount", currentFacilitiesCount);
+                    editor.apply();
+
+
+                    BadgeView badgeView = new BadgeView(ComplaintActivity.this, facilityComplaint);
+                    badgeView.setText(Long.toString(currentFacilitiesCount - prevFacilitiesCount));
+     //               badgeView.show();
+                }
+                else {
+
+                    BadgeView badgeView = new BadgeView(ComplaintActivity.this, facilityComplaint);
+                    badgeView.setText("0");
+     //               badgeView.show();
+
+                }
+
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
 
                     ComplaintDetails complaintDetails1 = snapshot.getValue(ComplaintDetails.class);
@@ -180,6 +260,31 @@ public class ComplaintActivity extends AppCompatActivity {
         databaseReference4.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                currentSecurityCount = dataSnapshot.getChildrenCount();
+
+                Log.e("Security", currentSecurityCount + "");
+
+
+                if (currentSecurityCount != prevSecurityCount) {
+
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putLong("SecurityCount", currentSecurityCount);
+                    editor.apply();
+
+                    BadgeView badgeView = new BadgeView(ComplaintActivity.this, securityComplaint);
+                    badgeView.setText(Long.toString(currentSecurityCount - prevSecurityCount));
+    //                badgeView.show();
+
+                }
+                else {
+
+                    BadgeView badgeView = new BadgeView(ComplaintActivity.this, securityComplaint);
+                    badgeView.setText("0");
+     //               badgeView.show();
+
+                }
+
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
 
                     ComplaintDetails complaintDetails1 = snapshot.getValue(ComplaintDetails.class);
@@ -250,7 +355,7 @@ public class ComplaintActivity extends AppCompatActivity {
     public void getComplaints() {
 
         Collections.sort(complaintDetailsList, Collections.<ComplaintDetails>reverseOrder());
-        int size = complaintDetailsList.size();
+
         dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
 
         if (complaintDetailsList.size() < 5) {
@@ -270,5 +375,3 @@ public class ComplaintActivity extends AppCompatActivity {
     }
 
 }
-
-

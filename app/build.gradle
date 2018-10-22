@@ -65,6 +65,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-perf:16.1.0'
     implementation 'com.google.firebase:firebase-messaging:17.3.0'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.5'
+    implementation files('libs/android-viewbadger.jar')
 }
 configurations.all
         {
