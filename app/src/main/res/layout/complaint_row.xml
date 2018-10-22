@@ -76,16 +76,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="8dp"
                     android:layout_weight="3"
                     android:text="DESRIPTION"
+                    android:fontFamily="@font/productsans"
                     android:textSize="16sp"
-                    android:textStyle="bold"
                     android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/viewId2"
+                    app:layout_constraintTop_toBottomOf="@+id/availabilityTextView"
                     app:layout_editor_absoluteX="10dp" />
 
                 <TextView
@@ -93,12 +93,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:layout_marginBottom="50dp"
+                    android:layout_marginTop="25dp"
                     android:fontFamily="@font/productsans"
                     android:text="Availability"
                     android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/secondLevelTextView"
                     app:layout_editor_absoluteY="100dp" />
 
 
@@ -111,20 +111,12 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <View
-                    android:id="@+id/viewId2"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="6dp"
-                    android:background="#BDBDBD"
-                    app:layout_constraintTop_toBottomOf="@+id/statusTextView" />
-
 
                 <TextView
                     android:id="@+id/statusTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginEnd="30dp"
                     android:fontFamily="@font/productsans"
                     android:text="STATUS"
@@ -140,7 +132,7 @@
                     android:id="@+id/secondLevelTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="22dp"
-                    android:layout_marginStart="25dp"
+                    android:layout_marginStart="12dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/productsansmedium"
                     android:text="Second Level"
@@ -153,7 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     android:text=">"
                     app:layout_constraintStart_toEndOf="@+id/secondLevelTextView"
                     app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
