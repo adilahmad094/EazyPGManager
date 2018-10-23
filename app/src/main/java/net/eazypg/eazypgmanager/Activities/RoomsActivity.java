@@ -208,6 +208,8 @@ public class RoomsActivity extends AppCompatActivity {
                 Log.e("rooms", "onDataChange: " + rooms.size());
                 Log.e("room type list", "onDataChange: " + roomTypeList.size());
 
+                vacantRooms = totalRoom - rooms.size();
+
                 for(int i = 0; i < rooms.size(); i++){
 
                     final String room = rooms.get(i);
@@ -225,6 +227,11 @@ public class RoomsActivity extends AppCompatActivity {
                                 roomTenantList.add(tenantDetails);
                             }
 
+                            if(roomTenantList.size()==0)
+                                vacantRooms++;
+
+
+
                             if (roomTypeList.get(finalI).equals("Two Bed") && roomTenantList.size() == 1) {
 
                                 semiVacantRooms++;
@@ -235,7 +242,7 @@ public class RoomsActivity extends AppCompatActivity {
                                 semiVacantRooms++;
                             }
 
-                            vacantRooms = totalRoom - semiVacantRooms - rooms.size();
+
 
                             totalRoomsTextView.setText(Integer.toString(totalRoom));
                             semiVacantTextView.setText(Integer.toString(semiVacantRooms));
