@@ -76,7 +76,12 @@
             android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name="net.eazypg.eazypgmanager.Activities.AccountsFragmentActivity"/>
+        <activity android:name="net.eazypg.eazypgmanager.Activities.AccountsFragmentActivity">
+            <intent-filter>
+                <action android:name="ManagerPassbookActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name="net.eazypg.eazypgmanager.Activities.RentBillCollectionFragment"/>
         <activity android:name="net.eazypg.eazypgmanager.Activities.LogFragmentActivity"/>
         <activity
