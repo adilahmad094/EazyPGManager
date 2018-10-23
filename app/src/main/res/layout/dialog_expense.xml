@@ -24,6 +24,7 @@
             android:background="@drawable/text_bg"
             android:fontFamily="@font/productsansmedium"
             android:hint="Amount"
+            android:inputType="number"
             android:textColor="#000000"
             android:textSize="17sp"
             android:translationY="2dp"
