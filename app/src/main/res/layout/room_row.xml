@@ -36,10 +36,10 @@
             app:layout_goneMarginEnd="10dp" />
 
         <LinearLayout
+            android:id="@+id/linearLayout11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -59,17 +59,18 @@
                     android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:id="@+id/thirdTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/productsansbold"
                     android:text="Number"
                     android:textAlignment="center"
                     android:textColor="#01579B"
                     android:textSize="18dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/productsansbold"
                     app:layout_constraintStart_toEndOf="@+id/textView12"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -98,13 +99,12 @@
                     android:id="@+id/rentTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
                     android:layout_marginStart="16dp"
-                    android:textColor="#212121"
-                    android:fontFamily="@font/productsansbold"
-                    android:textSize="15sp"
                     android:layout_marginTop="4dp"
-                    />
+                    android:fontFamily="@font/productsansbold"
+                    android:text="0"
+                    android:textColor="#212121"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/numberOfTenantsTextView"
@@ -113,24 +113,92 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/productsansbold"
-                    android:textSize="15sp"
-                    android:textColor="#212121"
                     android:text="x 0"
-                    />
+                    android:textColor="#212121"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_marginTop="10dp"
-                >
+                android:gravity="center"
+                android:orientation="horizontal">
 
             </LinearLayout>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
+
+            <TextView
+                android:id="@+id/acTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AC"
+                android:visibility="gone"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/nonAcTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NonAC"
+                android:visibility="gone"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/washroomTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="Washroom"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/balconyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Balcony"
+                android:visibility="gone"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/ventilationTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ventilation"
+                android:visibility="gone"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/largeRoomTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="Large room"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/cornerRoomTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="Corner Room"
+                android:textSize="12sp" />
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 
