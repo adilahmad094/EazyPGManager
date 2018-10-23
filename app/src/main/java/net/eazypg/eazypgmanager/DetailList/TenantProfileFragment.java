@@ -61,6 +61,7 @@ public class TenantProfileFragment extends Fragment {
     StorageReference storageReference;
     FirebaseStorage storage;
 
+
     ConstraintLayout callParentConstraintLayout;
 
     View view;
@@ -68,7 +69,6 @@ public class TenantProfileFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
 
         view = inflater.inflate(R.layout.activity_tenant_dashboard_profile, container, false);
 
@@ -79,29 +79,20 @@ public class TenantProfileFragment extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
+        circleImageView = view.findViewById(R.id.circleImageView);
+
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReferenceFromUrl("gs://eazypg-3dcb6.appspot.com").child("Documents");
 
         final long ONE_MEGABYTE = 1024 * 1024;
 
-        final ProgressDialog progressDialog = ProgressDialog.show(getContext(), "Loading", "Please Wait..", true);
-
-        if (selfieName != null) {
-
-            storageReference.child(id).child(selfieName).getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                @Override
-                public void onSuccess(byte[] bytes) {
-                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                    circleImageView.setImageBitmap(bitmap);
-                    progressDialog.dismiss();
-                }
-            });
-
-        }
-        else {
-
-            progressDialog.dismiss();
-        }
+        storageReference.child(id).child("Selfie").getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                circleImageView.setImageBitmap(bitmap);
+            }
+        });
 
         phoneTextView = view.findViewById(R.id.phoneTextView);
         emailTextView = view.findViewById(R.id.emailTextView);

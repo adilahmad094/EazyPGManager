@@ -56,8 +56,6 @@ public class TenantDocumentsFragment extends Fragment {
 
     boolean loaded;
 
-    String selfieId, aadharBackId, aadharFrontId, collegeIdBackId, collegeIdFrontId;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
