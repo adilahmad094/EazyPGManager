@@ -1,5 +1,6 @@
 package net.eazypg.eazypgmanager.Activities;
 
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -64,10 +65,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         pushNotification(remoteMessage.getNotification().getTitle(),
                 remoteMessage.getNotification().getBody(),
-                remoteMessage.getData());
+                remoteMessage.getData(), remoteMessage.getNotification().getClickAction());
     }
 
-    private void pushNotification(String title, String body, Map<String, String> data) {
+    private void pushNotification(String title, String body, Map<String, String> data, String clickAction) {
 
         Intent intent;
         PendingIntent pendingIntent;
@@ -77,7 +78,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             notifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         }
 
-        intent = new Intent(this, HomePageActivity.class);
+        intent = new Intent(clickAction);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
             if (mChannel == null) {
