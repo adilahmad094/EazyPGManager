@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,6 +64,8 @@ public class RoomClickActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
     DatabaseReference databaseReference;
 
+    ImageView backButton;
+
     List<TenantDetails> tenantList = new ArrayList<>();
     List<BillDetails> billsList = new ArrayList<>();
     List<BillDetails> billsList2 = new ArrayList<>();
@@ -73,6 +76,15 @@ public class RoomClickActivity extends AppCompatActivity {
         setContentView(R.layout.activity_room_click);
 
         Fabric.with(this, new Crashlytics());
+
+        backButton = findViewById(R.id.imageView3);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RoomClickActivity.this,RoomsActivity.class));
+                finish();
+            }
+        });
 
 
         Intent intent = getIntent();
@@ -224,9 +236,9 @@ public class RoomClickActivity extends AppCompatActivity {
                             CashflowDetails status = dataSnapshot.getValue(CashflowDetails.class);
 
                             if(status != null){
-                                tenant1RentPaidOrUnpaidTextView.setText("Rent paid on " + status.date);
+                                tenant1RentPaidOrUnpaidTextView.setText("Paid on " + status.date);
                             }else{
-                                tenant1RentPaidOrUnpaidTextView.setText("Rent due by " + rentDueDate + "/" + month + "/" + year);
+                                tenant1RentPaidOrUnpaidTextView.setText("Unpaid");
                             }
                         }
 
@@ -249,11 +261,11 @@ public class RoomClickActivity extends AppCompatActivity {
 
                             for(int i = 0; i < billsList.size(); i++){
                                 if(billsList.get(i).category.equals("Electricity") && billsList.get(i).paidOrUnpaid){
-                                    tenant1ElectricityBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant1ElectricityBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }else if(billsList.get(i).category.equals("Wifi") && billsList.get(i).paidOrUnpaid){
-                                    tenant1WifiBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant1WifiBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }else if(billsList.get(i).category.equals("Gas") && billsList.get(i).paidOrUnpaid){
-                                    tenant1GasBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant1GasBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }
                             }
                         }
@@ -277,13 +289,14 @@ public class RoomClickActivity extends AppCompatActivity {
 
                             for(int i = 0; i < billsList.size(); i++){
                                 if(billsList2.get(i).category.equals("Electricity") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant1ElectricityBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant1ElectricityBillPaidOrUnpaid.setText("Unpaid");
                                 }else if(billsList2.get(i).category.equals("Wifi") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant1WifiBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant1WifiBillPaidOrUnpaid.setText("Unpaid");
                                 }else if(billsList2.get(i).category.equals("Gas") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant1GasBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant1GasBillPaidOrUnpaid.setText("Unpaid");
                                 }
                             }
+                            /*"Bill due by " + billDueDate + "/" + month + "/" + year*/
                         }
 
                         @Override
@@ -421,9 +434,9 @@ public class RoomClickActivity extends AppCompatActivity {
                             CashflowDetails status = dataSnapshot.getValue(CashflowDetails.class);
 
                             if(status != null){
-                                tenant1RentPaidOrUnpaidTextView.setText("Rent paid on " + status.date);
+                                tenant1RentPaidOrUnpaidTextView.setText("Paid on " + status.date);
                             }else{
-                                tenant1RentPaidOrUnpaidTextView.setText("Rent due by " + rentDueDate + "/" + month + "/" + year);
+                                tenant1RentPaidOrUnpaidTextView.setText("Unpaid");
                             }
                         }
 
@@ -465,11 +478,11 @@ public class RoomClickActivity extends AppCompatActivity {
 
                             for(int i = 0; i < billsList.size(); i++){
                                 if(billsList.get(i).category.equals("Electricity") && billsList.get(i).paidOrUnpaid){
-                                    tenant1ElectricityBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant1ElectricityBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }else if(billsList.get(i).category.equals("Wifi") && billsList.get(i).paidOrUnpaid){
-                                    tenant1WifiBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant1WifiBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }else if(billsList.get(i).category.equals("Gas") && billsList.get(i).paidOrUnpaid){
-                                    tenant1GasBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant1GasBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }
                             }
                         }
@@ -493,11 +506,11 @@ public class RoomClickActivity extends AppCompatActivity {
 
                             for(int i = 0; i < billsList.size(); i++){
                                 if(billsList2.get(i).category.equals("Electricity") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant1ElectricityBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant1ElectricityBillPaidOrUnpaid.setText("Unpaid");
                                 }else if(billsList2.get(i).category.equals("Wifi") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant1WifiBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant1WifiBillPaidOrUnpaid.setText("Unpaid");
                                 }else if(billsList2.get(i).category.equals("Gas") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant1GasBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant1GasBillPaidOrUnpaid.setText("Unpaid");
                                 }
                             }
                         }
@@ -521,11 +534,11 @@ public class RoomClickActivity extends AppCompatActivity {
 
                             for(int i = 0; i < billsList.size(); i++){
                                 if(billsList.get(i).category.equals("Electricity") && billsList.get(i).paidOrUnpaid){
-                                    tenant2ElectricityBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant2ElectricityBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }else if(billsList.get(i).category.equals("Wifi") && billsList.get(i).paidOrUnpaid){
-                                    tenant2WifiBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant2WifiBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }else if(billsList.get(i).category.equals("Gas") && billsList.get(i).paidOrUnpaid){
-                                    tenant2GasBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant2GasBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }
                             }
                         }
@@ -549,11 +562,11 @@ public class RoomClickActivity extends AppCompatActivity {
 
                             for(int i = 0; i < billsList.size(); i++){
                                 if(billsList2.get(i).category.equals("Electricity") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant2ElectricityBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant2ElectricityBillPaidOrUnpaid.setText("Unpaid");
                                 }else if(billsList2.get(i).category.equals("Wifi") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant2WifiBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant2WifiBillPaidOrUnpaid.setText("Unpaid");
                                 }else if(billsList2.get(i).category.equals("Gas") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant2GasBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant2GasBillPaidOrUnpaid.setText("Unpaid");
                                 }
                             }
                         }
@@ -795,11 +808,11 @@ public class RoomClickActivity extends AppCompatActivity {
 
                             for(int i = 0; i < billsList.size(); i++){
                                 if(billsList.get(i).category.equals("Electricity") && billsList.get(i).paidOrUnpaid){
-                                    tenant1ElectricityBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant1ElectricityBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }else if(billsList.get(i).category.equals("Wifi") && billsList.get(i).paidOrUnpaid){
-                                    tenant1WifiBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant1WifiBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }else if(billsList.get(i).category.equals("Gas") && billsList.get(i).paidOrUnpaid){
-                                    tenant1GasBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant1GasBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }
                             }
                         }
@@ -823,11 +836,11 @@ public class RoomClickActivity extends AppCompatActivity {
 
                             for(int i = 0; i < billsList.size(); i++){
                                 if(billsList2.get(i).category.equals("Electricity") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant1ElectricityBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant1ElectricityBillPaidOrUnpaid.setText("Unpaid");
                                 }else if(billsList2.get(i).category.equals("Wifi") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant1WifiBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant1WifiBillPaidOrUnpaid.setText("Unpaid");
                                 }else if(billsList2.get(i).category.equals("Gas") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant1GasBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant1GasBillPaidOrUnpaid.setText("Unpaid");
                                 }
                             }
                         }
@@ -851,11 +864,11 @@ public class RoomClickActivity extends AppCompatActivity {
 
                             for(int i = 0; i < billsList.size(); i++){
                                 if(billsList.get(i).category.equals("Electricity") && billsList.get(i).paidOrUnpaid){
-                                    tenant2ElectricityBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant2ElectricityBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }else if(billsList.get(i).category.equals("Wifi") && billsList.get(i).paidOrUnpaid){
-                                    tenant2WifiBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant2WifiBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }else if(billsList.get(i).category.equals("Gas") && billsList.get(i).paidOrUnpaid){
-                                    tenant2GasBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant2GasBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }
                             }
                         }
@@ -879,11 +892,11 @@ public class RoomClickActivity extends AppCompatActivity {
 
                             for(int i = 0; i < billsList.size(); i++){
                                 if(billsList2.get(i).category.equals("Electricity") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant2ElectricityBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant2ElectricityBillPaidOrUnpaid.setText("Unpaid");
                                 }else if(billsList2.get(i).category.equals("Wifi") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant2WifiBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant2WifiBillPaidOrUnpaid.setText("Unpaid");
                                 }else if(billsList2.get(i).category.equals("Gas") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant2GasBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant2GasBillPaidOrUnpaid.setText("Unpaid");
                                 }
                             }
                         }
@@ -926,11 +939,11 @@ public class RoomClickActivity extends AppCompatActivity {
 
                             for(int i = 0; i < billsList.size(); i++){
                                 if(billsList.get(i).category.equals("Electricity") && billsList.get(i).paidOrUnpaid){
-                                    tenant3ElectricityBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant3ElectricityBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }else if(billsList.get(i).category.equals("Wifi") && billsList.get(i).paidOrUnpaid){
-                                    tenant3WifiBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant3WifiBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }else if(billsList.get(i).category.equals("Gas") && billsList.get(i).paidOrUnpaid){
-                                    tenant3GasBillPaidOrUnpaid.setText("Bill paid on " + billsList.get(i).datePaid);
+                                    tenant3GasBillPaidOrUnpaid.setText("Paid on " + billsList.get(i).datePaid);
                                 }
                             }
                         }
@@ -954,11 +967,11 @@ public class RoomClickActivity extends AppCompatActivity {
 
                             for(int i = 0; i < billsList.size(); i++){
                                 if(billsList2.get(i).category.equals("Electricity") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant3ElectricityBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant3ElectricityBillPaidOrUnpaid.setText("Unpaid");
                                 }else if(billsList2.get(i).category.equals("Wifi") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant3WifiBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant3WifiBillPaidOrUnpaid.setText("Unpaid");
                                 }else if(billsList2.get(i).category.equals("Gas") && !billsList2.get(i).paidOrUnpaid){
-                                    tenant3GasBillPaidOrUnpaid.setText("Bill due by " + billDueDate + "/" + month + "/" + year);
+                                    tenant3GasBillPaidOrUnpaid.setText("Unpaid");
                                 }
                             }
                         }

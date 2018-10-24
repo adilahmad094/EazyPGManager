@@ -10,6 +10,7 @@ import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -61,6 +62,9 @@ public class RoomsActivity extends AppCompatActivity {
     ImageView addRoom;
     TextView custom_title;
     EditText roomEditText;
+
+    EditText floorsEditText;
+
     View view;
     LayoutInflater inflater;
 
@@ -72,8 +76,12 @@ public class RoomsActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference, databaseReference1, databaseReference2;
 
+    CheckBox acCheckBox, washroomCheckBox, balconyCheckBox, ventilationCheckBox, largeRoomCheckBox, cornerRoomCheckBox;
+
     List<String> rooms;
     List<String> roomTypeList;
+
+    List<String> tagList;
 
     List<TenantDetails> tenantList;
 
@@ -94,7 +102,11 @@ public class RoomsActivity extends AppCompatActivity {
     List<D2HDetails> d2HList;
     List<OtherApplianceDetails> otherList;
 
+    String tagString="";
+
     List<RoomApplianceDetails> roomApplianceDetailsList = new ArrayList<>();
+
+
 
     ListView listView;
     View emptyList;
@@ -116,6 +128,7 @@ public class RoomsActivity extends AppCompatActivity {
 
         addRoom = findViewById(R.id.addRoom);
 
+
         inflater = getLayoutInflater();
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -132,6 +145,8 @@ public class RoomsActivity extends AppCompatActivity {
 
         rooms = new ArrayList<>();
         roomTypeList = new ArrayList<>();
+
+        tagList = new ArrayList<>();
 
         tenantList = new ArrayList<>();
 
@@ -196,13 +211,19 @@ public class RoomsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 roomTypeList.clear();
+                tagList.clear();
                 rooms.clear();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String room = snapshot.getKey();
                     rooms.add(room);
+
                     String roomType = snapshot.child("Room Type").getValue(String.class);
                     roomTypeList.add(roomType);
+
+                    String tags = snapshot.child("Tags").getValue(String.class);
+                    Log.e("Tags", ""+tags);
+                    tagList.add(tags);
                 }
 
                 Log.e("rooms", "onDataChange: " + rooms.size());
@@ -264,7 +285,8 @@ public class RoomsActivity extends AppCompatActivity {
 
 
                 Log.e("room tenant map", "onDataChange: " + roomTenantMap.size());
-                RoomsDetailList adapter = new RoomsDetailList(RoomsActivity.this, rooms, roomTypeList, roomTenantMap);
+
+                RoomsDetailList adapter = new RoomsDetailList(RoomsActivity.this, rooms, roomTypeList, roomTenantMap, tagList);
                 listView.setAdapter(adapter);
             }
 
@@ -283,6 +305,18 @@ public class RoomsActivity extends AppCompatActivity {
                 final View viewDialog = inflater.inflate(R.layout.dialog_room, null);
                 radioGroup = viewDialog.findViewById(R.id.radioGroup);
                 roomEditText = viewDialog.findViewById(R.id.roomNoEditText);
+                floorsEditText = viewDialog.findViewById(R.id.floorEditText);
+
+                acCheckBox = viewDialog.findViewById(R.id.acCheckBox);
+                washroomCheckBox = viewDialog.findViewById(R.id.washroomCheckBox);
+                balconyCheckBox = viewDialog.findViewById(R.id.balconyCheckBox);
+                ventilationCheckBox = viewDialog.findViewById(R.id.ventilationCheckBox);
+                largeRoomCheckBox = viewDialog.findViewById(R.id.largeRoomCheckBox);
+                cornerRoomCheckBox = viewDialog.findViewById(R.id.cornerRoomCheckBox);
+
+                tagString = "";
+
+
 
                 final View titleView = inflater.inflate(R.layout.custom_titleroom, null);
                 custom_title = titleView.findViewById(R.id.roomCustomTitle);
@@ -296,10 +330,36 @@ public class RoomsActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
+                        if (acCheckBox.isChecked())
+                        {
+                            tagString += "AC";
+                        }
+                        if (washroomCheckBox.isChecked())
+                        {
+                            tagString += "Washroom";
+                        }
+                        if (balconyCheckBox.isChecked())
+                        {
+                            tagString += "Balcony";
+                        }
+                        if (ventilationCheckBox.isChecked())
+                        {
+                            tagString += "Ventilation";
+                        }
+                        if (largeRoomCheckBox.isChecked())
+                        {
+                            tagString += "Large Room";
+                        }
+                        if (cornerRoomCheckBox.isChecked())
+                        {
+                            tagString += "Corner Room";
+                        }
+
                         int selectedButtonId = radioGroup.getCheckedRadioButtonId();
                         radioButton = viewDialog.findViewById(selectedButtonId);
 
                         final String room = roomEditText.getText().toString();
+                        final String floors = floorsEditText.getText().toString();
 
 
                         if(selectedButtonId == -1 || room.isEmpty())
@@ -308,9 +368,13 @@ public class RoomsActivity extends AppCompatActivity {
                         }
                         else {
 
+                            Log.e("Tag String" ,"Hello"+ tagString );
+
                             String roomType = radioButton.getText().toString();
                             databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
                             databaseReference1.child("Rooms").child(room).child("Room Type").setValue(roomType);
+                            databaseReference1.child("Rooms").child(room).child("Floors").setValue(floors);
+                            databaseReference1.child("Rooms").child(room).child("Tags").setValue(tagString);
 
                             getRoomDetails(room);
                             getTenantDetails(room);

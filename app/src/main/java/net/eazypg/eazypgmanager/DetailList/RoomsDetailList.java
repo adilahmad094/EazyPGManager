@@ -38,6 +38,11 @@ public class RoomsDetailList extends ArrayAdapter<String> {
     private List<String> roomTypeList;
     private Map<String, List<TenantDetails>> roomTenantMap;
     private List<TenantDetails> tenantList = new ArrayList<>();
+    private List<String> tagList = new ArrayList<>();
+
+    TextView acTextView, nonAcTextView, washroomTextView, balconyTextView, ventilationTextView, largeRoomTextView, cornerRoomTextView;
+
+
 
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     public static final String EXTRA_MESSAGE2 = "com.example.myfirstapp.MESSAGE2";
@@ -51,14 +56,19 @@ public class RoomsDetailList extends ArrayAdapter<String> {
     FirebaseUser firebaseUser;
 
     DatabaseReference databaseReference;
+    DatabaseReference databaseReference2;
 
-    public RoomsDetailList(Activity context, List<String> roomList, List<String> roomTypeList, Map<String, List<TenantDetails>> roomTenantMap) {
+    String tagString;
+
+    public RoomsDetailList(Activity context, List<String> roomList, List<String> roomTypeList, Map<String, List<TenantDetails>> roomTenantMap, List<String> tagList) {
         super(context, R.layout.room_row, roomList);
 
         this.context = context;
         this.roomList = roomList;
         this.roomTypeList = roomTypeList;
         this.roomTenantMap = roomTenantMap;
+        this.tagList = tagList;
+
     }
 
     @NonNull
@@ -76,6 +86,48 @@ public class RoomsDetailList extends ArrayAdapter<String> {
         fourth = listViewItemRoom.findViewById(R.id.fourthTextView);
         rentTextView = listViewItemRoom.findViewById(R.id.rentTextView);
         numberOfTenantsTextView = listViewItemRoom.findViewById(R.id.numberOfTenantsTextView);
+
+        acTextView = listViewItemRoom.findViewById(R.id.acTextView);
+        nonAcTextView = listViewItemRoom.findViewById(R.id.nonAcTextView);
+        washroomTextView = listViewItemRoom.findViewById(R.id.washroomTextView);
+        balconyTextView = listViewItemRoom.findViewById(R.id.balconyTextView);
+        ventilationTextView = listViewItemRoom.findViewById(R.id.ventilationTextView);
+        largeRoomTextView = listViewItemRoom.findViewById(R.id.largeRoomTextView);
+        cornerRoomTextView = listViewItemRoom.findViewById(R.id.cornerRoomTextView);
+
+        tagString = tagList.get(position);
+
+                if(tagString.contains("AC"))
+                {
+                    acTextView.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    nonAcTextView.setVisibility(View.VISIBLE);
+                }
+
+                if(tagString.contains("Washroom"))
+                {
+                    washroomTextView.setVisibility(View.VISIBLE);
+                }
+
+                if(tagString.contains("Balcony"))
+                {
+                    balconyTextView.setVisibility(View.VISIBLE);
+                }
+
+                if(tagString.contains("Ventilation"))
+                {
+                    ventilationTextView.setVisibility(View.VISIBLE);
+                }
+                if(tagString.contains("Large Room"))
+                {
+                    largeRoomTextView.setVisibility(View.VISIBLE);
+                }
+                if(tagString.contains("Corner Room"))
+                {
+                    cornerRoomTextView.setVisibility(View.VISIBLE);
+                }
 
         rentTextView.setVisibility(View.VISIBLE);
 
