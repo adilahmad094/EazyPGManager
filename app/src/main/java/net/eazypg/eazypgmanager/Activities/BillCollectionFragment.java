@@ -1,6 +1,7 @@
 package net.eazypg.eazypgmanager.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,99 +39,55 @@ import io.fabric.sdk.android.Fabric;
 public class BillCollectionFragment extends Fragment {
     View view;
 
-    RecyclerView billRecyclerView;
-
     FirebaseDatabase firebaseDatabase;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     DatabaseReference databaseReference;
-
-    List<TenantDetails> tenantList = new ArrayList<>();
-    List<BillDetails> electricityBillList = new ArrayList<>();
-    List<BillDetails> wifiBillList = new ArrayList<>();
-    List<BillDetails> gasBillList = new ArrayList<>();
-    List<BillDetails> otherBillList = new ArrayList<>();
-    List<BillDetails> billList = new ArrayList<>();
-
-    BillCollectionDetailList billCollectionDetailList;
-
     Context context;
+
+    String typeOfBills;
+
+    public static final String EXTRA_MESSAGE = "";
+
+    Button electricityUnpaidButton, gasUnpaidButton, wifiUnpaidButton;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         Fabric.with(context, new Crashlytics());
-
-
         view = inflater.inflate(R.layout.activity_bill_collection, container, false);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
-        billRecyclerView = view.findViewById(R.id.billRecyclerView);
-
         context = getContext();
 
-        databaseReference = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Tenants/CurrentTenants/");
+        electricityUnpaidButton = view.findViewById(R.id.electricityUnpaidButton);
+        wifiUnpaidButton = view.findViewById(R.id.wifiUnpaidButton);
+        gasUnpaidButton = view.findViewById(R.id.gasUnpaidButton);
+
+        databaseReference = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/PG Details");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    TenantDetails tenantDetails = snapshot.getValue(TenantDetails.class);
-                    tenantList.add(tenantDetails);
+
+                typeOfBills = dataSnapshot.child("typeOfBills").getValue(String.class);
+
+                if (typeOfBills.contains("Electricity")){
+                    electricityUnpaidButton.setVisibility(View.VISIBLE);
                 }
 
-                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                Date date = new Date();
-                String dateStr = dateFormat.format(date);
+                if (typeOfBills.contains("Gas")) {
+                    gasUnpaidButton.setVisibility(View.VISIBLE);
+                }
 
-                final String dateString = dateStr.substring(6, 10) + "-" + dateStr.substring(3, 5);
+                if (typeOfBills.contains("Wifi")) {
+                    wifiUnpaidButton.setVisibility(View.VISIBLE);
+                }
 
-                final DatabaseReference databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Tenants/CurrentTenants/");
-                databaseReference1.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (int i = 0; i < tenantList.size(); i++) {
-                            BillDetails billDetails = dataSnapshot.child(tenantList.get(i).id).child("Accounts").child("Bills").child(dateString).getValue(BillDetails.class);
-                            if(billDetails != null){
-                                billList.add(billDetails);
-                            }
-                        }
 
-                        for (int i = 0; i < billList.size(); i++) {
-                            BillDetails billDetails = billList.get(i);
-                            if(billDetails.getCategory() != null){
-                                switch (billDetails.getCategory()) {
-                                    case "Electricity":
-                                        electricityBillList.add(billDetails);
-                                        break;
-                                    case "Wifi":
-                                        wifiBillList.add(billDetails);
-                                        break;
-                                    case "Gas":
-                                        gasBillList.add(billDetails);
-                                        break;
-                                    case "Other":
-                                        otherBillList.add(billDetails);
-                                        break;
-                                }
-                            }
-                        }
-
-                        billCollectionDetailList = new BillCollectionDetailList(electricityBillList, wifiBillList, gasBillList, otherBillList, tenantList, context);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-                        billRecyclerView.setLayoutManager(layoutManager);
-                        billRecyclerView.setItemAnimator(new DefaultItemAnimator());
-                        billRecyclerView.setAdapter(billCollectionDetailList);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
             }
 
             @Override
@@ -138,6 +96,39 @@ public class BillCollectionFragment extends Fragment {
             }
         });
 
+
+        electricityUnpaidButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, UnpaidBillActivity.class);
+                intent.putExtra(EXTRA_MESSAGE, "Electricity");
+                startActivity(intent);
+
+            }
+        });
+
+        gasUnpaidButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, UnpaidBillActivity.class);
+                intent.putExtra(EXTRA_MESSAGE, "Gas");
+                startActivity(intent);
+
+            }
+        });
+
+        wifiUnpaidButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, UnpaidBillActivity.class);
+                intent.putExtra(EXTRA_MESSAGE, "Wifi");
+                startActivity(intent);
+
+            }
+        });
 
         return view;
     }

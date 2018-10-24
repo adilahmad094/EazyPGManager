@@ -48,7 +48,7 @@ public class BillCollectionDetailList extends RecyclerView.Adapter<BillCollectio
     @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.rent_bill_collection_rent_row, parent, false);
+                .inflate(R.layout.rent_bill_collection_row, parent, false);
 
         return new MyHolder(itemView);
     }

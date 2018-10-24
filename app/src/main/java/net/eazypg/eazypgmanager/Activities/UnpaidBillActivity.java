@@ -1,20 +1,15 @@
 package net.eazypg.eazypgmanager.Activities;
 
 import android.content.Context;
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,10 +18,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import net.eazypg.eazypgmanager.DetailList.RentCollectionPaidDetailList;
 import net.eazypg.eazypgmanager.DetailList.RentCollectionUnpaidDetailList;
+import net.eazypg.eazypgmanager.DetailList.UnpaidBillDetailList;
 import net.eazypg.eazypgmanager.DetailsClasses.TenantDetails;
-import net.eazypg.eazypgmanager.DetailsClasses.ThisMonthRentDetails;
 import net.eazypg.eazypgmanager.R;
 
 import java.text.DateFormat;
@@ -35,38 +29,42 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import io.fabric.sdk.android.Fabric;
+public class UnpaidBillActivity extends AppCompatActivity {
 
-public class RentCollectionFragment extends Fragment {
-    View view;
-
-    TextView numberBillPaidTextView, numberBillNotPaidTextView;
-    RecyclerView rentUnpaidRecyclerView;
+    String typeOfBill;
 
     FirebaseDatabase firebaseDatabase;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     DatabaseReference databaseReference;
 
+
+    TextView numberBillPaidTextView, numberBillNotPaidTextView;
+    RecyclerView unpaidBillRecyclerView;
+
     List<TenantDetails> unpaidTenants = new ArrayList<>();
 
     long paid = 0, unpaid = 0;
 
-    RentCollectionUnpaidDetailList rentCollectionUnpaidDetailList;
+    Context context;
 
-    @Nullable
+    UnpaidBillDetailList unpaidBillDetailList;
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_unpaid_bill);
 
-        Fabric.with(getContext(), new Crashlytics());
+        unpaidBillRecyclerView = findViewById(R.id.UnpaidBillRecyclerView);
 
-        view = inflater.inflate(R.layout.activity_rent_collection, container, false);
-
-        final Context context = getContext();
+        Intent intent = getIntent();
+        typeOfBill = intent.getStringExtra(BillCollectionFragment.EXTRA_MESSAGE);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+
+        context = UnpaidBillActivity.this;
 
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         Date date = new Date();
@@ -74,23 +72,16 @@ public class RentCollectionFragment extends Fragment {
 
         final String dateString = dateStr.substring(6,10) + "-" + dateStr.substring(3,5);
 
-
-        numberBillPaidTextView = view.findViewById(R.id.numberBillPaidTextView);
-        numberBillNotPaidTextView = view.findViewById(R.id.numberBillNotPaidTextView);
-
-        rentUnpaidRecyclerView = view.findViewById(R.id.rentUnpaidRecyclerView);
-
         databaseReference = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Tenants/");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                paid = dataSnapshot.child("ThisMonth").child(dateString).child("Rent").getChildrenCount();
+                paid = dataSnapshot.child("ThisMonth").child(dateString).child("Bill").child(typeOfBill).getChildrenCount();
                 unpaid = dataSnapshot.child("CurrentTenants").getChildrenCount() - paid;
 
-                numberBillPaidTextView.setText(Long.toString(paid));
-                numberBillNotPaidTextView.setText(Long.toString(unpaid));
+                // Set Text Here for paid and unpaid number of tenants
 
                 unpaidTenants.clear();
 
@@ -98,7 +89,7 @@ public class RentCollectionFragment extends Fragment {
 
                     TenantDetails tenantDetails = snapshot.getValue(TenantDetails.class);
 
-                    if (dataSnapshot.child("ThisMonth").child(dateString).child("Rent").hasChild(tenantDetails.id)) {
+                    if (dataSnapshot.child("ThisMonth").child(dateString).child("Bill").child(typeOfBill).hasChild(tenantDetails.id)) {
                         // rent paid
                     }
                     else {
@@ -107,11 +98,11 @@ public class RentCollectionFragment extends Fragment {
 
                 }
 
-                rentCollectionUnpaidDetailList = new RentCollectionUnpaidDetailList(unpaidTenants, context);
+                unpaidBillDetailList = new UnpaidBillDetailList(unpaidTenants, context);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-                rentUnpaidRecyclerView.setLayoutManager(layoutManager);
-                rentUnpaidRecyclerView.setItemAnimator(new DefaultItemAnimator());
-                rentUnpaidRecyclerView.setAdapter(rentCollectionUnpaidDetailList);
+                unpaidBillRecyclerView.setLayoutManager(layoutManager);
+                unpaidBillRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                unpaidBillRecyclerView.setAdapter(unpaidBillDetailList);
 
 
             }
@@ -122,7 +113,5 @@ public class RentCollectionFragment extends Fragment {
             }
         });
 
-        return view;
     }
-
 }

@@ -148,16 +148,16 @@ public class AddBillRoomElectricityDetailList extends RecyclerView.Adapter<AddBi
 
                                     String billAmount = "0";
                                     if(prevReading != null && unitCost != null){
-                                        billAmount = Integer.toString((Integer.parseInt(unitsThisMonth) - Integer.parseInt(prevReading)) * Integer.parseInt(unitCost));
+                                        billAmount = Float.toString((Float.parseFloat(unitsThisMonth) - Float.parseFloat(prevReading)) * Float.parseFloat(unitCost));
                                     }else if(unitCost != null){
-                                        billAmount = Integer.toString((Integer.parseInt(unitsThisMonth)) * Integer.parseInt(unitCost));
+                                        billAmount = Float.toString((Float.parseFloat(unitsThisMonth)) * Float.parseFloat(unitCost));
                                     }else if(unitCost == null){
-                                        billAmount = Integer.toString((Integer.parseInt(unitsThisMonth)) * 10);
+                                        billAmount = Float.toString((Float.parseFloat(unitsThisMonth)) * 10);
                                     }
 
                                     for(int i = 0; i < tenantRoomList.size(); i++){
 
-                                        String bill = Integer.toString(Integer.parseInt(billAmount) / tenantRoomList.size()); //Ask this
+                                        String bill = Float.toString(Float.parseFloat(billAmount) / tenantRoomList.size()); //Ask this
 
                                         TenantDetails tenantDetails = tenantRoomList.get(i);
                                         String billId = databaseReference.push().getKey();

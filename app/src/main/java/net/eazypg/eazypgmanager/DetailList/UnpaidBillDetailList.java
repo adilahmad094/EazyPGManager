@@ -18,28 +18,22 @@ import net.eazypg.eazypgmanager.R;
 
 import java.util.List;
 
-public class RentCollectionPaidDetailList extends RecyclerView.Adapter<RentCollectionPaidDetailList.MyHolder>{
+import static net.eazypg.eazypgmanager.DetailList.RentCollectionPaidDetailList.EXTRA_MESSAGE;
+import static net.eazypg.eazypgmanager.DetailList.RentCollectionPaidDetailList.EXTRA_MESSAGE2;
 
-    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
-    public static final String EXTRA_MESSAGE2 = "com.example.myfirstapp.MESSAGE2";
+public class UnpaidBillDetailList extends RecyclerView.Adapter<UnpaidBillDetailList.MyHolder>{
 
-    List<TenantDetails> tenantDetails;
-    List<TenantDetails> tenantPaidDetails;
+    List<TenantDetails> tenantUnpaidDetails;
     Context context;
 
-    public RentCollectionPaidDetailList(List<TenantDetails> tenantDetails, List<TenantDetails> tenantPaidDetails, Context context) {
-        this.tenantDetails = tenantDetails;
-        this.tenantPaidDetails = tenantPaidDetails;
+    public UnpaidBillDetailList(List<TenantDetails> tenantUnpaidDetails, Context context) {
+        this.tenantUnpaidDetails = tenantUnpaidDetails;
         this.context = context;
     }
 
     @Override
-    public int getItemCount() {
-        return tenantPaidDetails.size();
-    }
-
-    @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.rent_bill_collection_row, parent, false);
 
@@ -48,15 +42,16 @@ public class RentCollectionPaidDetailList extends RecyclerView.Adapter<RentColle
 
     @Override
     public void onBindViewHolder(MyHolder holder, final int position) {
-        holder.rentAmountTextView.setText(tenantPaidDetails.get(position).rentAmount);
-        holder.tenantRoomTextView.setText(tenantPaidDetails.get(position).room);
-        holder.tenantNameTextView.setText(tenantPaidDetails.get(position).name);
+
+        holder.rentAmountTextView.setVisibility(View.GONE);
+        holder.tenantRoomTextView.setText(tenantUnpaidDetails.get(position).room);
+        holder.tenantNameTextView.setText(tenantUnpaidDetails.get(position).name);
 
         holder.phoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent callIntent = new Intent(Intent.ACTION_DIAL);
-                callIntent.setData(Uri.parse("tel:" + tenantPaidDetails.get(position).phone));
+                callIntent.setData(Uri.parse("tel:" + tenantUnpaidDetails.get(position).phone));
                 context.startActivity(callIntent);
             }
         });
@@ -65,8 +60,8 @@ public class RentCollectionPaidDetailList extends RecyclerView.Adapter<RentColle
             @Override
             public void onClick(View view) {
                 MSG91 msg91 = new MSG91("163776AiifTBEVMZl5aae0bce");
-                msg91.composeMessage("EazyPG", "Hi " + tenantPaidDetails.get(position).name + ". Your rent is due for this month.");
-                msg91.to(tenantPaidDetails.get(position).phone);
+                msg91.composeMessage("EazyPG", "Hi " + tenantUnpaidDetails.get(position).name + ". Your rent is due for this month.");
+                msg91.to(tenantUnpaidDetails.get(position).phone);
                 String sendStatus = msg91.send();
             }
         });
@@ -75,11 +70,16 @@ public class RentCollectionPaidDetailList extends RecyclerView.Adapter<RentColle
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, FineRentBillActivity.class);
-                intent.putExtra(EXTRA_MESSAGE, tenantPaidDetails.get(position).id);
-                intent.putExtra(EXTRA_MESSAGE2, tenantPaidDetails.get(position).room);
+                intent.putExtra(EXTRA_MESSAGE, tenantUnpaidDetails.get(position).id);
+                intent.putExtra(EXTRA_MESSAGE2, tenantUnpaidDetails.get(position).room);
                 context.startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public int getItemCount() {
+        return tenantUnpaidDetails.size();
     }
 
     public class MyHolder extends RecyclerView.ViewHolder{

@@ -24,12 +24,10 @@ import static net.eazypg.eazypgmanager.DetailList.RentCollectionPaidDetailList.E
 
 public class RentCollectionUnpaidDetailList extends RecyclerView.Adapter<RentCollectionUnpaidDetailList.MyHolder>{
 
-    List<TenantDetails> tenantDetails;
     List<TenantDetails> tenantUnpaidDetails;
     Context context;
 
-    public RentCollectionUnpaidDetailList(List<TenantDetails> tenantDetails, List<TenantDetails> tenantUnpaidDetails, Context context) {
-        this.tenantDetails = tenantDetails;
+    public RentCollectionUnpaidDetailList(List<TenantDetails> tenantUnpaidDetails, Context context) {
         this.tenantUnpaidDetails = tenantUnpaidDetails;
         this.context = context;
     }
@@ -42,7 +40,7 @@ public class RentCollectionUnpaidDetailList extends RecyclerView.Adapter<RentCol
     @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.rent_bill_collection_rent_row, parent, false);
+                .inflate(R.layout.rent_bill_collection_row, parent, false);
 
         return new MyHolder(itemView);
     }
