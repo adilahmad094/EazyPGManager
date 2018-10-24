@@ -15,7 +15,7 @@ import net.eazypg.eazypgmanager.R;
 import io.fabric.sdk.android.Fabric;
 
 
-public class RentBillCollectionFragment extends AppCompatActivity {
+public class RentBillCollectionActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager pager;
 
@@ -23,7 +23,7 @@ public class RentBillCollectionFragment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rent_bill_collection_fragment);
+        setContentView(R.layout.activity_rent_bill_collection);
 
         Fabric.with(this, new Crashlytics());
 
@@ -41,7 +41,7 @@ public class RentBillCollectionFragment extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(RentBillCollectionFragment.this,HomePageActivity.class));
+                startActivity(new Intent(RentBillCollectionActivity.this, HomePageActivity.class));
                 finish();
             }
         });
@@ -49,7 +49,7 @@ public class RentBillCollectionFragment extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(RentBillCollectionFragment.this,HomePageActivity.class));
+        startActivity(new Intent(RentBillCollectionActivity.this,HomePageActivity.class));
         finish();
     }
 }
