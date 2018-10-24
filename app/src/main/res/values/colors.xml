@@ -2,6 +2,7 @@
 <resources>
     <color name="colorPrimary">#2f3235</color>
     <color name="colorPrimaryDark">#005f3f</color>
+    <color name="googleBlue">#0D47A1</color>
     <color name="colorAccent">#1a936f</color>
     <color name="DarkGreen">#008b00</color>
     <color name="lightgray">#ededed</color>
