@@ -56,6 +56,8 @@ public class UnpaidBillActivity extends AppCompatActivity {
         setContentView(R.layout.activity_unpaid_bill);
 
         unpaidBillRecyclerView = findViewById(R.id.UnpaidBillRecyclerView);
+        numberBillPaidTextView = findViewById(R.id.numberBillPaidTextView);
+        numberBillNotPaidTextView = findViewById(R.id.numberBillNotPaidTextView);
 
         Intent intent = getIntent();
         typeOfBill = intent.getStringExtra(BillCollectionFragment.EXTRA_MESSAGE);
@@ -81,7 +83,8 @@ public class UnpaidBillActivity extends AppCompatActivity {
                 paid = dataSnapshot.child("ThisMonth").child(dateString).child("Bill").child(typeOfBill).getChildrenCount();
                 unpaid = dataSnapshot.child("CurrentTenants").getChildrenCount() - paid;
 
-                // Set Text Here for paid and unpaid number of tenants
+                numberBillPaidTextView.setText(Long.toString(paid));
+                numberBillNotPaidTextView.setText(Long.toString(unpaid));
 
                 unpaidTenants.clear();
 
