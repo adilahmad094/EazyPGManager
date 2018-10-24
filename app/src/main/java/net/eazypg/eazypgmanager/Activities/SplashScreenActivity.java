@@ -33,7 +33,6 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         new Handler().postDelayed(new Runnable() {
 
-
             @Override
             public void run() {
 
@@ -42,6 +41,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                 finish();
             }
+
         }, SPLASH_TIME_OUT);
     }
 
