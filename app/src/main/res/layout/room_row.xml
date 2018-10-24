@@ -1,205 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android" >-->
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="12dp"
-    android:layout_marginEnd="12dp"
-    android:layout_marginTop="15dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="6dp"
     android:clickable="true"
     android:elevation="10000dp"
-    app:cardCornerRadius="8dp"
-    android:foreground="?android:attr/selectableItemBackground"
     android:focusable="true"
-    android:layout_margin="10dp"
-    app:cardElevation="5dp">
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:clipToPadding="false"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp">
-
-        <Button
-            android:id="@+id/appliancesButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/electricity"
-            android:clickable="true"
-            android:elevation="10dp"
-            android:focusable="true"
-            android:foreground="?selectableItemBackground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_goneMarginEnd="10dp" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout11"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="5dp">
+
+            <Button
+                android:id="@+id/appliancesButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/electricity"
+                android:clickable="true"
+                android:elevation="10dp"
+                android:focusable="true"
+                android:foreground="?selectableItemBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_goneMarginEnd="10dp" />
 
             <LinearLayout
+                android:id="@+id/linearLayout11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/productsansbold"
-                    android:text="Room "
-                    android:textAlignment="center"
-                    android:textColor="#01579B"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/thirdTextView"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="@font/productsansbold"
+                        android:text="Room "
+                        android:textAlignment="center"
+                        android:textColor="#01579B"
+                        android:textSize="18dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/thirdTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="@font/productsansbold"
+                        android:text="Number"
+                        android:textAlignment="center"
+                        android:textColor="#01579B"
+                        android:textSize="18dp"
+                        app:layout_constraintStart_toEndOf="@+id/textView12"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/fourthTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/productsansmedium"
+                        android:text="Type"
+                        android:textAlignment="center"
+                        android:textSize="15dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/thirdTextView"
+                        app:layout_constraintStart_toEndOf="@+id/thirdTextView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/rentTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/productsansbold"
+                        android:text="0"
+                        android:textColor="#212121"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/numberOfTenantsTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/productsansbold"
+                        android:text="x 0"
+                        android:textColor="#212121"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/productsansbold"
-                    android:text="Number"
-                    android:textAlignment="center"
-                    android:textColor="#01579B"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toEndOf="@+id/textView12"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/fourthTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/productsansmedium"
-                    android:text="Type"
-                    android:textAlignment="center"
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/thirdTextView"
-                    app:layout_constraintStart_toEndOf="@+id/thirdTextView"
-                    app:layout_constraintTop_toTopOf="parent" />
-
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
 
                 <TextView
-                    android:id="@+id/rentTextView"
+                    android:id="@+id/acTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/productsansbold"
-                    android:text="0"
-                    android:textColor="#212121"
-                    android:textSize="15sp" />
+                    android:text="AC"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
 
                 <TextView
-                    android:id="@+id/numberOfTenantsTextView"
+                    android:id="@+id/nonAcTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/productsansbold"
-                    android:text="x 0"
-                    android:textColor="#212121"
-                    android:textSize="15sp" />
+                    android:text="NonAC"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
 
+                <TextView
+                    android:id="@+id/washroomTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Washroom"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/balconyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Balcony"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/ventilationTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ventilation"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/largeRoomTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Large room"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/cornerRoomTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Corner Room"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
             </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
-
-            <TextView
-                android:id="@+id/acTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="AC"
-                android:visibility="gone"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/nonAcTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="NonAC"
-                android:visibility="gone"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/washroomTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="Washroom"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/balconyTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Balcony"
-                android:visibility="gone"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/ventilationTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ventilation"
-                android:visibility="gone"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/largeRoomTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="Large room"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/cornerRoomTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="Corner Room"
-                android:textSize="12sp" />
-        </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
-
-</android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView>
+<!--</LinearLayout>-->

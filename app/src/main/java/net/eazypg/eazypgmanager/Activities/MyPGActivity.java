@@ -15,6 +15,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -57,12 +58,38 @@ public class MyPGActivity extends AppCompatActivity {
 
     Button setLocationButton;
 
+    TextInputLayout pgNameTIL;
+    TextInputLayout bioTIL;
+    TextInputLayout genderTIL;
+    TextInputLayout landmarkTIL;
+    TextInputLayout  lastEntryTIL;
+    TextInputLayout address1TIL;
+    TextInputLayout address2TIL;
+    TextInputLayout maxOccupancyTIL;
+    TextInputLayout bathroomTIL;
+    TextInputLayout roomTIL;
+    TextInputLayout ownerNameTIL;
+    TextInputLayout contactTIL;
+    TextInputLayout staffCountTIL;
+    TextInputLayout billTIL;
+    TextInputLayout rentTIL;
+    TextInputLayout electrcityTIL;
+    TextInputLayout cityTIL;
+    TextInputLayout pincodeTIL;
+    TextInputLayout gasUnitCostTIL;
+    TextInputLayout messTypeTIL;
+    TextInputLayout messRateTIL;
+    TextInputLayout personalContactTIL;
+    TextInputLayout personalEmailTIL;
+
+
     TextInputEditText pgName;
     TextInputEditText bio;
     TextInputEditText gender;
     TextInputEditText landmark;
     TextInputEditText lastEntry;
-    TextInputEditText location;
+    TextInputEditText addressLine1;
+    TextInputEditText addressLine2;
     TextInputEditText maxOccupancy;
     TextInputEditText bathroom;
     TextInputEditText room;
@@ -98,7 +125,7 @@ public class MyPGActivity extends AppCompatActivity {
     TextView customTitle;
 
     TextView billFirstTextView;
-    FloatingActionButton saveButton;
+    FloatingActionButton saveButton , editButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,7 +171,8 @@ public class MyPGActivity extends AppCompatActivity {
         gender = findViewById(R.id.genderTextView);
         landmark = findViewById(R.id.landmarkTextView);
         lastEntry = findViewById(R.id.lastEntryTimeTextView);
-        location = findViewById(R.id.locationTextView);
+        addressLine1 = findViewById(R.id.addressLine1);
+        addressLine2 = findViewById(R.id.addressLine2);
         maxOccupancy = findViewById(R.id.maxOccupancyTextView);
         bathroom = findViewById(R.id.noOfBathroomTextView);
         room = findViewById(R.id.noOfRoomTextView);
@@ -163,6 +191,31 @@ public class MyPGActivity extends AppCompatActivity {
         personalContact = findViewById(R.id.ownerPersonalContactTextView);
         personalEmail = findViewById(R.id.personalEmailEditText);
 
+
+        pgNameTIL = findViewById(R.id.pgNameTIL);
+        bioTIL = findViewById(R.id.bioTIL);
+        genderTIL = findViewById(R.id.genderTIL);
+        landmarkTIL = findViewById(R.id.nearestLandmarkTIL);
+        lastEntryTIL = findViewById(R.id.lastEntryTIL);
+        address1TIL = findViewById(R.id.addressLine1TIL);
+        address2TIL = findViewById(R.id.addressLine2TIL);
+        maxOccupancyTIL = findViewById(R.id.maxOccupancyTIL);
+        bathroomTIL = findViewById(R.id.bathroomTID);
+        roomTIL = findViewById(R.id.roomTIL);
+        ownerNameTIL = findViewById(R.id.ownerNameTIL);
+        contactTIL = findViewById(R.id.pgContactTIL);
+        staffCountTIL = findViewById(R.id.numberOfStaffTIL);
+        billTIL = findViewById(R.id.billTIL);
+        rentTIL = findViewById(R.id.rentTIL);
+        electrcityTIL = findViewById(R.id.electricityUnitTIL);
+        cityTIL = findViewById(R.id.cityTIL);
+        pincodeTIL = findViewById(R.id.pincodeTIL);
+        gasUnitCostTIL = findViewById(R.id.gasTIL);
+        messTypeTIL = findViewById(R.id.messTypeTIL);
+        messRateTIL = findViewById(R.id.messRateTIL);
+        personalContactTIL = findViewById(R.id.personalContactTIL);
+        personalEmailTIL = findViewById(R.id.personalEmailTIL);
+
         /*backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,8 +229,57 @@ public class MyPGActivity extends AppCompatActivity {
         rooms = findViewById(R.id.roomTextView);*/
 
         saveButton = findViewById(R.id.saveButton);
+        editButton = findViewById(R.id.editButton);
 
         view = findViewById(R.id.myPgLayout);
+
+
+        pgNameTIL.setAnimationCacheEnabled(false);
+        bioTIL.setAnimationCacheEnabled(false);
+        genderTIL.setAnimationCacheEnabled(false);
+        landmarkTIL.setAnimationCacheEnabled(false);
+        lastEntryTIL.setAnimationCacheEnabled(false);
+        address1TIL.setAnimationCacheEnabled(false);
+        address2TIL.setAnimationCacheEnabled(false);
+        maxOccupancyTIL.setAnimationCacheEnabled(false);
+        bathroomTIL.setAnimationCacheEnabled(false);
+        roomTIL.setAnimationCacheEnabled(false);
+        ownerNameTIL.setAnimationCacheEnabled(false);
+        contactTIL.setAnimationCacheEnabled(false);
+        staffCountTIL.setAnimationCacheEnabled(false);
+        billTIL.setAnimationCacheEnabled(false);
+        rentTIL.setAnimationCacheEnabled(false);
+        electrcityTIL.setAnimationCacheEnabled(false);
+        cityTIL.setAnimationCacheEnabled(false);
+        pincodeTIL.setAnimationCacheEnabled(false);
+        gasUnitCostTIL.setAnimationCacheEnabled(false);
+        messTypeTIL.setAnimationCacheEnabled(false);
+        messRateTIL.setAnimationCacheEnabled(false);
+        personalContactTIL.setAnimationCacheEnabled(false);
+        personalEmailTIL.setAnimationCacheEnabled(false);
+
+        pgNameTIL.setEnabled(false);
+        bioTIL.setEnabled(false);
+        genderTIL.setEnabled(false);
+        landmarkTIL.setEnabled(false);
+        address1TIL.setEnabled(false);
+        address2TIL.setEnabled(false);
+        maxOccupancyTIL.setEnabled(false);
+        bathroomTIL.setEnabled(false);
+        roomTIL.setEnabled(false);
+        ownerNameTIL.setEnabled(false);
+        contactTIL.setEnabled(false);
+        staffCountTIL.setEnabled(false);
+        billTIL.setEnabled(false);
+        rentTIL.setEnabled(false);
+        electrcityTIL.setEnabled(false);
+        cityTIL.setEnabled(false);
+        pincodeTIL.setEnabled(false);
+        messTypeTIL.setEnabled(false);
+        messRateTIL.setEnabled(false);
+        personalContactTIL.setEnabled(false);
+        personalEmailTIL.setEnabled(false);
+
 
 
 
@@ -334,7 +436,8 @@ public class MyPGActivity extends AppCompatActivity {
                 String gender1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("gender").getValue(String.class);
                 String landmark1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("landmark").getValue(String.class);
                 String lastEntryTime1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("lastEntryTime").getValue(String.class);
-                String location1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("location").getValue(String.class);
+                String address1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("addressLine1").getValue(String.class);
+              //  String address2 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("addressLine2").getValue(String.class);
                 String maxOccupancy1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("maxOccupancy").getValue(String.class);
                 String bathroom1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("noOfBathroom").getValue(String.class);
                 String room1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("noOfRooms").getValue(String.class);
@@ -359,7 +462,6 @@ public class MyPGActivity extends AppCompatActivity {
                 gender.setText(gender1);
                 landmark.setText(landmark1);
                 lastEntry.setText(lastEntryTime1);
-                location.setText(location1);
                 maxOccupancy.setText(maxOccupancy1);
                 bathroom.setText(bathroom1);
                 room.setText(room1);
@@ -370,7 +472,8 @@ public class MyPGActivity extends AppCompatActivity {
                 rentDueDate.setText(rentDueDate1);
                 billDueDate.setText(billDueDate1);
                 billFirstTextView.setText(typeOfBills1);
-
+                addressLine1.setText(address1);
+              //  addressLine2.setText(address2);
                 city.setText(City);
                 pincode.setText(Pincode);
                 gasUnitCOst.setText(gasCost);
@@ -392,6 +495,115 @@ public class MyPGActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addingPg();
+                saveButton.hide();
+                editButton.hide();
+
+                pgNameTIL.setAnimationCacheEnabled(false);
+                bioTIL.setAnimationCacheEnabled(false);
+                genderTIL.setAnimationCacheEnabled(false);
+                landmarkTIL.setAnimationCacheEnabled(false);
+                lastEntryTIL.setAnimationCacheEnabled(false);
+                address1TIL.setAnimationCacheEnabled(false);
+                address2TIL.setAnimationCacheEnabled(false);
+                maxOccupancyTIL.setAnimationCacheEnabled(false);
+                bathroomTIL.setAnimationCacheEnabled(false);
+                roomTIL.setAnimationCacheEnabled(false);
+                ownerNameTIL.setAnimationCacheEnabled(false);
+                contactTIL.setAnimationCacheEnabled(false);
+                staffCountTIL.setAnimationCacheEnabled(false);
+                billTIL.setAnimationCacheEnabled(false);
+                rentTIL.setAnimationCacheEnabled(false);
+                electrcityTIL.setAnimationCacheEnabled(false);
+                cityTIL.setAnimationCacheEnabled(false);
+                pincodeTIL.setAnimationCacheEnabled(false);
+                gasUnitCostTIL.setAnimationCacheEnabled(false);
+                messTypeTIL.setAnimationCacheEnabled(false);
+                messRateTIL.setAnimationCacheEnabled(false);
+                personalContactTIL.setAnimationCacheEnabled(false);
+                personalEmailTIL.setAnimationCacheEnabled(false);
+
+                pgNameTIL.setEnabled(false);
+                bioTIL.setEnabled(false);
+                genderTIL.setEnabled(false);
+                landmarkTIL.setEnabled(false);
+                address1TIL.setEnabled(false);
+                address2TIL.setEnabled(false);
+                maxOccupancyTIL.setEnabled(false);
+                bathroomTIL.setEnabled(false);
+                roomTIL.setEnabled(false);
+                ownerNameTIL.setEnabled(false);
+                contactTIL.setEnabled(false);
+                staffCountTIL.setEnabled(false);
+                billTIL.setEnabled(false);
+                rentTIL.setEnabled(false);
+                electrcityTIL.setEnabled(false);
+                cityTIL.setEnabled(false);
+                pincodeTIL.setEnabled(false);
+                messTypeTIL.setEnabled(false);
+                messRateTIL.setEnabled(false);
+                personalContactTIL.setEnabled(false);
+                personalEmailTIL.setEnabled(false);
+
+
+
+            }
+        });
+
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                pgName.setEnabled(true);
+
+                editButton.hide();
+                saveButton.show();
+
+                pgNameTIL.setAnimationCacheEnabled(true);
+                bioTIL.setAnimationCacheEnabled(true);
+                genderTIL.setAnimationCacheEnabled(true);
+                landmarkTIL.setAnimationCacheEnabled(true);
+                lastEntryTIL.setAnimationCacheEnabled(true);
+                address1TIL.setAnimationCacheEnabled(true);
+                address2TIL.setAnimationCacheEnabled(true);
+                maxOccupancyTIL.setAnimationCacheEnabled(true);
+                bathroomTIL.setAnimationCacheEnabled(true);
+                roomTIL.setAnimationCacheEnabled(true);
+                ownerNameTIL.setAnimationCacheEnabled(true);
+                contactTIL.setAnimationCacheEnabled(true);
+                staffCountTIL.setAnimationCacheEnabled(true);
+                billTIL.setAnimationCacheEnabled(true);
+                rentTIL.setAnimationCacheEnabled(true);
+                electrcityTIL.setAnimationCacheEnabled(true);
+                cityTIL.setAnimationCacheEnabled(true);
+                pincodeTIL.setAnimationCacheEnabled(true);
+                gasUnitCostTIL.setAnimationCacheEnabled(true);
+                messTypeTIL.setAnimationCacheEnabled(true);
+                messRateTIL.setAnimationCacheEnabled(true);
+                personalContactTIL.setAnimationCacheEnabled(true);
+                personalEmailTIL.setAnimationCacheEnabled(true);
+
+                pgNameTIL.setEnabled(true);
+                bioTIL.setEnabled(true);
+                genderTIL.setEnabled(true);
+                landmarkTIL.setEnabled(true);
+                address1TIL.setEnabled(true);
+                address2TIL.setEnabled(true);
+                maxOccupancyTIL.setEnabled(true);
+                bathroomTIL.setEnabled(true);
+                roomTIL.setEnabled(true);
+                ownerNameTIL.setEnabled(true);
+                contactTIL.setEnabled(true);
+                staffCountTIL.setEnabled(true);
+                billTIL.setEnabled(true);
+                rentTIL.setEnabled(true);
+                electrcityTIL.setEnabled(true);
+                cityTIL.setEnabled(true);
+                pincodeTIL.setEnabled(true);
+                messTypeTIL.setEnabled(true);
+                messRateTIL.setEnabled(true);
+                personalContactTIL.setEnabled(true);
+                personalEmailTIL.setEnabled(true);
+
             }
         });
 
@@ -409,7 +621,8 @@ public class MyPGActivity extends AppCompatActivity {
 
         String pgNameString = pgName.getText().toString().trim();
         String bioString = bio.getText().toString().trim();
-        String locationString = location.getText().toString().trim();
+        String address1String = addressLine1.getText().toString().trim();
+       // String address2String = addressLine2.getText().toString().trim();
         String ownerNameString = ownerName.getText().toString().trim();
         String contactString = contact.getText().toString().trim();
         String landmarkString = landmark.getText().toString().trim();
@@ -444,7 +657,7 @@ public class MyPGActivity extends AppCompatActivity {
 
         final ProgressDialog progressDialog = ProgressDialog.show(MyPGActivity.this,"","Saving..",true);
 
-        PG pg = new PG(pgNameString, bioString, locationString, ownerNameString, contactString, landmarkString, lastEntryString, genderString, maxOccupancyString, staffCountString, roomString, bathroomString, rentDueDateString, billDueDateString, electricityUnitCostString, firebaseUser.getEmail(), City, Pincode, gasCost, typeMess, rateMess, contactPerson, emailPerson, typesOfBills, electricityIsChecked, wifiIsChecked, gasIsChecked);
+        PG pg = new PG(pgNameString, bioString, address1String, ownerNameString, contactString, landmarkString, lastEntryString, genderString, maxOccupancyString, staffCountString, roomString, bathroomString, rentDueDateString, billDueDateString, electricityUnitCostString, firebaseUser.getEmail(), City, Pincode, gasCost, typeMess, rateMess, contactPerson, emailPerson, typesOfBills, electricityIsChecked, wifiIsChecked, gasIsChecked);
         databaseReference.child("PG Details").setValue(pg).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -452,12 +665,13 @@ public class MyPGActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 snackbar = Snackbar.make(view, "Saved", Snackbar.LENGTH_SHORT);
                 View snackbarView = snackbar.getView();
-                snackbarView.setBackgroundColor(ContextCompat.getColor(MyPGActivity.this, R.color.DarkGreen));
+                snackbarView.setBackgroundColor(ContextCompat.getColor(MyPGActivity.this, R.color.colorPrimaryDark));
                 snackbar.show();
                 saveButton.hide();
+                editButton.hide();
                 saveButton.postDelayed(new Runnable() {
                     public void run() {
-                        saveButton.show();
+                        editButton.show();
                     }
                 }, 1800);
 
@@ -471,9 +685,10 @@ public class MyPGActivity extends AppCompatActivity {
                 snackbarView.setBackgroundColor(ContextCompat.getColor(MyPGActivity.this, R.color.red));
                 snackbar.show();
                 saveButton.hide();
+                editButton.hide();
                 saveButton.postDelayed(new Runnable() {
                     public void run() {
-                        saveButton.show();
+                        editButton.show();
                     }
                 }, 1800);
             }

@@ -12,6 +12,6 @@
     android:text=" Add new Debit"
     android:textSize="25dp"
     android:textColor="#000000"
-    android:fontFamily="@font/comfortabold"
+    android:fontFamily="@font/productsansmedium"
     tools:layout_editor_absoluteX="176dp"
     tools:layout_editor_absoluteY="60dp" />
