@@ -109,7 +109,7 @@ public class FineRentBillActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                startActivity(new Intent(FineRentBillActivity.this, RentBillCollectionFragment.class));
+                                startActivity(new Intent(FineRentBillActivity.this, RentBillCollectionActivity.class));
                                 finish();
 
                             }

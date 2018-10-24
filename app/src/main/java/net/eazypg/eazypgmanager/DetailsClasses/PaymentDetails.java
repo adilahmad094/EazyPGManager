@@ -2,23 +2,17 @@ package net.eazypg.eazypgmanager.DetailsClasses;
 
 public class PaymentDetails {
 
-    String id;
-    String payId;
+    public String payId, category, description, date, paidTo, amount;
 
-    public String getId() {
-        return id;
-    }
+    public PaymentDetails (String payId, String category, String description, String date, String paidTo, String amount) {
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getPayId() {
-        return payId;
-    }
-
-    public void setPayId(String payId) {
         this.payId = payId;
+        this.category = category;
+        this.description = description;
+        this.date = date;
+        this.paidTo = paidTo;
+        this.amount = amount;
+
     }
 
     public PaymentDetails() {

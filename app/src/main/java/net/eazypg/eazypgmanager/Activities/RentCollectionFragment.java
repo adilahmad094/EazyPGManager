@@ -26,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import net.eazypg.eazypgmanager.DetailList.RentCollectionPaidDetailList;
 import net.eazypg.eazypgmanager.DetailList.RentCollectionUnpaidDetailList;
 import net.eazypg.eazypgmanager.DetailsClasses.TenantDetails;
+import net.eazypg.eazypgmanager.DetailsClasses.ThisMonthRentDetails;
 import net.eazypg.eazypgmanager.R;
 
 import java.text.DateFormat;
@@ -35,7 +36,6 @@ import java.util.Date;
 import java.util.List;
 
 import io.fabric.sdk.android.Fabric;
-
 
 public class RentCollectionFragment extends Fragment {
     View view;
@@ -63,11 +63,9 @@ public class RentCollectionFragment extends Fragment {
 
         Fabric.with(getContext(), new Crashlytics());
 
-
         view = inflater.inflate(R.layout.activity_rent_collection, container, false);
 
         final Context context = getContext();
-
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
@@ -76,64 +74,17 @@ public class RentCollectionFragment extends Fragment {
         numberBillPaidTextView = view.findViewById(R.id.numberBillPaidTextView);
         numberBillNotPaidTextView = view.findViewById(R.id.numberBillNotPaidTextView);
 
-        rentPaidRecyclerView = view.findViewById(R.id.rentPaidRecyclerView);
         rentUnpaidRecyclerView = view.findViewById(R.id.rentUnpaidRecyclerView);
 
         databaseReference = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Tenants/CurrentTenants/");
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    TenantDetails tenantDetails = snapshot.getValue(TenantDetails.class);
-                    Log.e("LO", "onDataChange: " + tenantDetails.name);
-                    tenantList.add(tenantDetails);
-                }
 
-                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                Date date = new Date();
-                String dateStr = dateFormat.format(date);
+                ThisMonthRentDetails thisMonthRentDetails = dataSnapshot.getValue(ThisMonthRentDetails.class);
+                Log.e("Paid", thisMonthRentDetails.thisMonthRent + "");
 
-                final String dateString = dateStr.substring(6,10) + "-" + dateStr.substring(3,5);
-
-                final DatabaseReference databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Tenants/CurrentTenants/");
-                databaseReference1.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Log.e("LOLOL", "onDataChange: " + tenantList.size());
-                        paid = 0;
-                        unpaid = 0;
-                        for(int i = 0; i < tenantList.size(); i++){
-                            String status = dataSnapshot.child(tenantList.get(i).id).child("Accounts").child("Rent").child(dateString).getValue(String.class);
-                            if(status != null){
-                                tenantPaidList.add(tenantList.get(i));
-                                paid++;
-                            }else{
-                                tenantUnpaidList.add(tenantList.get(i));
-                                unpaid++;
-                            }
-                        }
-
-                        numberBillPaidTextView.setText(Integer.toString(paid));
-                        numberBillNotPaidTextView.setText(Integer.toString(unpaid));
-
-                        rentCollectionPaidDetailList = new RentCollectionPaidDetailList(tenantList, tenantPaidList, context);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-                        rentPaidRecyclerView.setLayoutManager(layoutManager);
-                        rentPaidRecyclerView.setItemAnimator(new DefaultItemAnimator());
-                        rentPaidRecyclerView.setAdapter(rentCollectionPaidDetailList);
-
-                        rentCollectionUnpaidDetailList = new RentCollectionUnpaidDetailList(tenantList, tenantUnpaidList, context);
-                        RecyclerView.LayoutManager layoutManager2 = new LinearLayoutManager(context);
-                        rentUnpaidRecyclerView.setLayoutManager(layoutManager2);
-                        rentUnpaidRecyclerView.setItemAnimator(new DefaultItemAnimator());
-                        rentUnpaidRecyclerView.setAdapter(rentCollectionUnpaidDetailList);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
             }
 
             @Override
@@ -141,6 +92,13 @@ public class RentCollectionFragment extends Fragment {
 
             }
         });
+
+                        /*rentCollectionPaidDetailList = new RentCollectionPaidDetailList(tenantList, tenantPaidList, context);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+                        rentPaidRecyclerView.setLayoutManager(layoutManager);
+                        rentPaidRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                        rentPaidRecyclerView.setAdapter(rentCollectionPaidDetailList);
+                        */
 
 
 

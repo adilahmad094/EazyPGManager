@@ -72,23 +72,12 @@ public class PaymentActivity extends AppCompatActivity {
 
         paymentList = new ArrayList<>();
 
-        /*backButton.findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(PaymentActivity.this, HomePageActivity.class));
-                finish();
-            }
-        });*/
         Intent intent = getIntent();
-        String message = intent.getStringExtra(TenantDetailList.EXTRA_MESSAGE);
+        String id = intent.getStringExtra(TenantDetailList.EXTRA_MESSAGE);
 
-        databaseReference = firebaseDatabase.getReference("PG/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/Tenants/" + message + "/MyPayment");
-        /*inflater = getLayoutInflater();
-
-        view = findViewById(R.id.paymentLayout);*/
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference = firebaseDatabase.getReference("PG/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/Tenants/CurrentTenants/" + id + "/Passbook");
+       
+        databaseReference.child("History").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -96,8 +85,8 @@ public class PaymentActivity extends AppCompatActivity {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
-                    PaymentDetails id = snapshot.getValue(PaymentDetails.class);
-                    paymentList.add(id);
+                    PaymentDetails paymentDetails = snapshot.getValue(PaymentDetails.class);
+                    paymentList.add(paymentDetails);
 
                 }
                 PaymentDetailList adapter = new PaymentDetailList(PaymentActivity.this, paymentList);

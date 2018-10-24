@@ -61,6 +61,8 @@ public class FacilityResolvedFragment extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
+        context = getContext();
+
 
         complaintDetailsList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.facility_resolved_recycler_view);

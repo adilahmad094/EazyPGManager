@@ -205,7 +205,7 @@ public class HomePageActivity extends AppCompatActivity {
        rentBill.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               startActivity(new Intent(HomePageActivity.this , RentBillCollectionFragment.class));
+               startActivity(new Intent(HomePageActivity.this , RentBillCollectionActivity.class));
                finish();
            }
        });

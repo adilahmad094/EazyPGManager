@@ -158,37 +158,6 @@ public class TenantDetailList extends ArrayAdapter<TenantDetails> {
             }
         });
 
-
-        /*billButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            *//*public void onClick(View view) {
-                *//**//*AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setView(dialogBill);
-                builder.setTitle("Enter Bill");
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        billAmount = billAmountEditText.getText().toString();
-                        billCategory = billCategoryEditText.getText().toString();
-
-                        Toast.makeText(context,billAmount + " " + billCategory, Toast.LENGTH_SHORT).show();
-
-                        String billId = databaseReference.push().getKey();
-                        BillDetails billDetails = new BillDetails(billId, billCategory, billAmount, false);
-
-                        databaseReference = firebaseDatabase.getReference("Tenants/" + tenantDetails.id + "/");
-                        databaseReference.child("Accounts").child("Bills").child(billId).setValue(billDetails);
-                    }
-                });
-                builder.setNegativeButton("Cancel", null);
-                builder.show();*//**//*
-                Intent intent = new Intent(context, AddBillActivity.class);
-                intent.putExtra(EXTRA_MESSAGE, tenantDetails.id);
-                intent.putExtra(EXTRA_MESSAGE2, tenantDetails.room);
-                context.startActivity(intent);
-            }*//*
-        });
-*/
         messageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

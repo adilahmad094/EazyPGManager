@@ -82,7 +82,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="net.eazypg.eazypgmanager.Activities.RentBillCollectionFragment"/>
+        <activity android:name="net.eazypg.eazypgmanager.Activities.RentBillCollectionActivity"/>
         <activity android:name="net.eazypg.eazypgmanager.Activities.LogFragmentActivity"/>
         <activity
             android:name="net.eazypg.eazypgmanager.Activities.HomePageActivity"

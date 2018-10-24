@@ -45,12 +45,15 @@ public class IncomePassbookDetailList extends RecyclerView.Adapter<IncomePassboo
         holder.timestampTextView.setText(cashflowDetails.date);
         holder.paidTextView.setText(cashflowDetails.paidBy);
 
+        holder.billImageView.setVisibility(View.GONE);
+        holder.paidToTextView.setVisibility(View.GONE);
+
         holder.plusMinusImageView.setVisibility(View.GONE);
     }
 
     public class MyHolder extends RecyclerView.ViewHolder{
-        public TextView amountTextView, timestampTextView, categoryTextView, paidTextView;
-        public ImageView plusMinusImageView;
+        public TextView amountTextView, timestampTextView, categoryTextView, paidTextView, paidToTextView;
+        public ImageView plusMinusImageView, billImageView;
 
         public MyHolder(View itemView){
             super(itemView);
@@ -59,7 +62,9 @@ public class IncomePassbookDetailList extends RecyclerView.Adapter<IncomePassboo
             timestampTextView = itemView.findViewById(R.id.timestampTextView);
             categoryTextView = itemView.findViewById(R.id.categoryTextView);
             paidTextView = itemView.findViewById(R.id.paidForTextView);
+            paidToTextView = itemView.findViewById(R.id.paidToTextView);
             plusMinusImageView = itemView.findViewById(R.id.plusMinusImage);
+            billImageView = itemView.findViewById(R.id.billImageView);
         }
     }
 }

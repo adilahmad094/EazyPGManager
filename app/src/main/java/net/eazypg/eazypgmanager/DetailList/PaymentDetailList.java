@@ -43,8 +43,16 @@ public class PaymentDetailList extends ArrayAdapter<PaymentDetails> {
         final TextView first = listViewPayment.findViewById(R.id.firstTextViewPayment);
         final TextView second = listViewPayment.findViewById(R.id.secondTextViewPayment);
         final TextView third = listViewPayment.findViewById(R.id.thirdTextViewPayment);
+        final TextView fourth = listViewPayment.findViewById(R.id.fourthTextViewPayment);
+        final TextView fifth = listViewPayment.findViewById(R.id.fifthTextViewPayment);
 
-        Thread thread = new Thread(new Runnable() {
+        first.setText(paymentDetails.category);
+        second.setText(paymentDetails.amount);
+        third.setText(paymentDetails.date);
+        fourth.setText(paymentDetails.paidTo);
+        fifth.setText(paymentDetails.description);
+
+        /*Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -64,12 +72,12 @@ public class PaymentDetailList extends ArrayAdapter<PaymentDetails> {
             }
         });
 
-        thread.start();
+        thread.start();*/
 
         return listViewPayment;
     }
 
-    public ArrayList<String> fetchData(String payId) throws RazorpayException {
+    /*public ArrayList<String> fetchData(String payId) throws RazorpayException {
         ArrayList<String> list = new ArrayList<>();
         RazorpayClient razorpayClient = new RazorpayClient("rzp_test_sAUX9CKy38r5OA","qgqr52bFjPFQhE9AZDcs2UGp");
         Payment payment = razorpayClient.Payments.fetch(payId);
@@ -77,5 +85,5 @@ public class PaymentDetailList extends ArrayAdapter<PaymentDetails> {
         list.add(payment.get("id").toString());
         list.add(payment.get("created_at").toString());
         return list;
-    }
+    }*/
 }
