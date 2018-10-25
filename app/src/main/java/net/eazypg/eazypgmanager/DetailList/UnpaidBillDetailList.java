@@ -46,6 +46,7 @@ public class UnpaidBillDetailList extends RecyclerView.Adapter<UnpaidBillDetailL
         holder.rentAmountTextView.setVisibility(View.GONE);
         holder.tenantRoomTextView.setText(tenantUnpaidDetails.get(position).room);
         holder.tenantNameTextView.setText(tenantUnpaidDetails.get(position).name);
+        holder.textView7.setVisibility(View.GONE);
 
         holder.phoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +84,7 @@ public class UnpaidBillDetailList extends RecyclerView.Adapter<UnpaidBillDetailL
     }
 
     public class MyHolder extends RecyclerView.ViewHolder{
-        public TextView tenantNameTextView, tenantRoomTextView, rentAmountTextView;
+        public TextView tenantNameTextView, tenantRoomTextView, rentAmountTextView, textView7;
         public Button messageButton, phoneButton, addFineButton;
 
         public MyHolder(View itemView){
@@ -92,6 +93,7 @@ public class UnpaidBillDetailList extends RecyclerView.Adapter<UnpaidBillDetailL
             tenantNameTextView = itemView.findViewById(R.id.tenantNameTextView);
             tenantRoomTextView = itemView.findViewById(R.id.roomNumberTextView);
             rentAmountTextView = itemView.findViewById(R.id.rentAmountTextView);
+            textView7 = itemView.findViewById(R.id.textView7);
 
             messageButton = itemView.findViewById(R.id.messageButton);
             phoneButton = itemView.findViewById(R.id.callButton);
