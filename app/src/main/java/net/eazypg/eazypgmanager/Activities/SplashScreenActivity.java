@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +15,9 @@ import net.eazypg.eazypgmanager.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    public static int SPLASH_TIME_OUT = 3000;
+    public static int SPLASH_TIME_OUT = 2000;
+    boolean isConnected;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,18 +34,47 @@ public class SplashScreenActivity extends AppCompatActivity {
             }
         }
 
+        openOther();
+
+
+    }
+
+    public void openOther() {
         new Handler().postDelayed(new Runnable() {
 
             @Override
             public void run() {
 
-                Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
-                startActivity(i);
+                isConnected = ConnectivityReceiver.isConnected();
 
-                finish();
+                if (!isConnected) {
+
+                    final Snackbar snackbar = Snackbar.make(findViewById(R.id.homeLayout), "Not connected to network", Snackbar.LENGTH_INDEFINITE);
+
+                    snackbar.setAction("Retry", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            openOther();
+                            snackbar.dismiss();
+                            isConnected = ConnectivityReceiver.isConnected();
+                        }
+                    });
+                    snackbar.show();
+
+                }
+                else {
+
+                    Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
+                    startActivity(i);
+
+                    finish();
+
+                }
+
             }
 
         }, SPLASH_TIME_OUT);
+
     }
 
 }

@@ -152,7 +152,7 @@ public class ComplaintActivity extends AppCompatActivity {
 
                     ComplaintDetails complaintDetails1 = snapshot.getValue(ComplaintDetails.class);
 
-                    if (complaintDetails1.status.equals("Unresolved")){
+                    if (!complaintDetails1.status.equals("Resolved")){
                         complaintDetailsList.add(complaintDetails1);
                     }
 
@@ -197,7 +197,7 @@ public class ComplaintActivity extends AppCompatActivity {
 
                     ComplaintDetails complaintDetails1 = snapshot.getValue(ComplaintDetails.class);
 
-                    if (complaintDetails1.status.equals("Unresolved")) {
+                    if (!complaintDetails1.status.equals("Resolved")) {
                         complaintDetailsList.add(complaintDetails1);
                     }
 
@@ -242,7 +242,7 @@ public class ComplaintActivity extends AppCompatActivity {
 
                     ComplaintDetails complaintDetails1 = snapshot.getValue(ComplaintDetails.class);
 
-                    if (complaintDetails1.status.equals("Unresolved")) {
+                    if (!complaintDetails1.status.equals("Resolved")) {
                         complaintDetailsList.add(complaintDetails1);
                     }
 
@@ -289,7 +289,7 @@ public class ComplaintActivity extends AppCompatActivity {
 
                     ComplaintDetails complaintDetails1 = snapshot.getValue(ComplaintDetails.class);
 
-                    if (complaintDetails1.status.equals("Unresolved")) {
+                    if (!complaintDetails1.status.equals("Resolved")) {
                         complaintDetailsList.add(complaintDetails1);
                     }
                 }
