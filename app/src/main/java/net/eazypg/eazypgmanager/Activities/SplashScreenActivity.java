@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,8 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             View decor = getWindow().getDecorView();
             {
@@ -31,18 +34,42 @@ public class SplashScreenActivity extends AppCompatActivity {
             }
         }
 
-        new Handler().postDelayed(new Runnable() {
+        checkConnection();
 
 
-            @Override
-            public void run() {
+    }
 
-                Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
-                startActivity(i);
+    private void checkConnection() {
+        boolean isConnected = ConnectivityReceiver.isConnected();
 
-                finish();
-            }
-        }, SPLASH_TIME_OUT);
+        if (!isConnected) {
+
+            final Snackbar snackbar = Snackbar.make(findViewById(R.id.homeLayout), "Not connected to network.", Snackbar.LENGTH_INDEFINITE);
+            snackbar.setAction("Okay", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    snackbar.dismiss();
+                }
+            });
+            snackbar.show();
+
+        }
+        else
+        {
+            new Handler().postDelayed(new Runnable() {
+
+
+                @Override
+                public void run() {
+
+                    Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
+                    startActivity(i);
+
+                    finish();
+                }
+            }, SPLASH_TIME_OUT);
+        }
+
     }
 
 }

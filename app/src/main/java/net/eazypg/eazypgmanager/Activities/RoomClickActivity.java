@@ -56,6 +56,8 @@ public class RoomClickActivity extends AppCompatActivity {
 
     CardView tenant1CardView, tenant2CardView, tenant3CardView;
 
+    TextView tenant1RentTextView, tenant2RentTextView, tenant3RentTextView;
+
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     public static final String EXTRA_MESSAGE2 = "com.example.myfirstapp.MESSAGE2";
 
@@ -107,6 +109,10 @@ public class RoomClickActivity extends AppCompatActivity {
         tenant1CallButton = findViewById(R.id.tenant1CallButton);
         tenant1MessageButton = findViewById(R.id.tenant1MessageButton);
         tenant1AddFineButton = findViewById(R.id.tenant1AddFineButton);
+
+        tenant1RentTextView = findViewById(R.id.tenant1RentTextView);
+        tenant2RentTextView = findViewById(R.id.tenant2RentTextView);
+        tenant3RentTextView = findViewById(R.id.tenant3RentTextView);
 
         tenant1MessageEditText = new EditText(this);
 
@@ -188,6 +194,9 @@ public class RoomClickActivity extends AppCompatActivity {
                             }
                         }
                     });
+
+                    tenant1RentTextView.setText(tenantList.get(0).getRentAmount());
+
 
                     tenant1MessageButton.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -329,6 +338,8 @@ public class RoomClickActivity extends AppCompatActivity {
                             }
                         }
                     });
+                    tenant1RentTextView.setText(tenantList.get(0).getRentAmount());
+                    tenant2RentTextView.setText(tenantList.get(1).getRentAmount());
 
                     tenant2CallButton.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -585,6 +596,11 @@ public class RoomClickActivity extends AppCompatActivity {
                     tenant2NameTextView.setText(tenantList.get(1).name);
 
                     tenant3NameTextView.setText(tenantList.get(2).name);
+
+                    tenant1RentTextView.setText(tenantList.get(0).getRentAmount());
+                    tenant2RentTextView.setText(tenantList.get(1).getRentAmount());
+                    tenant3RentTextView.setText(tenantList.get(2).getRentAmount());
+
 
                     tenant1CallButton.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -953,6 +969,7 @@ public class RoomClickActivity extends AppCompatActivity {
 
                         }
                     });
+
 
                     DatabaseReference databaseReference32 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Tenants/CurrentTenants/" + tenantList.get(2).id + "/Accounts/Bills/" + dateString);
                     databaseReference32.addValueEventListener(new ValueEventListener() {
