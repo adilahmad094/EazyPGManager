@@ -160,11 +160,11 @@ public class PassbookFragment extends Fragment {
                 int income = 0, expenses = 0, balance = 0;
 
                 for(int i = 0; i < incomeDetailsList.size(); i++){
-                    income += Integer.parseInt(incomeDetailsList.get(i).amount);
+                    income += Float.parseFloat(incomeDetailsList.get(i).amount);
                 }
 
                 for(int i = 0; i < expensesDetailsList.size(); i++){
-                    expenses += Integer.parseInt(expensesDetailsList.get(i).amount);
+                    expenses += Float.parseFloat(expensesDetailsList.get(i).amount);
                 }
 
                 balance = income - expenses;
