@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,7 +53,7 @@ public class RoomClickActivity extends AppCompatActivity {
 
     EditText tenant1MessageEditText, tenant2MessageEditText, tenant3MessageEditText;
 
-    Button tenant1CallButton, tenant1MessageButton, tenant1AddFineButton, tenant2CallButton, tenant2MessageButton, tenant2AddFineButton, tenant3CallButton, tenant3MessageButton, tenant3AddFineButton;
+    LinearLayout tenant1CallButton, tenant1MessageButton, tenant1AddFineButton, tenant2CallButton, tenant2MessageButton, tenant2AddFineButton, tenant3CallButton, tenant3MessageButton, tenant3AddFineButton;
 
     CardView tenant1CardView, tenant2CardView, tenant3CardView;
 
@@ -206,8 +207,7 @@ public class RoomClickActivity extends AppCompatActivity {
                                 ((ViewGroup) tenant1MessageEditText.getParent()).removeView(tenant1MessageEditText);
                             }
 
-                            String message = "Hey " + tenantList.get(0).name + ". Please pay your rent/bill to avoid fine. Download the EazyPGTenant App" +
-                                    "to know more. " + " Ignore if already paid."; //TODO: Add Tenant App Link
+                            String message = "Hey " + tenantList.get(0).name + "."; //TODO: Add Tenant App Link
 
                             tenant1MessageEditText.setText(message);
                             AlertDialog.Builder builder = new AlertDialog.Builder(RoomClickActivity.this);
@@ -225,6 +225,7 @@ public class RoomClickActivity extends AppCompatActivity {
                                     String sendStatus = msg91.send();
                                 }
                             });
+                            builder.show();
                         }
                     });
 
@@ -366,8 +367,7 @@ public class RoomClickActivity extends AppCompatActivity {
                                 ((ViewGroup) tenant1MessageEditText.getParent()).removeView(tenant1MessageEditText);
                             }
 
-                            String message = "Hey " + tenantList.get(0).name + ". Please pay your rent/bill to avoid fine. Download the EazyPGTenant App" +
-                                    "to know more. " + "Ignore if already paid."; // Add Tenant App Link
+                            String message = "Hey " + tenantList.get(0).name + "."; // Add Tenant App Link
 
                             tenant1MessageEditText.setText(message);
                             AlertDialog.Builder builder = new AlertDialog.Builder(RoomClickActivity.this);
@@ -385,6 +385,7 @@ public class RoomClickActivity extends AppCompatActivity {
                                     String sendStatus = msg91.send();
                                 }
                             });
+                            builder.show();
                         }
                     });
 
@@ -396,8 +397,7 @@ public class RoomClickActivity extends AppCompatActivity {
                                 ((ViewGroup) tenant2MessageEditText.getParent()).removeView(tenant2MessageEditText);
                             }
 
-                            String message = "Hey " + tenantList.get(1).name + ". Please pay your rent/bill to avoid fine. Download the EazyPGTenant App" +
-                                    "to know more. " + "Ignore if already paid."; // Add Tenant App Link
+                            String message = "Hey " + tenantList.get(1).name + "."; // Add Tenant App Link
 
                             tenant2MessageEditText.setText(message);
                             AlertDialog.Builder builder = new AlertDialog.Builder(RoomClickActivity.this);
@@ -415,6 +415,7 @@ public class RoomClickActivity extends AppCompatActivity {
                                     String sendStatus = msg91.send();
                                 }
                             });
+                            builder.show();
                         }
                     });
 
@@ -661,8 +662,7 @@ public class RoomClickActivity extends AppCompatActivity {
                                 ((ViewGroup) tenant1MessageEditText.getParent()).removeView(tenant1MessageEditText);
                             }
 
-                            String message = "Hey " + tenantList.get(0).name + ". Please pay your rent/bill to avoid fine. Download the EazyPGTenant App" +
-                                    "to know more. " + "Ignore if already paid."; // Add Tenant App Link
+                            String message = "Hey " + tenantList.get(0).name + "."; // Add Tenant App Link
 
                             tenant1MessageEditText.setText(message);
                             AlertDialog.Builder builder = new AlertDialog.Builder(RoomClickActivity.this);
@@ -680,6 +680,7 @@ public class RoomClickActivity extends AppCompatActivity {
                                     String sendStatus = msg91.send();
                                 }
                             });
+                            builder.show();
                         }
                     });
 
@@ -691,8 +692,7 @@ public class RoomClickActivity extends AppCompatActivity {
                                 ((ViewGroup) tenant2MessageEditText.getParent()).removeView(tenant2MessageEditText);
                             }
 
-                            String message = "Hey " + tenantList.get(1).name + ". Please pay your rent/bill to avoid fine. Download the EazyPGTenant App" +
-                                    "to know more. " + "Ignore if already paid."; // Add Tenant App Link
+                            String message = "Hey " + tenantList.get(1).name + "."; // Add Tenant App Link
 
                             tenant2MessageEditText.setText(message);
                             AlertDialog.Builder builder = new AlertDialog.Builder(RoomClickActivity.this);
@@ -710,6 +710,7 @@ public class RoomClickActivity extends AppCompatActivity {
                                     String sendStatus = msg91.send();
                                 }
                             });
+                            builder.show();
                         }
                     });
 
@@ -721,8 +722,7 @@ public class RoomClickActivity extends AppCompatActivity {
                                 ((ViewGroup) tenant3MessageEditText.getParent()).removeView(tenant3MessageEditText);
                             }
 
-                            String message = "Hey " + tenantList.get(2).name + ". Please pay your rent/bill to avoid fine. Download the EazyPGTenant App" +
-                                    "to know more. " + "Ignore if already paid."; // Add Tenant App Link
+                            String message = "Hey " + tenantList.get(2).name + "."; // Add Tenant App Link
 
                             tenant3MessageEditText.setText(message);
                             AlertDialog.Builder builder = new AlertDialog.Builder(RoomClickActivity.this);
@@ -740,6 +740,7 @@ public class RoomClickActivity extends AppCompatActivity {
                                     String sendStatus = msg91.send();
                                 }
                             });
+                            builder.show();
                         }
                     });
 

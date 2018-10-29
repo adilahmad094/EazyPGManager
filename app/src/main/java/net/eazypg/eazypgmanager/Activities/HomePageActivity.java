@@ -44,6 +44,8 @@ public class HomePageActivity extends AppCompatActivity {
     CardView complaints;
     ImageView appliances;
 
+
+
     float rating;
 
     private  int someVarA;
@@ -234,6 +236,9 @@ public class HomePageActivity extends AppCompatActivity {
         a.addCategory(Intent.CATEGORY_HOME);
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);
+
+
+
     }
 
     @Override
