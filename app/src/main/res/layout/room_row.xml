@@ -3,6 +3,7 @@
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android" >-->
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -106,7 +107,8 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/productsansbold"
-                        android:text="0"
+                        android:text=""
+                        android:visibility="gone"
                         android:textColor="#212121"
                         android:textSize="15sp" />
 
@@ -117,7 +119,8 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/productsansbold"
-                        android:text="x 0"
+                        android:text=""
+                        android:visibility="gone"
                         android:textColor="#212121"
                         android:textSize="15sp" />
 
@@ -136,6 +139,75 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearLayout15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
+
+                <TextView
+                    android:id="@+id/acTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AC"
+                    android:padding="5dp"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/productsans"
+                    android:visibility="gone"
+                    android:textColor="@android:color/black"
+                    android:background="@drawable/grey_rounded_corners"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/nonAcTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="NonAC"
+                    android:visibility="gone"
+                    android:fontFamily="@font/productsans"
+                    android:textColor="@android:color/black"
+                    android:padding="5dp"
+                    android:background="@drawable/grey_rounded_corners"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/washroomTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Washroom"
+                    android:padding="5dp"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/productsans"
+                    android:textColor="@android:color/black"
+                    android:background="@drawable/grey_rounded_corners"
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    />
+
+                <TextView
+                    android:id="@+id/balconyTextView"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:text="Balcony"
+                    android:padding="5dp"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/productsans"
+                    android:textColor="@android:color/black"
+                    android:background="@drawable/grey_rounded_corners"
+                    android:textSize="14sp"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -146,63 +218,47 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
-
-                <TextView
-                    android:id="@+id/acTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="AC"
-                    android:textSize="12sp"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/nonAcTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="NonAC"
-                    android:textSize="12sp"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/washroomTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Washroom"
-                    android:textSize="12sp"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/balconyTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Balcony"
-                    android:textSize="12sp"
-                    android:visibility="gone" />
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout15">
 
                 <TextView
                     android:id="@+id/ventilationTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ventilation"
-                    android:textSize="12sp"
-                    android:visibility="gone" />
+                    android:background="@drawable/grey_rounded_corners"
+                    android:padding="5dp"
+                    android:visibility="gone"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/productsans"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    />
 
                 <TextView
                     android:id="@+id/largeRoomTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Large room"
-                    android:textSize="12sp"
-                    android:visibility="gone" />
+                    android:padding="5dp"
+                    android:visibility="gone"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/productsans"
+                    android:textColor="@android:color/black"
+                    android:background="@drawable/grey_rounded_corners"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/cornerRoomTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Corner Room"
-                    android:textSize="12sp"
-                    android:visibility="gone" />
+                    android:padding="5dp"
+                    android:visibility="gone"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/productsans"
+                    android:textColor="@android:color/black"
+                    android:background="@drawable/grey_rounded_corners"
+                    android:textSize="14sp" />
             </LinearLayout>
         </android.support.constraint.ConstraintLayout>
 

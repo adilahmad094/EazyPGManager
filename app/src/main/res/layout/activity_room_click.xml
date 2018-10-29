@@ -92,6 +92,19 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <TextView
+                    android:id="@+id/tenant1RentTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="25dp"
+                    android:fontFamily="@font/productsansbold"
+                    android:text="Rent"
+                    android:textColor="#0D47A1"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <ImageView
                     android:id="@+id/imageView16"
                     android:layout_width="25dp"
@@ -231,14 +244,13 @@
                     app:layout_constraintStart_toStartOf="parent">
 
                     <LinearLayout
-                        android:id="@+id/call1LL"
+                        android:id="@+id/tenant1CallButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <Button
-                            android:id="@+id/tenant1CallButton"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
@@ -263,14 +275,13 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/text1LL"
+                        android:id="@+id/tenant1MessageButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <Button
-                            android:id="@+id/tenant1MessageButton"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
@@ -295,7 +306,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/fine1LL"
+                        android:id="@+id/tenant1AddFineButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -304,7 +315,6 @@
                         tools:layout_editor_absoluteY="142dp">
 
                         <Button
-                            android:id="@+id/tenant1AddFineButton"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
@@ -421,6 +431,20 @@
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tenant2RentTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="25dp"
+                    android:fontFamily="@font/productsansbold"
+                    android:text="Rent"
+                    android:textColor="#0D47A1"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
 
                 <ImageView
                     android:id="@+id/image2View16"
@@ -561,14 +585,13 @@
                     app:layout_constraintStart_toStartOf="parent">
 
                     <LinearLayout
-                        android:id="@+id/call2LL"
+                        android:id="@+id/tenant2CallButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <Button
-                            android:id="@+id/tenant2CallButton"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
@@ -593,14 +616,13 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/text2LL"
+                        android:id="@+id/tenant2MessageButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <Button
-                            android:id="@+id/tenant2MessageButton"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
@@ -625,7 +647,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/fine2LL"
+                        android:id="@+id/tenant2AddFineButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -634,7 +656,6 @@
                         tools:layout_editor_absoluteY="142dp">
 
                         <Button
-                            android:id="@+id/tenant2AddFineButton"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
@@ -754,6 +775,20 @@
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tenant3RentTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="25dp"
+                    android:fontFamily="@font/productsansbold"
+                    android:text="Rent"
+                    android:textColor="#0D47A1"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
 
                 <ImageView
                     android:id="@+id/image3View16"
@@ -894,14 +929,13 @@
                     app:layout_constraintStart_toStartOf="parent">
 
                     <LinearLayout
-                        android:id="@+id/call3LL"
+                        android:id="@+id/tenant3CallButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <Button
-                            android:id="@+id/tenant3CallButton"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
@@ -926,14 +960,13 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/text3LL"
+                        android:id="@+id/tenant3MessageButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <Button
-                            android:id="@+id/tenant3MessageButton"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
@@ -958,7 +991,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/fine3LL"
+                        android:id="@+id/tenant3AddFineButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -967,7 +1000,6 @@
                         tools:layout_editor_absoluteY="142dp">
 
                         <Button
-                            android:id="@+id/tenant3AddFineButton"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center"

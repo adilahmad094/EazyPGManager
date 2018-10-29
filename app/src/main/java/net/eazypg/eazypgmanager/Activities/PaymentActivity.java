@@ -45,6 +45,8 @@ public class PaymentActivity extends AppCompatActivity {
 
     Snackbar snackbar;
     View view;
+
+
     View emptyList;
 
     LayoutInflater inflater;
@@ -57,6 +59,15 @@ public class PaymentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_payment);
 
         Fabric.with(this, new Crashlytics());
+
+        backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PaymentActivity.this, RoomsActivity.class ));
+                finish();
+            }
+        });
 
 
         Toolbar toolbar = findViewById(R.id.paymentToolbar);

@@ -2,18 +2,17 @@ package net.eazypg.eazypgmanager.DetailsClasses;
 
 public class PG {
 
-    public String pgName, bio, location, ownername, pgContact, landmark, lastEntryTime, gender, maxOccupancy, staffCount, noOfRooms, noOfBathroom, rentDueDate, billDueDate, electricityUnitCost, email, city, pincode, gasUnitCOst, messType, messRate, personalContact, personalEmail, typeOfBills;
+    public String pgName, ownername, pgContact, landmark, lastEntryTime, maxOccupancy, staffCount, noOfRooms, noOfBathroom, rentDueDate, billDueDate, electricityUnitCost, email, city, pincode, gasUnitCOst, messType, messRate, personalContact, personalEmail, typeOfBills, tenantsPreferred;
+    public String emergencyStayRate, securityDeposit, lockingPeriod, addressLine1, addressLine2, state, pgAvailableFor, lastLateCheckIn;
+
     public boolean electricityIsChecked, wifiIsChecked, gasIsChecked;
 
-    public PG(String PGName, String bio, String location, String ownername, String PGContact, String landmark, String lastEntryTime, String gender, String maxOccupancy, String staffCount, String noOfRooms, String noOfBathroom, String rentDueDate, String billDueDate, String electricityUnitCost, String email, String city, String pincode, String gasUnitCOst, String messType, String messRate, String personalContact, String personalEmail, String typeOfBills, boolean electricityIsChecked, boolean wifiIsChecked, boolean gasIsChecked) {
+    public PG(String PGName, String ownername, String PGContact, String landmark, String lastEntryTime, String maxOccupancy, String staffCount, String noOfRooms, String noOfBathroom, String rentDueDate, String billDueDate, String electricityUnitCost, String email, String city, String pincode, String gasUnitCOst, String messType, String messRate, String personalContact, String personalEmail, String typeOfBills, boolean electricityIsChecked, boolean wifiIsChecked, boolean gasIsChecked,String emergencyStayRate, String tenantsPreferred, String securityDeposit, String lockingPeriod, String addressLine1, String addressLine2, String state, String pgAvailableFor, String lastLateCheckIn ){
         this.pgName = PGName;
-        this.bio = bio;
-        this.location = location;
         this.ownername = ownername;
         this.pgContact = PGContact;
         this.landmark = landmark;
         this.lastEntryTime = lastEntryTime;
-        this.gender = gender;
         this.maxOccupancy = maxOccupancy;
         this.staffCount = staffCount;
         this.noOfRooms = noOfRooms;
@@ -33,17 +32,24 @@ public class PG {
         this.electricityIsChecked = electricityIsChecked;
         this.wifiIsChecked = wifiIsChecked;
         this.gasIsChecked = gasIsChecked;
+        this.securityDeposit =securityDeposit;
+        this.lockingPeriod = lockingPeriod;
+        this.addressLine1 = addressLine1;
+        this.addressLine2 = addressLine2;
+
+        this.tenantsPreferred = tenantsPreferred;
+        this.emergencyStayRate = emergencyStayRate;
+        this.state = state;
+        this.pgAvailableFor = pgAvailableFor;
+        this.lastLateCheckIn = lastLateCheckIn;
     }
 
     public PG() {
         pgName = "";
-        bio = "";
-        location = "";
         ownername = "";
         pgContact = "";
         landmark = "";
         lastEntryTime = "";
-        gender = "";
         maxOccupancy = "";
         staffCount = "";
         noOfRooms = "";
@@ -51,5 +57,6 @@ public class PG {
         rentDueDate = "";
         billDueDate = "";
         electricityUnitCost = "";
+
     }
 }
