@@ -117,6 +117,7 @@ public class SignupActivity extends AppCompatActivity {
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Meals Saved").child("Upcoming Meal").child("No").setValue("0");
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Meals Saved").child("Upcoming Meal").child("Maybe").setValue("0");
 
+/*
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Feedback").child("Food").setValue("0");
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Feedback").child("Comfort").setValue("0");
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Feedback").child("Management").setValue("0");
@@ -124,6 +125,7 @@ public class SignupActivity extends AppCompatActivity {
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Feedback").child("Room").setValue("0");
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Feedback").child("Others").setValue("0");
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Feedback").child("Final Rating").setValue("0");
+*/
 
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("email").setValue(etUserEmail.getText().toString());
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("pgContact").setValue(etUserContact.getText().toString());

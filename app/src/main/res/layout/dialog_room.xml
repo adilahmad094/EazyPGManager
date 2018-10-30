@@ -29,7 +29,7 @@
             android:fontFamily="@font/productsansbold"
             android:text="One Bed"
             android:textColor="#000000"
-            android:textSize="16dp"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent" />
 
         <RadioButton
@@ -41,7 +41,7 @@
             android:fontFamily="@font/productsansbold"
             android:text="Two Bed"
             android:textColor="#000000"
-            android:textSize="16dp"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/oneBedCheckBox" />
 
@@ -54,7 +54,7 @@
             android:fontFamily="@font/productsansbold"
             android:text="Three Bed"
             android:textColor="#000000"
-            android:textSize="16dp"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/twoBedCheckBox" />
 
@@ -71,6 +71,7 @@
         android:fontFamily="@font/productsans"
         android:hint="Room No."
         android:inputType="number"
+        android:maxLength="4"
         android:paddingStart="16dp"
         android:textColor="#000000"
         android:textColorHint="#424242"
@@ -88,6 +89,7 @@
         android:background="@drawable/text_bg"
         android:fontFamily="@font/productsans"
         android:hint="Floor"
+        android:maxLength="2"
         android:inputType="number"
         android:paddingStart="16dp"
         android:textColor="#000000"

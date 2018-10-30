@@ -83,7 +83,7 @@ public class BillCollectionFragment extends Fragment {
                     gasUnpaidButton.setVisibility(View.VISIBLE);
                 }
 
-                if (typeOfBills.contains("Wifi")) {
+                if (typeOfBills.contains("WiFi")) {
                     wifiUnpaidButton.setVisibility(View.VISIBLE);
                 }
 

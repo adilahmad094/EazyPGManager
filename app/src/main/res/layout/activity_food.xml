@@ -48,12 +48,16 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:layout_height="match_parent">
 
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView"
                 android:layout_width="fill_parent"
                 android:layout_height="230dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:layout_marginTop="8dp"
                 android:scrollbars="none"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -63,6 +67,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal">
 

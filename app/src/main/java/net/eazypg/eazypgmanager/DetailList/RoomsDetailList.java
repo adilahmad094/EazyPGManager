@@ -40,7 +40,7 @@ public class RoomsDetailList extends ArrayAdapter<String> {
     private List<TenantDetails> tenantList = new ArrayList<>();
     private List<String> tagList = new ArrayList<>();
 
-    TextView acTextView, nonAcTextView, washroomTextView, balconyTextView, ventilationTextView, largeRoomTextView, cornerRoomTextView;
+    TextView floorsTextView, acTextView, nonAcTextView, washroomTextView, balconyTextView, ventilationTextView, largeRoomTextView, cornerRoomTextView;
 
 
 
@@ -94,42 +94,55 @@ public class RoomsDetailList extends ArrayAdapter<String> {
         ventilationTextView = listViewItemRoom.findViewById(R.id.ventilationTextView);
         largeRoomTextView = listViewItemRoom.findViewById(R.id.largeRoomTextView);
         cornerRoomTextView = listViewItemRoom.findViewById(R.id.cornerRoomTextView);
+        floorsTextView = listViewItemRoom.findViewById(R.id.floorsTextView);
+
+        databaseReference2 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Rooms/" + roomList.get(position));
+        databaseReference2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String floors = dataSnapshot.child("Floors").getValue(String.class);
+
+                floorsTextView.setText(floors);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
 
         tagString = tagList.get(position);
 
-                if(tagString.contains("AC"))
-                {
-                    acTextView.setVisibility(View.VISIBLE);
-                }
-                else
-                {
-                    nonAcTextView.setVisibility(View.VISIBLE);
-                }
+        if(tagString != null) {
+            if (tagString.contains("AC")) {
+                acTextView.setVisibility(View.VISIBLE);
+            } else {
+                nonAcTextView.setVisibility(View.VISIBLE);
+            }
 
-                if(tagString.contains("Washroom"))
-                {
-                    washroomTextView.setVisibility(View.VISIBLE);
-                }
+            if (tagString.contains("Washroom")) {
+                washroomTextView.setVisibility(View.VISIBLE);
+            }
 
-                if(tagString.contains("Balcony"))
-                {
-                    balconyTextView.setVisibility(View.VISIBLE);
-                }
+            if (tagString.contains("Balcony")) {
+                balconyTextView.setVisibility(View.VISIBLE);
+            }
 
-                if(tagString.contains("Ventilation"))
-                {
-                    ventilationTextView.setVisibility(View.VISIBLE);
-                }
-                if(tagString.contains("Large Room"))
-                {
-                    largeRoomTextView.setVisibility(View.VISIBLE);
-                }
-                if(tagString.contains("Corner Room"))
-                {
-                    cornerRoomTextView.setVisibility(View.VISIBLE);
-                }
+            if (tagString.contains("Ventilation")) {
+                ventilationTextView.setVisibility(View.VISIBLE);
+            }
+            if (tagString.contains("Large Room")) {
+                largeRoomTextView.setVisibility(View.VISIBLE);
+            }
+            if (tagString.contains("Corner Room")) {
+                cornerRoomTextView.setVisibility(View.VISIBLE);
+            }
 
-        rentTextView.setVisibility(View.VISIBLE);
+        }
+        //rentTextView.setVisibility(View.VISIBLE);
 
         applianceButton = listViewItemRoom.findViewById(R.id.appliancesButton);
 
