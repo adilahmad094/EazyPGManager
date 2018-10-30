@@ -728,7 +728,7 @@ public class MyPGActivity extends AppCompatActivity {
                 editButton.show();
 
 
-                pgNameTIL.setHintAnimationEnabled(false);
+                /*pgNameTIL.setHintAnimationEnabled(false);
                 landmarkTIL.setHintAnimationEnabled(false);
                 address1TIL.setHintAnimationEnabled(false);
                 pgEmailTIL.setHintAnimationEnabled(false);
@@ -789,7 +789,11 @@ public class MyPGActivity extends AppCompatActivity {
                 personalEmailTIL.setEnabled(false);
                 emergencyStayRateTIL.setEnabled(false);
                 securityDepositTIL.setEnabled(false);
-                lockingPeriodTIL.setEnabled(false);
+                lockingPeriodTIL.setEnabled(false);*/
+
+
+
+
 
             }
         });
@@ -873,8 +877,12 @@ public class MyPGActivity extends AppCompatActivity {
             public boolean onLongClick(View v) {
 
                 Toast.makeText(MyPGActivity.this, "Save", Toast.LENGTH_SHORT).show();
+
+
+
                 return true;
             }
+
         });
     }
 
@@ -939,6 +947,9 @@ public class MyPGActivity extends AppCompatActivity {
                 saveButton.postDelayed(new Runnable() {
                     public void run() {
                         saveButton.show();
+                        startActivity(new Intent(MyPGActivity.this, HomePageActivity.class));
+                        finish();
+
                     }
                 }, 1800);
 
@@ -971,9 +982,8 @@ public class MyPGActivity extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                       //addingPg();
-                        startActivity(new Intent(MyPGActivity.this, HomePageActivity.class));
-                        finish();
+                       addingPg();
+
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {

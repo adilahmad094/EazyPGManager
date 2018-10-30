@@ -44,7 +44,7 @@ public class SignupActivity extends AppCompatActivity {
 
     TextView signupToLogin;
 
-    private EditText etUserEmail,etUserLocality,etUserContact,etUserName;
+    private EditText etUserEmail,etUserPinCode,etUserContact,etUserName;
     private ImageView btnSignUp;
 
     LocationManager locationManager;
@@ -69,7 +69,7 @@ public class SignupActivity extends AppCompatActivity {
 
         btnSignUp = findViewById(R.id.btnSignUp);
         etUserEmail = findViewById(R.id.emailEditText);       //Test
-        etUserLocality = findViewById(R.id.localityEditText); //Test
+        etUserPinCode = findViewById(R.id.localityEditText); //Test
         etUserContact = findViewById(R.id.contactEditText);       //Test
         etUserName = findViewById(R.id.usernameEditText);      //Test
         signupToLogin = findViewById(R.id.signupToLoginTextView);
@@ -84,7 +84,7 @@ public class SignupActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 userEmail = etUserEmail.getText().toString();
-                userLocality = etUserLocality.getText().toString();
+                userLocality = etUserPinCode.getText().toString();
                 userContact = etUserContact.getText().toString();
                 userName = etUserName.getText().toString();
 
@@ -129,7 +129,7 @@ public class SignupActivity extends AppCompatActivity {
 
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("email").setValue(etUserEmail.getText().toString());
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("pgContact").setValue(etUserContact.getText().toString());
-                                databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("landmark").setValue(etUserLocality.getText().toString());
+                                databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("pinCode").setValue(etUserPinCode.getText().toString());
 
                                 String staffId = databaseReference.push().getKey();
                                 StaffDetails staffDetails = new StaffDetails(staffId, "", etUserContact.getText().toString(), "Owner Name", "Owner", "");
@@ -159,7 +159,7 @@ public class SignupActivity extends AppCompatActivity {
                                                     etUserEmail.setText("");
                                                     etUserContact.setText("");
                                                     etUserName.setText("");
-                                                    etUserLocality.setText("");
+                                                    etUserPinCode.setText("");
                                                     etUserName.requestFocus(1);
 
                                                     mFirebaseAuth.signOut();
@@ -206,7 +206,7 @@ public class SignupActivity extends AppCompatActivity {
                         etUserEmail.setError("Field cannot be empty!");
                     }
                     if (userLocality.isEmpty()){
-                        etUserLocality.setError("Field cannot be empty!");
+                        etUserPinCode.setError("Field cannot be empty!");
                     }
                     if (userContact.isEmpty()){
                         etUserContact.setError("Field cannot be empty!");
