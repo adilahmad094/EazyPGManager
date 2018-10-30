@@ -129,7 +129,7 @@ public class SignupActivity extends AppCompatActivity {
 
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("email").setValue(etUserEmail.getText().toString());
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("pgContact").setValue(etUserContact.getText().toString());
-                                databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("pinCode").setValue(etUserPinCode.getText().toString());
+                                databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("pincode").setValue(etUserPinCode.getText().toString());
 
                                 String staffId = databaseReference.push().getKey();
                                 StaffDetails staffDetails = new StaffDetails(staffId, "", etUserContact.getText().toString(), "Owner Name", "Owner", "");
