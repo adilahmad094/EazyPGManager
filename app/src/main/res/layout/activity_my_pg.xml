@@ -15,6 +15,7 @@ android:layout_height="match_parent">
     android:layout_marginTop="24dp"
     android:fontFamily="@font/productsansbold"
     android:text="Your PG"
+    android:focusable="true"
     android:textColor="@android:color/black"
     android:textSize="25dp"
     app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +35,8 @@ android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -1301,7 +1304,7 @@ android:layout_height="match_parent">
                     android:layout_marginBottom="3dp"
                     android:background="@drawable/text_bg_blue"
                     android:fontFamily="@font/productsans"
-                    android:hint="Locking Period"
+                    android:hint="Lock-in Period"
                     android:inputType="numberDecimal"
                     android:maxLength="5"
                     android:text=""

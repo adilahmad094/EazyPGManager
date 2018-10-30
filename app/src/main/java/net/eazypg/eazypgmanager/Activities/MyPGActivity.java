@@ -117,6 +117,7 @@ public class MyPGActivity extends AppCompatActivity {
     TextInputEditText addressLine1ET;
     TextInputEditText addressLine2ET;
     TextInputEditText stateEditText;
+    TextInputEditText pgEmailEditText;
 
     LinearLayout lastEntryTimeLinearLayout;
 
@@ -276,6 +277,7 @@ public class MyPGActivity extends AppCompatActivity {
         addressLine1ET = findViewById(R.id.addressLine1EditText);
         addressLine2ET = findViewById(R.id.addressLine2EditText);
         stateEditText = findViewById(R.id.stateEditText);
+        pgEmailEditText = findViewById(R.id.pgEmailEditText);
 
         pgAvailableForLinearLayout = findViewById(R.id.LL2);
 
@@ -673,10 +675,12 @@ public class MyPGActivity extends AppCompatActivity {
                 String state1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("state").getValue(String.class);
                 String pgAvailableFor1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("pgAvailableFor").getValue(String.class);
                 String lastLateCheckIn1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("lastLateCheckIn").getValue(String.class);
+                String email1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("email").getValue(String.class);
 
                 pgName.setText(name1);
                 landmark.setText(landmark1);
                 lastEntryTimeTextView.setText(lastEntryTime1);
+
                 maxOccupancy.setText(maxOccupancy1);
                 bathroom.setText(bathroom1);
                 room.setText(room1);
@@ -696,6 +700,8 @@ public class MyPGActivity extends AppCompatActivity {
                 stateEditText.setText(state1);
                 pgAvailableForTextView.setText(pgAvailableFor1);
                 lastlateCheckInTime.setText(lastLateCheckIn1);
+                pgEmailEditText.setText(email1);
+
 
                 city.setText(City);
                 pincode.setText(Pincode);
@@ -965,7 +971,7 @@ public class MyPGActivity extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        addingPg();
+                       //addingPg();
                         startActivity(new Intent(MyPGActivity.this, HomePageActivity.class));
                         finish();
                     }

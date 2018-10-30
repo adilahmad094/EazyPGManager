@@ -151,6 +151,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
 
                 <TextView
+                    android:id="@+id/floorsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/productsans"
+                    android:textColor="@android:color/black"
+                    android:background="@drawable/grey_rounded_corners"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
                     android:id="@+id/acTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
