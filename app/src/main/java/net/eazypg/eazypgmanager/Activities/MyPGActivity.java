@@ -429,7 +429,8 @@ public class MyPGActivity extends AppCompatActivity {
                             }
 
                             if (ActivityCompat.checkSelfPermission(MyPGActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MyPGActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 0, listener);
+                                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 500, 0, listener);
+                                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 0, listener);
 
                             }
 
@@ -923,6 +924,7 @@ public class MyPGActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
 
                 progressDialog.dismiss();
+
                 snackbar = Snackbar.make(view, "Saved", Snackbar.LENGTH_SHORT);
                 View snackbarView = snackbar.getView();
                 snackbarView.setBackgroundColor(ContextCompat.getColor(MyPGActivity.this, R.color.DarkGreen));

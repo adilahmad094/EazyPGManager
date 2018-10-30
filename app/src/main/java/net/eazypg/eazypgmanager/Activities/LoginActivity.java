@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                                         String refreshedToken = instanceIdResult.getToken();
 
                                         databaseReference = firebaseDatabase.getReference("PG/" + mFirebaseAuth.getCurrentUser().getUid());
-                                        databaseReference.child("Token").child("tokenId").setValue(refreshedToken);
+                                        databaseReference.child("Token").child(refreshedToken).setValue(Build.MODEL);
 
                                     }
                                 });

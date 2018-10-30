@@ -42,8 +42,6 @@ public class RoomsDetailList extends ArrayAdapter<String> {
 
     TextView acTextView, nonAcTextView, washroomTextView, balconyTextView, ventilationTextView, largeRoomTextView, cornerRoomTextView;
 
-
-
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     public static final String EXTRA_MESSAGE2 = "com.example.myfirstapp.MESSAGE2";
     public static final String EXTRA_MESSAGE3 = "com.example.myfirstapp.MESSAGE3";

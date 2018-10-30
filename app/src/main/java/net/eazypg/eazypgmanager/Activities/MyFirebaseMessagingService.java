@@ -30,6 +30,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private NotificationManager notifManager;
     private NotificationChannel mChannel;
 
+    public static final String TITLE = "";
+    public static final String BODY = "";
+
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
     FirebaseUser firebaseUser;
@@ -52,7 +55,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         if (firebaseUser != null) {
 
             databaseReference = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
-            databaseReference.child("Token").child("tokenId").setValue(refreshedToken);
+            databaseReference.child("Token").child(refreshedToken).setValue(Build.MODEL);
 
         }
     }
@@ -79,6 +82,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
 
         intent = new Intent(clickAction);
+        intent.putExtra(TITLE, title);
+        intent.putExtra(BODY, body);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 

@@ -132,7 +132,13 @@
         <activity android:name=".Activities.AddBillActivity" />
         <activity android:name=".Activities.AddBillRoomActivity" />
         <activity android:name=".Activities.FineRentBillActivity" />
-        <activity android:name=".Activities.FeedbackActivity" />
+        <activity android:name=".Activities.FeedbackActivity" >
+            <intent-filter>
+                <action android:name="ManagerFeedbackActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Activities.RoomClickActivity" />
         <activity android:name=".Activities.UnpaidBillActivity"></activity>
     </application>

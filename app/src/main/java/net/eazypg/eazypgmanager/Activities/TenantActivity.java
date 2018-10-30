@@ -415,65 +415,7 @@ public class TenantActivity extends AppCompatActivity {
 
                                     }
 
-                                    if (tenantNumber < roomTypeNumber) {
 
-                                        MSG91 msg91 = new MSG91("163776AiifTBEVMZl5aae0bce");
-                                        msg91.composeMessage("EazyPG", "Hi " + name.getText().toString() + ". Welcome to " + pgName + ". Get you EazyPG App. Follow the link: https://goo.gl/M3jEhQ");
-                                        msg91.to(phone.getText().toString());
-                                        String sendStatus = msg91.send();
-
-                                        Log.i("MyMSGStatus", sendStatus);
-
-                                        final View viewDialog = inflater.inflate(R.layout.dialog_qr, null);
-                                        qrImage = viewDialog.findViewById(R.id.qrImageView);
-
-                                        QRCodeWriter writer = new QRCodeWriter();
-                                        try {
-
-                                            String content = FirebaseAuth.getInstance().getCurrentUser().getUid() + "-" +
-                                                    name.getText().toString().trim() + "-" + phone.getText().toString().trim() + "-" + email.getText().toString().trim() + "-" +
-                                                    room.getText().toString().trim() + "-" + dateOfJoining.getText().toString() + "-" +
-                                                    rentAmount.getText().toString().trim();
-
-                                            BitMatrix bitMatrix = writer.encode(content , BarcodeFormat.QR_CODE, 512, 512);
-                                            int width = bitMatrix.getWidth();
-                                            int height = bitMatrix.getHeight();
-                                            Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-                                            for (int x = 0; x < width; x++) {
-                                                for (int y = 0; y < height; y++) {
-                                                    bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
-                                                }
-                                            }
-                                            qrImage.setImageBitmap(bmp);
-
-                                            progressDialog.dismiss();
-
-                                            final AlertDialog.Builder builder1 = new AlertDialog.Builder(TenantActivity.this);
-                                            builder1.setTitle("Scan to connect");
-                                            builder1.setMessage("This QR Code is shown only once.");
-                                            builder1.setView(viewDialog);
-                                            builder1.setCancelable(false);
-                                            builder1.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
-
-                                                    dialog.cancel();
-                                                    dialog.dismiss();
-
-                                                }
-                                            });
-                                            builder1.show();
-
-                                        } catch (WriterException e) {
-                                            e.printStackTrace();
-                                        }
-
-                                    }
-                                    else {
-
-                                        Toast.makeText(TenantActivity.this, "Room is full", Toast.LENGTH_SHORT).show();
-
-                                    }
 
                                 }
 
@@ -482,6 +424,65 @@ public class TenantActivity extends AppCompatActivity {
 
                                 }
                             });
+                                if (tenantNumber < roomTypeNumber) {
+
+                                MSG91 msg91 = new MSG91("163776AiifTBEVMZl5aae0bce");
+                                msg91.composeMessage("EazyPG", "Hi " + name.getText().toString() + ". Welcome to " + pgName + ". Get you EazyPG App. Follow the link: https://goo.gl/M3jEhQ");
+                                msg91.to(phone.getText().toString());
+                                String sendStatus = msg91.send();
+
+                                Log.i("MyMSGStatus", sendStatus);
+
+                                final View viewDialog = inflater.inflate(R.layout.dialog_qr, null);
+                                qrImage = viewDialog.findViewById(R.id.qrImageView);
+
+                                QRCodeWriter writer = new QRCodeWriter();
+                                try {
+
+                                    String content = FirebaseAuth.getInstance().getCurrentUser().getUid() + "-" +
+                                            name.getText().toString().trim() + "-" + phone.getText().toString().trim() + "-" + email.getText().toString().trim() + "-" +
+                                            room.getText().toString().trim() + "-" + dateOfJoining.getText().toString() + "-" +
+                                            rentAmount.getText().toString().trim();
+
+                                    BitMatrix bitMatrix = writer.encode(content , BarcodeFormat.QR_CODE, 512, 512);
+                                    int width = bitMatrix.getWidth();
+                                    int height = bitMatrix.getHeight();
+                                    Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
+                                    for (int x = 0; x < width; x++) {
+                                        for (int y = 0; y < height; y++) {
+                                            bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
+                                        }
+                                    }
+                                    qrImage.setImageBitmap(bmp);
+
+                                    progressDialog.dismiss();
+
+                                    final AlertDialog.Builder builder1 = new AlertDialog.Builder(TenantActivity.this);
+                                    builder1.setTitle("Scan to connect");
+                                    builder1.setMessage("This QR Code is shown only once.");
+                                    builder1.setView(viewDialog);
+                                    builder1.setCancelable(false);
+                                    builder1.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                            dialog.cancel();
+                                            dialog.dismiss();
+
+                                        }
+                                    });
+                                    builder1.show();
+
+                                } catch (WriterException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                            else {
+
+                                Toast.makeText(TenantActivity.this, "Room is full", Toast.LENGTH_SHORT).show();
+
+                            }
 
 
                         }

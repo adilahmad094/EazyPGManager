@@ -27,6 +27,9 @@ import com.google.firebase.database.ValueEventListener;
 import net.eazypg.eazypgmanager.Adapter.MyAdapter;
 import net.eazypg.eazypgmanager.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.fabric.sdk.android.Fabric;
 
 public class HomePageActivity extends AppCompatActivity {
@@ -44,8 +47,6 @@ public class HomePageActivity extends AppCompatActivity {
     CardView complaints;
     ImageView appliances;
 
-
-
     float rating;
 
     private  int someVarA;
@@ -62,6 +63,9 @@ public class HomePageActivity extends AppCompatActivity {
 
     RatingBar overallRating;
 
+    List<Float> ratings;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +78,8 @@ public class HomePageActivity extends AppCompatActivity {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.rgb(19,65,62));
         }
+
+        ratings = new ArrayList<>();
 
         checkConnection();
 
@@ -115,14 +121,28 @@ public class HomePageActivity extends AppCompatActivity {
             }
         });
 
-        databaseReference2.addValueEventListener(new ValueEventListener() {
+        databaseReference2.child("Ratings").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if (dataSnapshot.child("Final Rating").getValue(String.class) != null) {
-                    rating = Float.parseFloat(dataSnapshot.child("Final Rating").getValue(String.class));
-                    overallRating.setRating(rating);
+                ratings.clear();
+
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+
+                    ratings.add(snapshot.getValue(Float.class));
                 }
+
+                float sum = 0;
+
+                for (float f : ratings) {
+
+                    sum += f;
+
+                }
+
+                float finalRating = sum/ratings.size();
+
+                overallRating.setRating(finalRating);
 
             }
 
