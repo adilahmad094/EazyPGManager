@@ -126,7 +126,10 @@ public class SignupActivity extends AppCompatActivity {
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("pgContact").setValue(etUserContact.getText().toString());
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("pincode").setValue(etUserPinCode.getText().toString());
 
-                                databaseReference.child("EazyPGIDs").child(getEazyPGID()).setValue(mFirebaseAuth.getCurrentUser().getUid());
+                                String eazypgId = getEazyPGID();
+
+                                databaseReference.child("EazyPGIDs").child(eazypgId).setValue(mFirebaseAuth.getCurrentUser().getUid());
+                                databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("EazyPGID").setValue(eazypgId);
 
                                 String staffId = databaseReference.push().getKey();
                                 StaffDetails staffDetails = new StaffDetails(staffId, "", etUserContact.getText().toString(), "Owner Name", "Owner", "");
