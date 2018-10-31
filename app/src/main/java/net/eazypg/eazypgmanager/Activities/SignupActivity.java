@@ -21,8 +21,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
@@ -41,6 +44,8 @@ public class SignupActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference, databaseReference1;
+
+    String id;
 
     TextView signupToLogin;
 
@@ -117,19 +122,11 @@ public class SignupActivity extends AppCompatActivity {
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Meals Saved").child("Upcoming Meal").child("No").setValue("0");
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Meals Saved").child("Upcoming Meal").child("Maybe").setValue("0");
 
-/*
-                                databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Feedback").child("Food").setValue("0");
-                                databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Feedback").child("Comfort").setValue("0");
-                                databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Feedback").child("Management").setValue("0");
-                                databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Feedback").child("Hygiene").setValue("0");
-                                databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Feedback").child("Room").setValue("0");
-                                databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Feedback").child("Others").setValue("0");
-                                databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Feedback").child("Final Rating").setValue("0");
-*/
-
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("email").setValue(etUserEmail.getText().toString());
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("pgContact").setValue(etUserContact.getText().toString());
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("pincode").setValue(etUserPinCode.getText().toString());
+
+                                databaseReference.child("EazyPGIDs").child(getEazyPGID()).setValue(mFirebaseAuth.getCurrentUser().getUid());
 
                                 String staffId = databaseReference.push().getKey();
                                 StaffDetails staffDetails = new StaffDetails(staffId, "", etUserContact.getText().toString(), "Owner Name", "Owner", "");
@@ -249,6 +246,46 @@ public class SignupActivity extends AppCompatActivity {
 
         }
         return password.toString();
+    }
+
+    public String getEazyPGID() {
+
+        id = "EZ";
+
+        id += etUserPinCode.getText().toString();
+
+        databaseReference.child("PINCODE").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (!dataSnapshot.hasChild(etUserPinCode.getText().toString())) {
+
+                    databaseReference.child(etUserPinCode.getText().toString()).setValue("01");
+
+                    id += "01";
+
+                }
+                else {
+
+                    int count = Integer.parseInt(dataSnapshot.child(etUserPinCode.getText().toString()).getValue(String.class));
+
+                    id += dataSnapshot.child(etUserPinCode.getText().toString()).getValue(String.class);
+
+                    ++count;
+
+                    databaseReference.child(etUserPinCode.getText().toString()).setValue(Integer.toString(count));
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        return id;
     }
 
 }

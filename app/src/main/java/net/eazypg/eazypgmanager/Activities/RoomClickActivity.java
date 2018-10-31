@@ -207,7 +207,7 @@ public class RoomClickActivity extends AppCompatActivity {
                                 ((ViewGroup) tenant1MessageEditText.getParent()).removeView(tenant1MessageEditText);
                             }
 
-                            String message = "Hey " + tenantList.get(0).name + "."; //TODO: Add Tenant App Link
+                            String message = "Hey " + tenantList.get(0).name + ".";
 
                             tenant1MessageEditText.setText(message);
                             AlertDialog.Builder builder = new AlertDialog.Builder(RoomClickActivity.this);
