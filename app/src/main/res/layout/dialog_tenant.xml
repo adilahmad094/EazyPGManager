@@ -76,63 +76,34 @@
 
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
-        android:clipChildren="false"
-        android:textColorHint="#757575"
-        app:hintTextAppearance="@style/TextLabel2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
-
-        <EditText
-            android:id="@+id/tenantEmailEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/dialog_corners"
-            android:ems="10"
-            android:fontFamily="@font/productsans"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:paddingStart="10dp"
-            android:translationY="4dp" />
-
-    </android.support.design.widget.TextInputLayout>
-
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textInputLayout13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:textColorHint="#757575"
         android:layout_marginTop="8dp"
         android:clipChildren="false"
+        android:textColorHint="#757575"
         app:hintTextAppearance="@style/TextLabel"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
 
         <EditText
             android:id="@+id/tenantRoomEditText"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="16dp"
             android:layout_gravity="bottom"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/dialog_corners"
             android:ems="10"
-            android:textSize="18dp"
             android:fontFamily="@font/productsans"
             android:hint="Room No."
             android:inputType="text"
             android:paddingStart="10dp"
+            android:textSize="18dp"
             android:translationY="4dp" />
 
     </android.support.design.widget.TextInputLayout>
