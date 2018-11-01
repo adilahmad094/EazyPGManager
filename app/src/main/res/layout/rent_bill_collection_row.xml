@@ -26,6 +26,7 @@
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="16dp"
                 android:text="Tenant Name"
+                android:fontFamily="@font/productsansbold"
                 android:textColor="#1A237E"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -73,69 +74,114 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="12dp"
-                android:focusable="true"
-                android:clickable="true"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/textView7"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView7">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent">
 
-                <Button
-                    android:id="@+id/messageButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_weight="1"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:focusable="true"
-                    android:layout_marginStart="5dp"
-                    android:clickable="true"
-                    android:text="Message"
-                    android:textColor="#1A237E"
-                    android:background="@drawable/text_bg_blue"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/callButton"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:id="@+id/callLinearLayout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Call"
-                    android:focusable="true"
-                    android:layout_marginStart="10dp"
-                    android:clickable="true"
-                    android:textColor="@color/DarkGreen"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:background="@drawable/text_bg"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/fineButton"
-                    android:layout_width="0dp"
+                    <Button
+                        android:id="@+id/callButton"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/ic_call_blue_24dp"
+                        android:clickable="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tenant1NameTextView"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/productsansbold"
+                        android:text="Call"
+                        android:textColor="#1565C0"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/textLinearLayout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:layout_marginEnd="5dp"
-                    android:textColor="@color/red"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:layout_marginTop="16dp"
-                    android:text="Add fine"
+                    android:orientation="vertical">
 
-                    android:background="@drawable/text_bg"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/messageButton"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.555" />
+                    <Button
+                        android:id="@+id/messageButton"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/ic_chat_blue_24dp"
+                        android:clickable="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/tenant1AddFineButton"
+                        app:layout_constraintTop_toBottomOf="@+id/tenant1RentPaidOrUnpaidTextView" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/productsansbold"
+                        android:text="Text"
+                        android:textColor="#1565C0"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fineLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    tools:layout_editor_absoluteX="200dp"
+                    tools:layout_editor_absoluteY="142dp">
+
+                    <Button
+                        android:id="@+id/fineButton"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/fine_blue"
+                        android:clickable="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/tenant1CallButton"
+                        app:layout_constraintTop_toBottomOf="@+id/tenant1NameTextView"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/productsansbold"
+                        android:text="Add Fine"
+                        android:textColor="#1565C0"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
             </LinearLayout>
         </android.support.constraint.ConstraintLayout>
 

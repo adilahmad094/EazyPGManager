@@ -77,10 +77,10 @@
                 android:id="@+id/billImageView"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="52dp"
                 android:layout_marginBottom="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/paidToTextView" />
+                app:layout_constraintEnd_toEndOf="@+id/timestampTextView"
+                app:layout_constraintStart_toStartOf="@+id/timestampTextView" />
 
             <TextView
                 android:id="@+id/categoryTextView"
@@ -88,7 +88,7 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="6dp"
-                android:fontFamily="@font/productsans"
+                android:fontFamily="@font/productsansmedium"
                 android:text="Category"
                 android:textColor="#616161"
                 android:textSize="14sp"
@@ -102,6 +102,7 @@
                 android:layout_marginEnd="16dp"
                 android:text="2:00 PM"
                 android:fontFamily="@font/productsansbold"
+                android:textColor="#01579B"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/imageView30" />

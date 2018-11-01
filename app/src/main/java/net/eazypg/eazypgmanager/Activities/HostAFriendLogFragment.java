@@ -77,7 +77,7 @@ public class HostAFriendLogFragment extends Fragment {
                     guestDetailsList.add(guestDetails);
                 }
 
-                hostFriendDetailList = new HostFriendDetailList(guestDetailsList);
+                hostFriendDetailList = new HostFriendDetailList(guestDetailsList , getContext());
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -90,9 +90,6 @@ public class HostAFriendLogFragment extends Fragment {
 
             }
         });
-
-
-
 
         return view;
     }
