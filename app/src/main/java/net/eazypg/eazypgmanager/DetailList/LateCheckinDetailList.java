@@ -1,5 +1,6 @@
 package net.eazypg.eazypgmanager.DetailList;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import net.eazypg.eazypgmanager.DetailsClasses.LateCheckInDetails;
 import net.eazypg.eazypgmanager.R;
@@ -45,8 +47,17 @@ public class LateCheckinDetailList extends RecyclerView.Adapter<LateCheckinDetai
         holder.callButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + lateCheckInDetails.tenantPhone));
-                context.startActivity(intent);
+                try {
+                    Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                    callIntent.setData(Uri.parse("tel:"+lateCheckInDetails.tenantPhone));
+                    context.startActivity(callIntent);
+                }
+                catch (ActivityNotFoundException activityException) {
+                    Toast.makeText(context, "Call failed", Toast.LENGTH_SHORT).show();
+                }
+                catch (SecurityException e) {
+                    Toast.makeText(context, "Call failed!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

@@ -6,7 +6,7 @@ android {
         config {
             keyAlias 'key0'
             keyPassword '@asdf#fdsa51'
-            storeFile file('/root/App Certificates/Manager.jks')
+            storeFile file('/home/yash/Desktop/Important/Manager.jks')
             storePassword '@asdf#fdsa51'
         }
     }
