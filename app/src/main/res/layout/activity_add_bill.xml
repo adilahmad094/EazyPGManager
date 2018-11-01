@@ -17,21 +17,19 @@
 
         <ImageView
             android:id="@+id/backButton"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
             android:clickable="true"
             android:focusable="true"
+            android:padding="11dp"
             android:foreground="@drawable/ripple"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="6dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginTop="8dp"
             android:src="@drawable/ic_arrow_back_black_24dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="55dp"
             android:fontFamily="@font/productsansmedium"
             android:text="Add new Bill"
             android:layout_gravity="center_vertical"

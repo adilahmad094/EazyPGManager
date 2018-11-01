@@ -16,12 +16,10 @@
 
         <ImageView
             android:id="@+id/backButton"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="8dp"
+            android:padding="11dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="@drawable/ripple"

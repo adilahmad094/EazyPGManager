@@ -71,6 +71,8 @@ public class ComplaintActivity extends AppCompatActivity {
 
     DateFormat dateFormat;
 
+    CardView emptyView;
+
     SharedPreferences sharedPreferences;
 
     ImageView backButton;
@@ -101,6 +103,8 @@ public class ComplaintActivity extends AppCompatActivity {
         firebaseUser = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
+        emptyView = findViewById(R.id.noComplaint);
+
         complaintDetailsList = new ArrayList<>();
 
         bedroomComplaint = findViewById(R.id.bedroomComplaint);
@@ -111,6 +115,7 @@ public class ComplaintActivity extends AppCompatActivity {
         firstComplaintCard = findViewById(R.id.firstComplaintCard);
 
         backButton = findViewById(R.id.backButton);
+
 
         sharedPreferences = getSharedPreferences(complaintPreference, Context.MODE_PRIVATE);
         prevBedroomCount = sharedPreferences.getLong("BedroomCount", 0);
@@ -344,6 +349,18 @@ public class ComplaintActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        if(complaintDetailsList.size() == 0)
+        {
+            recyclerView.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
+        }
+
     }
 
     @Override

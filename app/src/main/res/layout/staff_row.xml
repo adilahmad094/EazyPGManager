@@ -24,7 +24,6 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/productsansbold"
             android:text="First"
-            android:textAllCaps="true"
             android:textColor="#01579B"
             android:textColorHint="#616161"
             android:textSize="22sp"

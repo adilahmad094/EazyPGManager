@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.katepratik.msg91api.MSG91;
@@ -104,7 +105,7 @@ public class BillCollectionDetailList extends RecyclerView.Adapter<BillCollectio
 
     public class MyHolder extends RecyclerView.ViewHolder{
         public TextView tenantNameTextView, tenantRoomTextView, rentAmountTextView;
-        public Button messageButton, phoneButton, addFineButton;
+        public LinearLayout messageButton, phoneButton, addFineButton;
 
         public MyHolder(View itemView){
             super(itemView);
@@ -112,10 +113,9 @@ public class BillCollectionDetailList extends RecyclerView.Adapter<BillCollectio
             tenantNameTextView = itemView.findViewById(R.id.tenantNameTextView);
             tenantRoomTextView = itemView.findViewById(R.id.roomNumberTextView);
             rentAmountTextView = itemView.findViewById(R.id.rentAmountTextView);
-
-            messageButton = itemView.findViewById(R.id.messageButton);
-            phoneButton = itemView.findViewById(R.id.callButton);
-            addFineButton = itemView.findViewById(R.id.fineButton);
+            messageButton = itemView.findViewById(R.id.textLinearLayout);
+            phoneButton = itemView.findViewById(R.id.callLinearLayout);
+            addFineButton = itemView.findViewById(R.id.fineLinearLayout);
         }
     }
 }
