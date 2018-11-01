@@ -1016,6 +1016,7 @@ android:layout_height="match_parent">
                 android.support.design:hintAnimationEnabled="true"
                 android.support.design:hintEnabled="true"
                 android:layout_weight="1"
+                android:hint="Gas Unit Cost"
                 android:clipChildren="false"
                 app:hintTextAppearance="@style/TextLabel4"
                 app:layout_constraintStart_toStartOf="parent"
