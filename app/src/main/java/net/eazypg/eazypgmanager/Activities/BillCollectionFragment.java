@@ -75,18 +75,21 @@ public class BillCollectionFragment extends Fragment {
 
                 typeOfBills = dataSnapshot.child("typeOfBills").getValue(String.class);
 
-                if (typeOfBills.contains("Electricity")){
-                    electricityUnpaidButton.setVisibility(View.VISIBLE);
-                }
+                if (typeOfBills != null) {
 
-                if (typeOfBills.contains("Gas")) {
-                    gasUnpaidButton.setVisibility(View.VISIBLE);
-                }
+                    if (typeOfBills.contains("Electricity")){
+                        electricityUnpaidButton.setVisibility(View.VISIBLE);
+                    }
 
-                if (typeOfBills.contains("WiFi")) {
-                    wifiUnpaidButton.setVisibility(View.VISIBLE);
-                }
+                    if (typeOfBills.contains("Gas")) {
+                        gasUnpaidButton.setVisibility(View.VISIBLE);
+                    }
 
+                    if (typeOfBills.contains("WiFi")) {
+                        wifiUnpaidButton.setVisibility(View.VISIBLE);
+                    }
+
+                }
 
             }
 

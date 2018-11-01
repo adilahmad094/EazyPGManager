@@ -200,14 +200,8 @@ public class TenantActivity extends AppCompatActivity {
                     totalBedTextView.setText(maxOccupancy);
                     vacantBedTextView.setText(Integer.toString(Integer.parseInt(maxOccupancy) - tenantDetailsList.size()));
                 }
-                else if (dataSnapshot.child("PG Details").child("maxOccupancy").getValue(String.class).isEmpty()) {
-
-                    totalBedTextView.setText("Null");
-                    vacantBedTextView.setText("Null");
-
-                }
                 else {
-                    totalBedTextView.setText("Null");
+                    totalBedTextView.setText("Tap to add");
                     vacantBedTextView.setText("Null");
 
                 }
@@ -225,7 +219,7 @@ public class TenantActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (totalBedTextView.getText().toString().equalsIgnoreCase("Null")) {
+                if (totalBedTextView.getText().toString().equalsIgnoreCase("Tap to add")) {
 
                     if(input.getParent()!=null) {
                         ((ViewGroup) input.getParent()).removeView(input);
@@ -560,7 +554,7 @@ public class TenantActivity extends AppCompatActivity {
                                                                             //ToDo: Firebase Dynamic link will be sent to tenant using MSG91
 
                                                                             MSG91 msg91 = new MSG91("163776AiifTBEVMZl5aae0bce");
-                                                                            msg91.composeMessage("EazyPG", "Hi " + name.getText().toString() + ". Welcome to " + pgName + ". Get you EazyPG App. Follow the link: https://goo.gl/M3jEhQ");
+                                                                            msg91.composeMessage("EazyPG", "Hi " + name.getText().toString() + ". Welcome to " + pgName + ". Get you EazyPG App. Follow the link: https://goo.gl/M3jEhQ. ");
                                                                             msg91.to(phone.getText().toString());
                                                                             String sendStatus = msg91.send();
 
