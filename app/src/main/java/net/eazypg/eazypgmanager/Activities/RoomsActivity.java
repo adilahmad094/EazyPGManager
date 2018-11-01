@@ -103,6 +103,7 @@ public class RoomsActivity extends AppCompatActivity {
     List<OtherApplianceDetails> otherList;
 
     String tagString="";
+    String floors;
 
     List<RoomApplianceDetails> roomApplianceDetailsList = new ArrayList<>();
 
@@ -256,8 +257,6 @@ public class RoomsActivity extends AppCompatActivity {
                             if(roomTenantList.size()==0)
                                 vacantRooms++;
 
-
-
                             if (roomTypeList.get(finalI).equals("Two Bed") && roomTenantList.size() == 1) {
 
                                 semiVacantRooms++;
@@ -369,8 +368,45 @@ public class RoomsActivity extends AppCompatActivity {
                         radioButton = viewDialog.findViewById(selectedButtonId);
 
                         final String room = roomEditText.getText().toString();
-                        final String floors = floorsEditText.getText().toString();
 
+                        switch (floorsEditText.getText().toString()) {
+
+                            case "1" :
+                                floors = "1st";
+                                break;
+
+                            case "2" :
+                                floors = "2nd";
+                                break;
+
+                            case "3" :
+                                floors = "3rd";
+                                break;
+
+                            case "4" :
+                                floors = "4th";
+                                break;
+
+                            case "5" :
+                                floors = "5th";
+                                break;
+
+                            case "6" :
+                                floors = "6th";
+                                break;
+
+                            case "7" :
+                                floors = "7th";
+                                break;
+
+                            case "8" :
+                                floors = "8th";
+                                break;
+
+                            case "9" :
+                                floors = "9th";
+                                break;
+                        }
 
                         if(selectedButtonId == -1 || room.isEmpty())
                         {

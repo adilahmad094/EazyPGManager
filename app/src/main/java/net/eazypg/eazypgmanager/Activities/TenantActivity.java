@@ -73,6 +73,8 @@ public class TenantActivity extends AppCompatActivity {
     RadioGroup radioGroup;
     RadioButton radioButton;
 
+    String eazyPGId;
+
     EditText roomEditText;
     TextView custom_title;
 
@@ -195,6 +197,8 @@ public class TenantActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                eazyPGId = dataSnapshot.child("EazyPGID").getValue(String.class);
+
                 if (dataSnapshot.child("PG Details").child("maxOccupancy").getValue(String.class) != null && !dataSnapshot.child("PG Details").child("maxOccupancy").getValue(String.class).isEmpty()) {
                     String maxOccupancy = dataSnapshot.child("PG Details").child("maxOccupancy").getValue(String.class);
                     totalBedTextView.setText(maxOccupancy);
@@ -297,7 +301,7 @@ public class TenantActivity extends AppCompatActivity {
                 rentAmount = dialog.findViewById(R.id.tenantRentEditText);
                 ok = dialog.findViewById(R.id.okButton);
                 cancel = dialog.findViewById(R.id.cancelButton);
-                email = dialog.findViewById(R.id.tenantEmailEditText);
+
                 window.setBackgroundDrawableResource(android.R.color.transparent);
                 dialog.show();
 
@@ -362,8 +366,6 @@ public class TenantActivity extends AppCompatActivity {
 
                             dialog.cancel();
                             dialog.dismiss();
-
-                            final ProgressDialog progressDialog  = ProgressDialog.show(TenantActivity.this, "Rendering..", "Please wait..", true);
 
                             databaseReference2 = firebaseDatabase.getReference("PG/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/Rooms/" + room.getText().toString());
 
@@ -452,7 +454,7 @@ public class TenantActivity extends AppCompatActivity {
                                                     //ToDo: Firebase Dynamic link will be sent to tenant using MSG91
 
                                                     MSG91 msg91 = new MSG91("163776AiifTBEVMZl5aae0bce");
-                                                    msg91.composeMessage("EazyPG", "Hi " + name.getText().toString() + ". Welcome to " + pgName + ". Get you EazyPG App. Follow the link: https://goo.gl/M3jEhQ");
+                                                    msg91.composeMessage("EazyPG", "Hi " + name.getText().toString() + ". Welcome to " + pgName + ". Your EazyPGID is " + eazyPGId + ". Get you EazyPG App. Follow the link: https://goo.gl/M3jEhQ");
                                                     msg91.to(phone.getText().toString());
                                                     String sendStatus = msg91.send();
 
