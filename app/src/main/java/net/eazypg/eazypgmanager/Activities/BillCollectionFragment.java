@@ -67,7 +67,7 @@ public class BillCollectionFragment extends Fragment {
 
         electricityUnpaidButton = view.findViewById(R.id.electricityUnpaidButton);
         wifiUnpaidButton = view.findViewById(R.id.wifiUnpaidButton);
-        gasUnpaidButton = view.findViewById(R.id.gasUnpaidButton);
+        gasUnpaidButton = view.findViewById(R.id.gasBillCardView);
 
         databaseReference = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/PG Details");
         databaseReference.addValueEventListener(new ValueEventListener() {
