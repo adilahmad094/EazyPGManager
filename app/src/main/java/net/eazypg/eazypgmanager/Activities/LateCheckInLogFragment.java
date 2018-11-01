@@ -75,7 +75,7 @@ public class LateCheckInLogFragment extends Fragment {
                     lateCheckInDetailsList.add(lateCheckInDetails);
                 }
 
-                lateCheckinDetailList = new LateCheckinDetailList(lateCheckInDetailsList);
+                lateCheckinDetailList = new LateCheckinDetailList(lateCheckInDetailsList,getContext());
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());

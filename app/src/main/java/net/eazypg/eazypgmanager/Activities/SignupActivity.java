@@ -5,10 +5,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.sip.SipSession;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -47,15 +49,12 @@ public class SignupActivity extends AppCompatActivity {
 
     String id;
 
-    TextView signupToLogin;
+    TextView signUpToLogin;
 
     private EditText etUserEmail,etUserPinCode,etUserContact,etUserName;
     private ImageView btnSignUp;
 
-    LocationManager locationManager;
-    LocationListener listener;
-
-    private String userEmail, userLocality, userContact, userName;
+    private String userEmail, userPincode, userContact, userName;
 
     @Override
     public void onBackPressed() {
@@ -77,7 +76,7 @@ public class SignupActivity extends AppCompatActivity {
         etUserPinCode = findViewById(R.id.localityEditText); //Test
         etUserContact = findViewById(R.id.contactEditText);       //Test
         etUserName = findViewById(R.id.usernameEditText);      //Test
-        signupToLogin = findViewById(R.id.signupToLoginTextView);
+        signUpToLogin = findViewById(R.id.signupToLoginTextView);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("PG/");
@@ -89,11 +88,11 @@ public class SignupActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 userEmail = etUserEmail.getText().toString();
-                userLocality = etUserPinCode.getText().toString();
+                userPincode = etUserPinCode.getText().toString();
                 userContact = etUserContact.getText().toString();
                 userName = etUserName.getText().toString();
 
-                if (!userEmail.isEmpty() && !userLocality.isEmpty() && !userContact.isEmpty() && !userName.isEmpty()) {
+                if (!userEmail.isEmpty() && !userPincode.isEmpty() && !userContact.isEmpty() && !userName.isEmpty()) {
                     final ProgressDialog progressDialog = ProgressDialog.show(SignupActivity.this, "","Creating User..", true);
 
                     String password = passwordGeneration();
@@ -126,13 +125,15 @@ public class SignupActivity extends AppCompatActivity {
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("pgContact").setValue(etUserContact.getText().toString());
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("PG Details").child("pincode").setValue(etUserPinCode.getText().toString());
 
-                                String eazypgId = getEazyPGID();
+                                String eazypgId = generateID();
 
-                                databaseReference.child("EazyPGIDs").child(eazypgId).setValue(mFirebaseAuth.getCurrentUser().getUid());
+                                DatabaseReference databaseReference3 = firebaseDatabase.getReference();
+                                databaseReference3.child("EazyPGIDs").child(eazypgId).setValue(mFirebaseAuth.getCurrentUser().getUid());
+
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("EazyPGID").setValue(eazypgId);
 
                                 String staffId = databaseReference.push().getKey();
-                                StaffDetails staffDetails = new StaffDetails(staffId, "", etUserContact.getText().toString(), "Owner Name", "Owner", "");
+                                StaffDetails staffDetails = new StaffDetails(staffId, "", etUserContact.getText().toString(), "Owner", "Owner", "");
                                 databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("Staff").child(staffId).setValue(staffDetails);
 
                                 FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(SignupActivity.this, new OnSuccessListener<InstanceIdResult>() {
@@ -205,7 +206,7 @@ public class SignupActivity extends AppCompatActivity {
                     if(userEmail.isEmpty()){
                         etUserEmail.setError("Field cannot be empty!");
                     }
-                    if (userLocality.isEmpty()){
+                    if (userPincode.isEmpty()){
                         etUserPinCode.setError("Field cannot be empty!");
                     }
                     if (userContact.isEmpty()){
@@ -216,7 +217,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-        signupToLogin.setOnClickListener(new View.OnClickListener() {
+        signUpToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(SignupActivity.this,LoginActivity.class));
@@ -224,6 +225,17 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
+    }
+    
+    public String generateID() {
+        
+        String id;
+        
+        id = userPincode;
+        id += userContact.substring(6,10);
+        
+        return id;
+        
     }
 
     public static String passwordGeneration(){
@@ -251,44 +263,5 @@ public class SignupActivity extends AppCompatActivity {
         return password.toString();
     }
 
-    public String getEazyPGID() {
-
-        id = "EZ";
-
-        id += etUserPinCode.getText().toString();
-
-        databaseReference.child("PINCODE").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                if (!dataSnapshot.hasChild(etUserPinCode.getText().toString())) {
-
-                    databaseReference.child(etUserPinCode.getText().toString()).setValue("01");
-
-                    id += "01";
-
-                }
-                else {
-
-                    int count = Integer.parseInt(dataSnapshot.child(etUserPinCode.getText().toString()).getValue(String.class));
-
-                    id += dataSnapshot.child(etUserPinCode.getText().toString()).getValue(String.class);
-
-                    ++count;
-
-                    databaseReference.child(etUserPinCode.getText().toString()).setValue(Integer.toString(count));
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        return id;
-    }
 
 }

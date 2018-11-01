@@ -189,6 +189,11 @@ public class RoomsActivity extends AppCompatActivity {
                     if (!dataSnapshot.child("noOfRooms").getValue(String.class).isEmpty())
                     totalRoom = Integer.parseInt(dataSnapshot.child("noOfRooms").getValue(String.class));
 
+                    totalRoomsTextView.setText(Integer.toString(totalRoom));
+/*
+                    Log.e("Hello", "there" + totalRoom);
+*/
+
                 }
 
             }
@@ -265,12 +270,15 @@ public class RoomsActivity extends AppCompatActivity {
 
 
 
-                            totalRoomsTextView.setText(Integer.toString(totalRoom));
-                            semiVacantTextView.setText(Integer.toString(semiVacantRooms));
-                            vacantRoomsTextView.setText(Integer.toString(vacantRooms));
+
 
                             roomTenantMap.put(room, roomTenantList);
                             Log.e("room tenant map inside", "onDataChange: " + roomTenantMap.size());
+
+                            semiVacantTextView.setText(Integer.toString(semiVacantRooms));
+                            vacantRoomsTextView.setText(Integer.toString(vacantRooms));
+
+
                         }
 
                         @Override
@@ -295,6 +303,8 @@ public class RoomsActivity extends AppCompatActivity {
 
             }
         });
+
+
 
 
 

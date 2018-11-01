@@ -137,6 +137,7 @@ public class AddBillRoomActivity extends AppCompatActivity {
                                         finish();
                                     }
                                 });
+                                builder.setCancelable(false);
                                 builder.show();
                             } else {
 
