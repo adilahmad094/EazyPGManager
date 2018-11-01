@@ -381,6 +381,8 @@ public class TenantActivity extends AppCompatActivity {
 
                                             tenantNumber = dataSnapshot.child("Tenant").child("CurrentTenants").getChildrenCount();
 
+                                            Log.e("TenantNumber", tenantNumber + "");
+
                                         }
 
                                         @Override
@@ -404,6 +406,8 @@ public class TenantActivity extends AppCompatActivity {
                                         }
                                     });
 
+                                    Log.e("RoomType", roomType + "");
+
                                     switch (roomType) {
 
                                         case "One Bed" : roomTypeNumber = 1;    break;
@@ -412,7 +416,63 @@ public class TenantActivity extends AppCompatActivity {
 
                                     }
 
+                                    if (tenantNumber < roomTypeNumber) {
 
+                                        databaseReference2 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
+
+                                        databaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                                if (dataSnapshot.child("Tenants").child("UnderProcess").hasChild(phone.getText().toString())) {
+
+                                                    AlertDialog.Builder builder = new AlertDialog.Builder(TenantActivity.this);
+                                                    builder.setMessage("Tenant with this number is already invited");
+                                                    builder.setTitle("Error");
+                                                    builder.setNeutralButton("Ok", null);
+                                                    builder.show();
+
+                                                }
+                                                else {
+                                                    UnderProcessTenantDetails tenantDetails = new UnderProcessTenantDetails(name.getText().toString(), phone.getText().toString(), room.getText().toString(), dateOfJoining.getText().toString(), rentAmount.getText().toString(), false);
+                                                    databaseReference2.child("Tenants").child("UnderProcess").child(phone.getText().toString()).setValue(tenantDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+
+                                                            AlertDialog.Builder builder = new AlertDialog.Builder(TenantActivity.this);
+                                                            builder.setTitle("Tenant Invited");
+                                                            builder.setMessage("An invitation message with link and details has been sent to " + name.getText().toString() + ".");
+                                                            builder.setNeutralButton("Ok", null);
+                                                            builder.show();
+
+                                                            //ToDo: Firebase Dynamic link will be sent to tenant using MSG91
+
+                                                            MSG91 msg91 = new MSG91("163776AiifTBEVMZl5aae0bce");
+                                                            msg91.composeMessage("EazyPG", "Hi " + name.getText().toString() + ". Welcome to " + pgName + ". Please enter 10 digit code " + eazyPGId + " in your PG ID. Get your EazyPG App now https://goo.gl/M3jEhQ");
+                                                            msg91.to(phone.getText().toString());
+                                                            String sendStatus = msg91.send();
+
+
+                                                        }
+                                                    });
+
+
+                                                }
+
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                            }
+                                        });
+
+                                    }
+                                    else {
+
+                                        Toast.makeText(TenantActivity.this, "Room is full", Toast.LENGTH_SHORT).show();
+
+                                    }
 
                                 }
 
@@ -421,65 +481,6 @@ public class TenantActivity extends AppCompatActivity {
 
                                 }
                             });
-
-                            if (tenantNumber < roomTypeNumber) {
-
-                                databaseReference2 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
-
-                                databaseReference2.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                                        if (dataSnapshot.child("Tenants").child("UnderProcess").hasChild(phone.getText().toString())) {
-
-                                            AlertDialog.Builder builder = new AlertDialog.Builder(TenantActivity.this);
-                                            builder.setMessage("Tenant with this number is already invited");
-                                            builder.setTitle("Error");
-                                            builder.setNeutralButton("Ok", null);
-                                            builder.show();
-
-                                        }
-                                        else {
-                                            UnderProcessTenantDetails tenantDetails = new UnderProcessTenantDetails(name.getText().toString(), phone.getText().toString(), room.getText().toString(), dateOfJoining.getText().toString(), rentAmount.getText().toString(), false);
-                                            databaseReference2.child("Tenants").child("UnderProcess").child(phone.getText().toString()).setValue(tenantDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-
-                                                    AlertDialog.Builder builder = new AlertDialog.Builder(TenantActivity.this);
-                                                    builder.setTitle("Tenant Invited");
-                                                    builder.setMessage("An invitation message with link and details has been sent to " + name.getText().toString() + ".");
-                                                    builder.setNeutralButton("Ok", null);
-                                                    builder.show();
-
-                                                    //ToDo: Firebase Dynamic link will be sent to tenant using MSG91
-
-                                                    MSG91 msg91 = new MSG91("163776AiifTBEVMZl5aae0bce");
-                                                    msg91.composeMessage("EazyPG", "Hi " + name.getText().toString() + ". Welcome to " + pgName + ". Your EazyPGID is " + eazyPGId + ". Get you EazyPG App. Follow the link: https://goo.gl/M3jEhQ");
-                                                    msg91.to(phone.getText().toString());
-                                                    String sendStatus = msg91.send();
-
-
-                                                }
-                                            });
-
-
-                                        }
-
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                    }
-                                });
-
-                            }
-                            else {
-
-                                Toast.makeText(TenantActivity.this, "Room is full", Toast.LENGTH_SHORT).show();
-
-                            }
-
 
                         }
                         else {
@@ -528,7 +529,7 @@ public class TenantActivity extends AppCompatActivity {
 
                                                         databaseReference2 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
 
-                                                        databaseReference2.addValueEventListener(new ValueEventListener() {
+                                                        databaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {
                                                             @Override
                                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -556,7 +557,7 @@ public class TenantActivity extends AppCompatActivity {
                                                                             //ToDo: Firebase Dynamic link will be sent to tenant using MSG91
 
                                                                             MSG91 msg91 = new MSG91("163776AiifTBEVMZl5aae0bce");
-                                                                            msg91.composeMessage("EazyPG", "Hi " + name.getText().toString() + ". Welcome to " + pgName + ". Get you EazyPG App. Follow the link: https://goo.gl/M3jEhQ. ");
+                                                                            msg91.composeMessage("EazyPG", "Hi " + name.getText().toString() + ". Welcome to " + pgName + ". Please enter 10 digit code " + eazyPGId + " in your PG ID. Get your EazyPG App now https://goo.gl/M3jEhQ");
                                                                             msg91.to(phone.getText().toString());
                                                                             String sendStatus = msg91.send();
 

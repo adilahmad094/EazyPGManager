@@ -3,7 +3,7 @@ package net.eazypg.eazypgmanager.DetailsClasses;
 public class UnderProcessTenantDetails {
 
     public String name, phone, room, dateOfJoining, rentAmount;
-    boolean flag;
+    public boolean flag;
 
     public UnderProcessTenantDetails(String name, String phone, String room, String dateOfJoining, String rentAmount, boolean flag) {
         this.name = name;

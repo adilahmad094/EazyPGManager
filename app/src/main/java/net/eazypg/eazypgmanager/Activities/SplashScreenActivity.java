@@ -73,7 +73,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
             }
 
-        }, SPLASH_TIME_OUT);
+        }, 1000);
 
     }
 
