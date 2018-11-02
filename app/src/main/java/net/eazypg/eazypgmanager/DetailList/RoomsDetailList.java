@@ -39,6 +39,7 @@ public class RoomsDetailList extends ArrayAdapter<String> {
     private Map<String, List<TenantDetails>> roomTenantMap;
     private List<TenantDetails> tenantList = new ArrayList<>();
     private List<String> tagList = new ArrayList<>();
+    public List<String> floorsList = new ArrayList<>();
 
     TextView floorsTextView, acTextView, nonAcTextView, washroomTextView, balconyTextView, ventilationTextView, largeRoomTextView, cornerRoomTextView;
 
@@ -58,7 +59,7 @@ public class RoomsDetailList extends ArrayAdapter<String> {
 
     String tagString;
 
-    public RoomsDetailList(Activity context, List<String> roomList, List<String> roomTypeList, Map<String, List<TenantDetails>> roomTenantMap, List<String> tagList) {
+    public RoomsDetailList(Activity context, List<String> roomList, List<String> roomTypeList, Map<String, List<TenantDetails>> roomTenantMap, List<String> tagList, List<String> floorList) {
         super(context, R.layout.room_row, roomList);
 
         this.context = context;
@@ -66,6 +67,7 @@ public class RoomsDetailList extends ArrayAdapter<String> {
         this.roomTypeList = roomTypeList;
         this.roomTenantMap = roomTenantMap;
         this.tagList = tagList;
+        this.floorsList = floorList;
 
     }
 
@@ -94,7 +96,7 @@ public class RoomsDetailList extends ArrayAdapter<String> {
         cornerRoomTextView = listViewItemRoom.findViewById(R.id.cornerRoomTextView);
         floorsTextView = listViewItemRoom.findViewById(R.id.floorsTextView);
 
-        databaseReference2 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Rooms/" + roomList.get(position));
+        /*databaseReference2 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Rooms/" + roomList.get(position));
         databaseReference2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -108,7 +110,7 @@ public class RoomsDetailList extends ArrayAdapter<String> {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
 
 
@@ -146,6 +148,8 @@ public class RoomsDetailList extends ArrayAdapter<String> {
 
         third.setText(roomList.get(position));
         fourth.setText(roomTypeList.get(position));
+
+        floorsTextView.setText(floorsList.get(position));
 
         applianceButton.setOnClickListener(new View.OnClickListener() {
             @Override

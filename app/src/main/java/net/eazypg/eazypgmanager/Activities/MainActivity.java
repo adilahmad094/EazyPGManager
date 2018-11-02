@@ -27,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
         Fabric.with(this, new Crashlytics());
 
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
 
-        Thread t = new Thread(new Runnable() {
+        /*Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 //  Intro App Initialize SharedPreferences
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(!isFirstStart)
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
-
+*/
     }
 }
 

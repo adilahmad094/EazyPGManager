@@ -82,6 +82,7 @@ public class RoomsActivity extends AppCompatActivity {
     List<String> roomTypeList;
 
     List<String> tagList;
+    List<String> floorList;
 
     List<TenantDetails> tenantList;
 
@@ -148,6 +149,7 @@ public class RoomsActivity extends AppCompatActivity {
         roomTypeList = new ArrayList<>();
 
         tagList = new ArrayList<>();
+        floorList = new ArrayList<>();
 
         tenantList = new ArrayList<>();
 
@@ -185,6 +187,8 @@ public class RoomsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                totalRoom = 0;
+
                 if (dataSnapshot.child("noOfRooms").getValue(String.class) != null) {
 
                     if (!dataSnapshot.child("noOfRooms").getValue(String.class).isEmpty())
@@ -219,6 +223,7 @@ public class RoomsActivity extends AppCompatActivity {
                 roomTypeList.clear();
                 tagList.clear();
                 rooms.clear();
+                floorList.clear();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String room = snapshot.getKey();
@@ -230,6 +235,9 @@ public class RoomsActivity extends AppCompatActivity {
                     String tags = snapshot.child("Tags").getValue(String.class);
                     Log.e("Tags", ""+tags);
                     tagList.add(tags);
+
+                    String floors = snapshot.child("Floors").getValue(String.class);
+                    floorList.add(floors);
                 }
 
                 Log.e("rooms", "onDataChange: " + rooms.size());
@@ -293,7 +301,7 @@ public class RoomsActivity extends AppCompatActivity {
 
                 Log.e("room tenant map", "onDataChange: " + roomTenantMap.size());
 
-                RoomsDetailList adapter = new RoomsDetailList(RoomsActivity.this, rooms, roomTypeList, roomTenantMap, tagList);
+                RoomsDetailList adapter = new RoomsDetailList(RoomsActivity.this, rooms, roomTypeList, roomTenantMap, tagList, floorList);
                 listView.setAdapter(adapter);
             }
 

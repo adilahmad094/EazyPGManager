@@ -65,6 +65,7 @@ public class HostFriendDetailList extends RecyclerView.Adapter<HostFriendDetailL
         holder.guestFromTimeTextView.setText(guestDetails.guestFromTime);
         holder.tenantNameTextView.setText(guestDetails.tenantName);
         holder.guestNameTextView.setText(guestDetails.guestName);
+        holder.roomNumberTextView.setText(guestDetails.room);
         holder.callLL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,6 +100,7 @@ public class HostFriendDetailList extends RecyclerView.Adapter<HostFriendDetailL
         public TextView guestFromTimeTextView;
         public TextView guestToTimeTextView;
         public TextView guestContactTextView;
+        public TextView roomNumberTextView;
       //  public TextView tenantContactTextView;
         public LinearLayout callLL;
 
@@ -112,6 +114,8 @@ public class HostFriendDetailList extends RecyclerView.Adapter<HostFriendDetailL
             guestFromTimeTextView = itemView.findViewById(R.id.guestFromTimeTextView);
             guestToTimeTextView = itemView.findViewById(R.id.guestToTimeTextView);
             guestContactTextView = itemView.findViewById(R.id.guestContactTextView);
+            roomNumberTextView = itemView.findViewById(R.id.tenantRoomNumberTextView);
+
           //  tenantContactTextView = itemView.findViewById(R.id.tenantContactTextView);
             callLL = itemView.findViewById(R.id.hostAFriendCallLL);
         }
