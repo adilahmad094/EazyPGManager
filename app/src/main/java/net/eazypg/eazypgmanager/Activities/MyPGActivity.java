@@ -128,8 +128,7 @@ public class MyPGActivity extends AppCompatActivity {
     TextView pgAvailableForTextView;
     TextView lastlateCheckInTime;
 
-
-
+    TextView idTextView;
 
     boolean electricityIsChecked;
     boolean wifiIsChecked;
@@ -168,7 +167,7 @@ public class MyPGActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
-
+        idTextView = findViewById(R.id.idTextView);
 
         lastlateCheckInTime = findViewById(R.id.lastLateCheckInTimeID);
         lastEntryTimeTextView = findViewById(R.id.lastEntryTimeTextView);
@@ -676,6 +675,9 @@ public class MyPGActivity extends AppCompatActivity {
                 String pgAvailableFor1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("pgAvailableFor").getValue(String.class);
                 String lastLateCheckIn1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("lastLateCheckIn").getValue(String.class);
                 String email1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("email").getValue(String.class);
+
+                String eazyPGID = dataSnapshot.child(firebaseUser.getUid()).child("EazyPGID").getValue(String.class);
+                idTextView.setText(eazyPGID);
 
                 pgName.setText(name1);
                 landmark.setText(landmark1);
