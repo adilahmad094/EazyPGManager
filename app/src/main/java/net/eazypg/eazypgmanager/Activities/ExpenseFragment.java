@@ -20,6 +20,7 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -77,7 +78,7 @@ public class ExpenseFragment extends Fragment {
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
     EditText amount, category, description, paidBy, paidTo;
-    TextView chooseExpenseImage;
+    Button chooseExpenseImage;
 
     String uidExpense;
 

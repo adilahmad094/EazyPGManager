@@ -216,6 +216,20 @@ public class AddBillRoomActivity extends AppCompatActivity {
 
                                     DatabaseReference databaseReference4 = firebaseDatabase.getReference("Tenants/" + tenantIds.get(i) + "/Accounts/Bills/" + dateString);
                                     databaseReference4.child(billId).setValue(billDetails);
+
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(AddBillRoomActivity.this);
+                                    builder.setTitle("Bill Added");
+                                    builder.setMessage("Bill is added to all rooms");
+                                    builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                            startActivity(new Intent(AddBillRoomActivity.this, AddBillActivity.class));
+                                            finish();
+
+                                        }
+                                    });
+                                    builder.show();
                                 }
                             }
 

@@ -140,7 +140,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.RoomClickActivity" />
-        <activity android:name=".Activities.UnpaidBillActivity"></activity>
+        <activity android:name=".Activities.UnpaidBillActivity"/>
     </application>
 
 </manifest>
