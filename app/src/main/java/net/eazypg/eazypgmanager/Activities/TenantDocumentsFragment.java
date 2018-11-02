@@ -15,6 +15,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.PopupMenu;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -65,8 +66,6 @@ public class TenantDocumentsFragment extends Fragment {
     String id;
 
     TextView aadharFrontStatus, aadharBackStatus, collegeIDFrontStatus, collegeIDBackStatus;
-
-    boolean loaded;
 
     @Nullable
     @Override
@@ -468,7 +467,6 @@ public class TenantDocumentsFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (loaded) {
 
                     final Dialog builder = new Dialog(getContext());
                     builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -488,7 +486,7 @@ public class TenantDocumentsFragment extends Fragment {
 
                     builder.show();
 
-                }
+
 
             }
         });
@@ -496,8 +494,6 @@ public class TenantDocumentsFragment extends Fragment {
         aadharBackCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (loaded) {
 
                     final Dialog builder = new Dialog(getContext());
                     builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -519,14 +515,11 @@ public class TenantDocumentsFragment extends Fragment {
 
                 }
 
-            }
         });
 
         collegeIDFrontCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (loaded) {
 
                     final Dialog builder = new Dialog(getActivity());
                     builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -546,7 +539,7 @@ public class TenantDocumentsFragment extends Fragment {
 
                     builder.show();
 
-                }
+
 
             }
         });
@@ -554,8 +547,6 @@ public class TenantDocumentsFragment extends Fragment {
         collegeIDBackCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (loaded) {
 
                     final Dialog builder = new Dialog(getActivity());
                     builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -575,7 +566,6 @@ public class TenantDocumentsFragment extends Fragment {
 
                     builder.show();
 
-                }
             }
         });
 
