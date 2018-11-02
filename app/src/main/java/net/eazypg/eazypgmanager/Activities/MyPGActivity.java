@@ -62,7 +62,7 @@ public class MyPGActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
 
-    Button setLocationButton;
+    LinearLayout setLocationButton;
 
     TextInputLayout pgNameTIL;
     TextInputLayout pgEmailTIL;

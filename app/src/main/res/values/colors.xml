@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#005f3f</color>
     <color name="googleBlue">#0D47A1</color>
     <color name="colorAccent">#1a936f</color>
+    <color name="buttonColor">#43A047</color>
     <color name="DarkGreen">#008b00</color>
     <color name="lightgray">#ededed</color>
     <color name="deeppurple">#7c4dff</color>
