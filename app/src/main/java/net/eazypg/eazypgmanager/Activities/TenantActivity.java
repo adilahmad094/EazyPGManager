@@ -603,6 +603,8 @@ public class TenantActivity extends AppCompatActivity {
                                                 String roomType = radioButton.getText().toString();
                                                 databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
                                                 databaseReference1.child("Rooms").child(room).child("Tags").setValue(tagString);
+                                                databaseReference1.child("Rooms").child(room).child("Floors").setValue(floors);
+
                                                 databaseReference1.child("Rooms").child(room).child("Room Type").setValue(roomType).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
