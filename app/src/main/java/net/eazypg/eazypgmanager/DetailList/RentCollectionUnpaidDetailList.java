@@ -1,5 +1,6 @@
 package net.eazypg.eazypgmanager.DetailList;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -67,6 +68,12 @@ public class RentCollectionUnpaidDetailList extends RecyclerView.Adapter<RentCol
                 msg91.composeMessage("EazyPG", "Hi " + tenantUnpaidDetails.get(position).name + ". Your rent is due for this month.");
                 msg91.to(tenantUnpaidDetails.get(position).phone);
                 String sendStatus = msg91.send();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Message Sent");
+                builder.setMessage("Rent due message is sent to " + tenantUnpaidDetails.get(position).name + ".");
+                builder.setNeutralButton("Ok", null);
+                builder.show();
             }
         });
 
