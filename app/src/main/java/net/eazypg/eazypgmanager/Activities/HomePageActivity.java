@@ -79,6 +79,10 @@ public class HomePageActivity extends AppCompatActivity {
             window.setStatusBarColor(Color.rgb(19,65,62));
         }
 
+        /*new Instabug.Builder(this, "537d24596329c641d3508bb1cf515eb4")
+                .setInvocationEvents(InstabugInvocationEvent.SHAKE, InstabugInvocationEvent.SCREENSHOT)
+                .build();*/
+
         ratings = new ArrayList<>();
 
         checkConnection();

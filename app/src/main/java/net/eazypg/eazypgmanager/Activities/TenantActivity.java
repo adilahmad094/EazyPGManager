@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -77,6 +78,12 @@ public class TenantActivity extends AppCompatActivity {
 
     EditText roomEditText;
     TextView custom_title;
+
+    CheckBox acCheckBox, washroomCheckBox, balconyCheckBox, ventilationCheckBox, largeRoomCheckBox, cornerRoomCheckBox;
+
+    String tagString = "";
+    String floors;
+    EditText floorsEditText;
 
     String thisRoom;
 
@@ -286,10 +293,6 @@ public class TenantActivity extends AppCompatActivity {
 
                 // final View viewDialog = inflater.inflate(R.layout.dialog_tenant, null);
                 final Dialog dialog = new Dialog(TenantActivity.this);
-                /*final TextView tenantCustomTitle*/
-
-                /*final View addTitleView = inflater.inflate(R.layout.custom_title4, null);
-                tenantCustomTitle = addTitleView.findViewById(R.id.tenantCustomTitle);*/
 
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 Window window = dialog.getWindow();
@@ -505,6 +508,7 @@ public class TenantActivity extends AppCompatActivity {
                                     builder.setCustomTitle(custom_title);
                                     builder.setView(viewDialog);
 
+                                    tagString = "";
 
                                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
@@ -512,6 +516,81 @@ public class TenantActivity extends AppCompatActivity {
 
                                             int selectedButtonId = radioGroup.getCheckedRadioButtonId();
                                             radioButton = viewDialog.findViewById(selectedButtonId);
+
+                                            floorsEditText = viewDialog.findViewById(R.id.floorEditText);
+
+                                            acCheckBox = viewDialog.findViewById(R.id.acCheckBox);
+                                            washroomCheckBox = viewDialog.findViewById(R.id.washroomCheckBox);
+                                            balconyCheckBox = viewDialog.findViewById(R.id.balconyCheckBox);
+                                            ventilationCheckBox = viewDialog.findViewById(R.id.ventilationCheckBox);
+                                            largeRoomCheckBox = viewDialog.findViewById(R.id.largeRoomCheckBox);
+                                            cornerRoomCheckBox = viewDialog.findViewById(R.id.cornerRoomCheckBox);
+
+                                            switch (floorsEditText.getText().toString()) {
+
+                                                case "1" :
+                                                    floors = "1st";
+                                                    break;
+
+                                                case "2" :
+                                                    floors = "2nd";
+                                                    break;
+
+                                                case "3" :
+                                                    floors = "3rd";
+                                                    break;
+
+                                                case "4" :
+                                                    floors = "4th";
+                                                    break;
+
+                                                case "5" :
+                                                    floors = "5th";
+                                                    break;
+
+                                                case "6" :
+                                                    floors = "6th";
+                                                    break;
+
+                                                case "7" :
+                                                    floors = "7th";
+                                                    break;
+
+                                                case "8" :
+                                                    floors = "8th";
+                                                    break;
+
+                                                case "9" :
+                                                    floors = "9th";
+                                                    break;
+                                            }
+
+                                            if (acCheckBox.isChecked())
+                                            {
+                                                tagString += "AC";
+                                            }
+                                            if (washroomCheckBox.isChecked())
+                                            {
+                                                tagString += "Washroom";
+                                            }
+                                            if (balconyCheckBox.isChecked())
+                                            {
+                                                tagString += "Balcony";
+                                            }
+                                            if (ventilationCheckBox.isChecked())
+                                            {
+                                                tagString += "Ventilation";
+                                            }
+                                            if (largeRoomCheckBox.isChecked())
+                                            {
+                                                tagString += "Large Room";
+                                            }
+                                            if (cornerRoomCheckBox.isChecked())
+                                            {
+                                                tagString += "Corner Room";
+                                            }
+
+                                            tagString += floors;
 
                                             final String room = roomEditText.getText().toString();
 
@@ -523,6 +602,7 @@ public class TenantActivity extends AppCompatActivity {
 
                                                 String roomType = radioButton.getText().toString();
                                                 databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
+                                                databaseReference1.child("Rooms").child(room).child("Tags").setValue(tagString);
                                                 databaseReference1.child("Rooms").child(room).child("Room Type").setValue(roomType).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
