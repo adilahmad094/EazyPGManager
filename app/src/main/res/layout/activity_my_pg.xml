@@ -1548,6 +1548,7 @@ android:layout_height="match_parent">
     android:layout_marginBottom="24dp"
     android:layout_marginEnd="16dp"
     android:clickable="true"
+    app:fabSize="normal"
     android:elevation="10dp"
     android:focusable="true"
     android:src="@drawable/ic_mode_edit_white_24dp"

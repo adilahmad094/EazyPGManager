@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:clipChildren="false"
         android:textColorHint="#757575"
         app:hintTextAppearance="@style/TextLabel"
@@ -29,7 +29,6 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="5dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/dialog_corners"
@@ -60,7 +59,6 @@
             android:id="@+id/tenantPhoneEditText"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
             android:layout_gravity="bottom"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
@@ -96,7 +94,6 @@
             android:layout_gravity="bottom"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="5dp"
             android:background="@drawable/dialog_corners"
             android:ems="10"
             android:fontFamily="@font/productsans"
@@ -171,7 +168,7 @@
         android:fontFamily="@font/productsansbold"
         android:text="ADD"
         android:inputType="number"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/buttonColor"
         app:layout_constraintStart_toEndOf="@+id/dateOfJoining"
         app:layout_constraintTop_toBottomOf="@+id/dateOfJoining" />
 
@@ -184,7 +181,7 @@
         android:background="@android:color/transparent"
         android:fontFamily="@font/productsansbold"
         android:text="CANCEL"
-        android:textColor="@color/colorAccent"
+        android:textColor="#616162"
         app:layout_constraintEnd_toStartOf="@+id/okButton"
         app:layout_constraintTop_toBottomOf="@+id/dateOfJoining" />
 

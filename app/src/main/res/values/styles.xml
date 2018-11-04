@@ -34,7 +34,7 @@
     </style>
 
     <style name="TextLabelnew" parent="TextAppearance.Design.Hint">
-        <item name="android:textSize">16dp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:textColor">#005738</item>
     </style>
 

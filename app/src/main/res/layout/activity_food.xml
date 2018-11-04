@@ -18,21 +18,19 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:padding="11dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="6dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginTop="8dp"
             android:src="@drawable/ic_arrow_back_black_24dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="53dp"
             android:fontFamily="@font/productsansmedium"
             android:text="Food"
             android:layout_gravity="center_vertical"

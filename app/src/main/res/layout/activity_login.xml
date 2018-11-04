@@ -114,10 +114,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:fontFamily="@font/productsans"
+        android:fontFamily="@font/productsansbold"
         android:text="New User? Sign Up."
         android:textColor="@color/colorPrimaryDark"
         android:textSize="17dp"
@@ -129,6 +129,7 @@
         android:id="@+id/btnSignIn"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        app:fabSize="normal"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="8dp"
@@ -146,7 +147,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.71"
-        app:srcCompat="@drawable/enabled" />
+        app:srcCompat="@drawable/ic_chevron_right_black_24dp" />
 
     <TextView
         android:id="@+id/forgotPasswordTextView"

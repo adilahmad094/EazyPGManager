@@ -10,7 +10,7 @@
         android:id="@+id/paymentToolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/actionBarColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,24 +21,26 @@
 
     <ImageView
         android:id="@+id/backButton"
-        android:layout_width="40dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:paddingStart="4dp"
-        android:paddingEnd="12dp"
+        android:padding="11dp"
         android:src="@drawable/ic_arrow_back_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbarText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/toolbarText" />
 
     <TextView
         android:id="@+id/toolbarText"
-        android:layout_width="163dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/productsansbold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/productsansmedium"
         android:text="Payment Details"
         android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/paymentToolbar"
         app:layout_constraintStart_toEndOf="@+id/backButton"
         app:layout_constraintTop_toTopOf="parent" />
 
