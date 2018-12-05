@@ -47,7 +47,6 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".MyIntro" />
-
         <activity android:name=".Activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -67,14 +66,13 @@
 
         <activity
             android:name=".Activities.MainActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.SignupActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.LoginActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity android:name=".Activities.AccountsFragmentActivity">
             <intent-filter>
                 <action android:name="ManagerPassbookActivity" />
@@ -98,7 +96,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.ComplaintActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.SubscriptionActivity"
             android:screenOrientation="portrait" />
@@ -132,7 +130,7 @@
         <activity android:name=".Activities.AddBillActivity" />
         <activity android:name=".Activities.AddBillRoomActivity" />
         <activity android:name=".Activities.FineRentBillActivity" />
-        <activity android:name=".Activities.FeedbackActivity" >
+        <activity android:name=".Activities.FeedbackActivity">
             <intent-filter>
                 <action android:name="ManagerFeedbackActivity" />
 
@@ -140,7 +138,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.RoomClickActivity" />
-        <activity android:name=".Activities.UnpaidBillActivity"/>
+        <activity android:name=".Activities.UnpaidBillActivity" />
+        <activity android:name=".Activities.UnderProcessTenants" />
     </application>
 
 </manifest>

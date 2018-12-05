@@ -186,7 +186,6 @@ public class TenantActivity extends AppCompatActivity {
                     TenantDetails tenantDetails = dataSnapshotTenant.getValue(TenantDetails.class);
                     tenantDetailsList.add(tenantDetails);
 
-
                 }
 
                 TenantDetailList adapter = new TenantDetailList(TenantActivity.this, tenantDetailsList);
