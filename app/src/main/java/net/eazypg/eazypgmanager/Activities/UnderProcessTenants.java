@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import net.eazypg.eazypgmanager.DetailList.TenantDetailList;
 import net.eazypg.eazypgmanager.DetailList.UnderprocessDetailList;
 import net.eazypg.eazypgmanager.DetailsClasses.TenantDetails;
+import net.eazypg.eazypgmanager.DetailsClasses.UnderProcessTenantDetails;
 import net.eazypg.eazypgmanager.R;
 
 import java.util.Collections;
@@ -34,7 +35,7 @@ public class UnderProcessTenants extends AppCompatActivity {
 
     ListView listView;
     View emptyList;
-    List<TenantDetails> tenantDetailsList;
+    List<UnderProcessTenantDetails> tenantDetailsList;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -78,7 +79,7 @@ public class UnderProcessTenants extends AppCompatActivity {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
-                    TenantDetails tenantDetails = snapshot.getValue(TenantDetails.class);
+                    UnderProcessTenantDetails tenantDetails = snapshot.getValue(UnderProcessTenantDetails.class);
                     tenantDetailsList.add(tenantDetails);
 
                 }
@@ -87,11 +88,9 @@ public class UnderProcessTenants extends AppCompatActivity {
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
                 underprocessRecyclerView.setLayoutManager(layoutManager);
                 underprocessRecyclerView.setItemAnimator(new DefaultItemAnimator());
-                Collections.sort(tenantDetailsList, Collections.<TenantDetails>reverseOrder());
+                Collections.sort(tenantDetailsList, Collections.<UnderProcessTenantDetails>reverseOrder());
                 underprocessRecyclerView.setAdapter(underprocessDetailList);
 
-                TenantDetailList adapter = new TenantDetailList(UnderProcessTenants.this, tenantDetailsList);
-                listView.setAdapter(adapter);
 
             }
 

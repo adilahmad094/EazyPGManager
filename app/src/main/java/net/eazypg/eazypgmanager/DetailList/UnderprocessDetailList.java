@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.katepratik.msg91api.MSG91;
 
 import net.eazypg.eazypgmanager.DetailsClasses.TenantDetails;
+import net.eazypg.eazypgmanager.DetailsClasses.UnderProcessTenantDetails;
 import net.eazypg.eazypgmanager.R;
 
 import java.util.List;
@@ -21,10 +22,10 @@ import java.util.List;
 
 public class UnderprocessDetailList extends RecyclerView.Adapter<UnderprocessDetailList.MyHolder> {
 
-    List<TenantDetails> underprocessTenantsList;
+    List<UnderProcessTenantDetails> underprocessTenantsList;
     Context context;
 
-    public UnderprocessDetailList(List<TenantDetails> underprocessTenantsList, Context context) {
+    public UnderprocessDetailList(List<UnderProcessTenantDetails> underprocessTenantsList, Context context) {
         this.underprocessTenantsList = underprocessTenantsList;
         this.context = context;
     }
