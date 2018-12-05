@@ -26,6 +26,7 @@ import net.eazypg.eazypgmanager.DetailsClasses.TenantDetails;
 import net.eazypg.eazypgmanager.DetailsClasses.UnderProcessTenantDetails;
 import net.eazypg.eazypgmanager.R;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,7 +34,6 @@ import io.fabric.sdk.android.Fabric;
 
 public class UnderProcessTenants extends AppCompatActivity {
 
-    ListView listView;
     View emptyList;
     List<UnderProcessTenantDetails> tenantDetailsList;
 
@@ -59,8 +59,10 @@ public class UnderProcessTenants extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        emptyList = findViewById(R.id.emptyListUnderProcessTenant);
+      /*  emptyList = findViewById(R.id.emptyListUnderProcessTenant);
         listView.setEmptyView(emptyList);
+*/
+        tenantDetailsList = new ArrayList<>();
 
         underprocessRecyclerView = findViewById(R.id.UnderProcessTenantRecyclerView);
         context = getApplicationContext();
@@ -88,7 +90,7 @@ public class UnderProcessTenants extends AppCompatActivity {
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
                 underprocessRecyclerView.setLayoutManager(layoutManager);
                 underprocessRecyclerView.setItemAnimator(new DefaultItemAnimator());
-                Collections.sort(tenantDetailsList, Collections.<UnderProcessTenantDetails>reverseOrder());
+ //               Collections.sort(tenantDetailsList, Collections.<UnderProcessTenantDetails>reverseOrder());
                 underprocessRecyclerView.setAdapter(underprocessDetailList);
 
 
