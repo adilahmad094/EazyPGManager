@@ -85,6 +85,8 @@ public class TenantActivity extends AppCompatActivity {
     String floors;
     EditText floorsEditText;
 
+    Button underProcessButton;
+
     String thisRoom;
 
     boolean flag;
@@ -137,6 +139,8 @@ public class TenantActivity extends AppCompatActivity {
         emptyList = findViewById(R.id.emptyListTenant);
         listView.setEmptyView(emptyList);
 
+        underProcessButton = findViewById(R.id.underProcessButton);
+
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = firebaseDatabase.getReference();
 
@@ -160,6 +164,14 @@ public class TenantActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(TenantActivity.this,HomePageActivity.class));
+                finish();
+            }
+        });
+
+        underProcessButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TenantActivity.this, UnderProcessTenants.class));
                 finish();
             }
         });
@@ -363,6 +375,7 @@ public class TenantActivity extends AppCompatActivity {
                             }
 
                         }
+                        /**/
 
                         if (flag) {
 
@@ -485,6 +498,7 @@ public class TenantActivity extends AppCompatActivity {
                             });
 
                         }
+                        /*If that particular room not present in the Room List*/
                         else {
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(TenantActivity.this);
