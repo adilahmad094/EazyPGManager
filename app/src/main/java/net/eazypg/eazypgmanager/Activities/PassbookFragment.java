@@ -33,6 +33,7 @@ import net.eazypg.eazypgmanager.R;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -177,18 +178,21 @@ public class PassbookFragment extends Fragment {
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
                 allRecyclerView.setLayoutManager(layoutManager);
                 allRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                Collections.sort(allDetailsList, Collections.<CashflowDetails>reverseOrder());
                 allRecyclerView.setAdapter(allPassbookDetailList);
 
                 expensePassbookDetailList = new ExpensePassbookDetailList(expensesDetailsList, context);
                 RecyclerView.LayoutManager layoutManager2 = new LinearLayoutManager(context);
                 expensesRecyclerView.setLayoutManager(layoutManager2);
                 expensesRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                Collections.sort(expensesDetailsList, Collections.<CashflowDetails>reverseOrder());
                 expensesRecyclerView.setAdapter(expensePassbookDetailList);
 
                 incomePassbookDetailList = new IncomePassbookDetailList(incomeDetailsList, context);
                 RecyclerView.LayoutManager layoutManager3 = new LinearLayoutManager(context);
                 incomeRecyclerView.setLayoutManager(layoutManager3);
                 incomeRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                Collections.sort(incomeDetailsList, Collections.<CashflowDetails>reverseOrder());
                 incomeRecyclerView.setAdapter(incomePassbookDetailList);
             }
 
