@@ -65,7 +65,7 @@ public class UnderProcessTenants extends AppCompatActivity {
         tenantDetailsList = new ArrayList<>();
 
         underprocessRecyclerView = findViewById(R.id.UnderProcessTenantRecyclerView);
-        context = getApplicationContext();
+        context = UnderProcessTenants.this;
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
