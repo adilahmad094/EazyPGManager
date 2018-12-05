@@ -50,6 +50,9 @@ import net.eazypg.eazypgmanager.DetailsClasses.TenantDetails;
 import net.eazypg.eazypgmanager.R;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -215,6 +218,13 @@ public class RoomsActivity extends AppCompatActivity {
         }
 
         databaseReference = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Rooms/");
+
+        Collections.sort(rooms, new Comparator<String>() {
+            @Override
+            public int compare(String s, String t1) {
+                return s.compareTo(t1);
+            }
+        });
 
 
 
