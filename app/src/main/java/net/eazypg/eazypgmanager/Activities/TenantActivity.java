@@ -590,7 +590,6 @@ public class TenantActivity extends AppCompatActivity {
                                                 tagString += "Corner Room";
                                             }
 
-                                            tagString += floors;
 
                                             final String room = roomEditText.getText().toString();
 
@@ -603,6 +602,9 @@ public class TenantActivity extends AppCompatActivity {
                                                 String roomType = radioButton.getText().toString();
                                                 databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
                                                 databaseReference1.child("Rooms").child(room).child("Tags").setValue(tagString);
+
+                                                Log.e("Floors", floors);
+
                                                 databaseReference1.child("Rooms").child(room).child("Floors").setValue(floors);
 
                                                 databaseReference1.child("Rooms").child(room).child("Room Type").setValue(roomType).addOnCompleteListener(new OnCompleteListener<Void>() {

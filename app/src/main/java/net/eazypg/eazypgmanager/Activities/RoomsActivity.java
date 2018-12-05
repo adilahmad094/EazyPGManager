@@ -216,6 +216,8 @@ public class RoomsActivity extends AppCompatActivity {
 
         databaseReference = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Rooms/");
 
+
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -225,6 +227,7 @@ public class RoomsActivity extends AppCompatActivity {
                 rooms.clear();
                 floorList.clear();
 
+        /*Adding tags in the room rows*/
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String room = snapshot.getKey();
                     rooms.add(room);
@@ -416,13 +419,14 @@ public class RoomsActivity extends AppCompatActivity {
                                 break;
                         }
 
+
                         if(selectedButtonId == -1 || room.isEmpty())
                         {
                             Toast.makeText(RoomsActivity.this, "All fields are required.", Toast.LENGTH_SHORT).show();
                         }
                         else {
 
-                            Log.e("Tag String" ,"Hello"+ tagString );
+                            Log.e("Tag String" ,"Hello"+ floors );
 
                             String roomType = radioButton.getText().toString();
                             databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
@@ -479,6 +483,8 @@ public class RoomsActivity extends AppCompatActivity {
     private void getRoomDetails(final String room) {
 
         roomApplianceDetailsList.clear();
+
+        /*Adding Room Appliance Details*/
 
         databaseReference = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Appliances/AC/");
 
