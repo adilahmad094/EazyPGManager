@@ -31,18 +31,18 @@
                 android:text="0"
                 android:textColor="#01579B"
                 android:textSize="22sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView11"
+                app:layout_constraintBottom_toBottomOf="@+id/rentPaidTextView"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView11" />
+                app:layout_constraintTop_toTopOf="@+id/rentPaidTextView" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/rentPaidTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/productsans"
-                android:text="tenants have paid their rent."
+                android:text="tenants have paid their bill."
                 android:textSize="16sp"
                 app:layout_constraintStart_toEndOf="@+id/numberBillPaidTextView"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -63,13 +63,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/numberBillPaidTextView" />
 
             <TextView
+                android:id="@+id/rentNotPaidTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/productsans"
-                android:text="tenants are yet to pay their rent"
+                android:text="tenants are yet to pay their bill"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/numberBillNotPaidTextView"
                 app:layout_constraintStart_toEndOf="@+id/numberBillNotPaidTextView"
