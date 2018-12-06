@@ -324,10 +324,6 @@ public class RoomsActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
         addRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,6 +1,8 @@
 package net.eazypg.eazypgmanager.DetailsClasses;
 
-public class TenantDetails {
+import android.support.annotation.NonNull;
+
+public class TenantDetails implements Comparable<TenantDetails>{
 
     public String id, name, phone, room, dateOfJoining, rentAmount, pgId;
 
@@ -79,7 +81,15 @@ public class TenantDetails {
         this.pgId = pgId;
     }
 
+
+
     public TenantDetails() {
 
+    }
+
+    @Override
+    public int compareTo(@NonNull TenantDetails o) {
+
+        return getRoom().compareTo(o.getRoom());
     }
 }

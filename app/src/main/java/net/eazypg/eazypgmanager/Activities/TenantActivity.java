@@ -58,6 +58,8 @@ import net.eazypg.eazypgmanager.R;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
@@ -201,6 +203,7 @@ public class TenantActivity extends AppCompatActivity {
                 }
 
                 TenantDetailList adapter = new TenantDetailList(TenantActivity.this, tenantDetailsList);
+                Collections.sort(tenantDetailsList);
                 listView.setAdapter(adapter);
 
             }
