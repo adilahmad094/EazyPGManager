@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,15 +30,16 @@ public class UnderprocessDetailList extends RecyclerView.Adapter<UnderprocessDet
 
     List<UnderProcessTenantDetails> underprocessTenantsList;
     Context context;
-    String pgId;
+    String pgId, eazypgID;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
-    public UnderprocessDetailList(List<UnderProcessTenantDetails> underprocessTenantsList, Context context, String pgId) {
+    public UnderprocessDetailList(List<UnderProcessTenantDetails> underprocessTenantsList, Context context, String pgId, String eazypgID) {
         this.underprocessTenantsList = underprocessTenantsList;
         this.context = context;
         this.pgId = pgId;
+        this.eazypgID = eazypgID;
 
         firebaseDatabase = FirebaseDatabase.getInstance();
     }
@@ -71,9 +73,11 @@ public class UnderprocessDetailList extends RecyclerView.Adapter<UnderprocessDet
                 //ToDo: Firebase Dynamic link will be sent to tenant using MSG91
 
                 MSG91 msg91 = new MSG91("163776AiifTBEVMZl5aae0bce");
-                msg91.composeMessage("EazyPG", "Hi " + holder.tenantNameTextView.getText().toString() +  "Get your EazyPG App now https://goo.gl/M3jEhQ");
+                msg91.composeMessage("EazyPG", "Hi " + holder.tenantNameTextView.getText().toString() + ". Your EazyPG ID is " + eazypgID + ". Get your EazyPG App now https://goo.gl/M3jEhQ");
                 msg91.to(holder.contactNumberTextView.getText().toString());
                 String sendStatus = msg91.send();
+
+                Toast.makeText(context, "Invite message sent!", Toast.LENGTH_LONG).show();
             }
         });
 

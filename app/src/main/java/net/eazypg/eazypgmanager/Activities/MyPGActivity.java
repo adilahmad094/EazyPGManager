@@ -666,7 +666,7 @@ public class MyPGActivity extends AppCompatActivity {
                 String PersonalEmail = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("personalEmail").getValue(String.class);
                 String typeOfBills1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("typeOfBills").getValue(String.class);
                 String tenantsPreferred1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("tenantsPreferred").getValue(String.class);
-                String emergencyStayRate1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Detalis").child("emergencyStayRate").getValue(String.class);
+                String emergencyStayRate1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("emergencyStayRate").getValue(String.class);
                 String securityDeposit1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("securityDeposit").getValue(String.class);
                 String lockingPeriod1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("lockingPeriod").getValue(String.class);
                 String addressLine1 = dataSnapshot.child(firebaseUser.getUid()).child("PG Details").child("addressLine1").getValue(String.class);

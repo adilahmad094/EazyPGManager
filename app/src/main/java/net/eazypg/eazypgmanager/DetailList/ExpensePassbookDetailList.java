@@ -1,6 +1,8 @@
 package net.eazypg.eazypgmanager.DetailList;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +15,8 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -30,6 +34,9 @@ public class ExpensePassbookDetailList extends RecyclerView.Adapter<ExpensePassb
     FirebaseUser firebaseUser;
     StorageReference storageReference;
     FirebaseStorage storage;
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
     final long ONE_MEGABYTE = 1024 * 1024;
 
@@ -53,10 +60,13 @@ public class ExpensePassbookDetailList extends RecyclerView.Adapter<ExpensePassb
 
     @Override
     public void onBindViewHolder(final MyHolder holder, int position) {
-        CashflowDetails cashflowDetails = expensesPassbookDetailList.get(position);
+        final CashflowDetails cashflowDetails = expensesPassbookDetailList.get(position);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReferenceFromUrl("gs://eazypg-3dcb6.appspot.com").child("Expense");
 
@@ -68,6 +78,28 @@ public class ExpensePassbookDetailList extends RecyclerView.Adapter<ExpensePassb
         holder.paidToTextView.setText(cashflowDetails.paidTo);
 
         holder.plusMinusImage.setVisibility(View.GONE);
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Delete Expense");
+                builder.setMessage("Are you sure you want to delete expense of Rs." + holder.amountTextView.getText().toString() + "?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        databaseReference = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Cashflow/");
+                        databaseReference.child(cashflowDetails.expenseId).setValue(null);
+                    }
+                });
+                builder.setNegativeButton("No", null);
+                builder.show();
+
+                return true;
+            }
+        });
 
         storageReference.child(firebaseUser.getUid()).child(cashflowDetails.expenseId).getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override

@@ -91,7 +91,7 @@ public class RecentComplaintDetailList extends RecyclerView.Adapter<RecentCompla
         holder.roomNumberTenantTextView.setText(complaintDetails.roomNo);
         holder.descriptionTextView.setText(complaintDetails.description);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+       /* holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -205,7 +205,7 @@ public class RecentComplaintDetailList extends RecyclerView.Adapter<RecentCompla
 
                 popup.show();
             }
-        });
+        });*/
 
 
     }

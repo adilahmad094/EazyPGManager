@@ -44,13 +44,15 @@ public class UnderProcessTenants extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, databaseReference1;
 
     RecyclerView underprocessRecyclerView;
 
     Context context;
     ImageView backButton;
     UnderprocessDetailList underprocessDetailList;
+
+    String eazypgId;
 
     @Override
     public void onBackPressed() {
@@ -86,6 +88,24 @@ public class UnderProcessTenants extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
+
+
+        databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
+
+        databaseReference1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                eazypgId = dataSnapshot.child("EazyPGID").getValue(String.class);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         databaseReference = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Tenants/UnderProcess");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -104,7 +124,7 @@ public class UnderProcessTenants extends AppCompatActivity {
 
                 }
 
-                underprocessDetailList = new UnderprocessDetailList(tenantDetailsList, context, firebaseUser.getUid());
+                underprocessDetailList = new UnderprocessDetailList(tenantDetailsList, context, firebaseUser.getUid(), eazypgId);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
                 underprocessRecyclerView.setLayoutManager(layoutManager);
                 underprocessRecyclerView.setItemAnimator(new DefaultItemAnimator());

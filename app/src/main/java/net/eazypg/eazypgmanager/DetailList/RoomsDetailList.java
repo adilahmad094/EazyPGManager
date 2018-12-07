@@ -1,6 +1,9 @@
 package net.eazypg.eazypgmanager.DetailList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -58,6 +62,8 @@ public class RoomsDetailList extends ArrayAdapter<String> {
     DatabaseReference databaseReference2;
 
     String tagString;
+    boolean isTenant = true;
+
 
     public RoomsDetailList(Activity context, List<String> roomList, List<String> roomTypeList, Map<String, List<TenantDetails>> roomTenantMap, List<String> tagList, List<String> floorList) {
         super(context, R.layout.room_row, roomList);
@@ -187,6 +193,61 @@ public class RoomsDetailList extends ArrayAdapter<String> {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        listViewItemRoom.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Delete room");
+                builder.setMessage("Are you sure you want to delete the room " + roomList.get(position) + "?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        final ProgressDialog progressDialog = ProgressDialog.show(context, "Loading", "Please wait..", true);
+
+                        databaseReference = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Rooms/" + roomList.get(position));
+
+                        databaseReference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                isTenant = dataSnapshot.hasChild("Tenant");
+
+                                progressDialog.dismiss();
+
+                                if (!isTenant) {
+                                    databaseReference.setValue(null);
+                                    Toast.makeText(context, "Room Deleted", Toast.LENGTH_SHORT).show();
+                                }
+                                else {
+
+                                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                                    builder1.setTitle("Error");
+                                    builder1.setMessage("Cannot delete room. The room has tenants.");
+                                    builder1.show();
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+                    }
+                });
+                builder.setNegativeButton("No", null);
+                builder.show();
+
+
+                return true;
             }
         });
 

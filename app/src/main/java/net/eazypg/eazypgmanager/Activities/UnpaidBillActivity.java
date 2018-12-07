@@ -95,6 +95,9 @@ public class UnpaidBillActivity extends AppCompatActivity {
                     if (dataSnapshot.child("ThisMonth").child(dateString).child("Bill").child(typeOfBill).hasChild(tenantDetails.id)) {
                         // rent paid
                     }
+
+                    // ToDo: Show bill in tenant. Fetch from tenant Accounts
+
                     else {
                         unpaidTenants.add(tenantDetails);
                     }
