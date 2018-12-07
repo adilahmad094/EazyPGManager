@@ -81,6 +81,8 @@ public class TenantActivity extends AppCompatActivity {
     EditText roomEditText;
     TextView custom_title;
 
+    String searchText;
+
     CheckBox acCheckBox, washroomCheckBox, balconyCheckBox, ventilationCheckBox, largeRoomCheckBox, cornerRoomCheckBox;
 
     String tagString = "";
@@ -93,7 +95,7 @@ public class TenantActivity extends AppCompatActivity {
 
     boolean flag;
 
-    EditText input;
+    EditText input, input1;
 
     FirebaseUser firebaseUser;
     DatabaseReference databaseReference, databaseReference1, databaseReference2;
@@ -102,7 +104,7 @@ public class TenantActivity extends AppCompatActivity {
     ImageView qrImage;
     Button addTenant;
 
-    Button previousTenants , ok , cancel;
+    Button previousTenants , ok , cancel, searchTenant;
     EditText name, phone, room, rentAmount , email;
 
     TextView dateOfJoining, totalBedTextView, vacantBedTextView;
@@ -117,6 +119,7 @@ public class TenantActivity extends AppCompatActivity {
     int roomTypeNumber;
 
     LayoutInflater inflater;
+    TenantDetailList adapter;
 
     ImageView backButton;
 
@@ -133,9 +136,12 @@ public class TenantActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         input = new EditText(this);
+        input1 = new EditText(this);
 
         totalBedTextView = findViewById(R.id.totalBedTextView);
         vacantBedTextView = findViewById(R.id.vacantBedTextView);
+
+        searchTenant = findViewById(R.id.searchTenantButton);
 
         listView = findViewById(R.id.listViewTenant);
         emptyList = findViewById(R.id.emptyListTenant);
@@ -202,7 +208,7 @@ public class TenantActivity extends AppCompatActivity {
 
                 }
 
-                TenantDetailList adapter = new TenantDetailList(TenantActivity.this, tenantDetailsList);
+                adapter = new TenantDetailList(TenantActivity.this, tenantDetailsList);
                 Collections.sort(tenantDetailsList);
                 listView.setAdapter(adapter);
 
@@ -239,6 +245,44 @@ public class TenantActivity extends AppCompatActivity {
             }
         });
 
+        searchTenant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (input1.getParent()!=null) {
+                    ((ViewGroup) input1.getParent()).removeView(input1);
+                }
+
+                input.setFilters(new InputFilter[] { new InputFilter.LengthFilter(20) });
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(TenantActivity.this);
+                builder.setTitle("Search Tenant");
+                builder.setMessage("Enter name: ");
+                builder.setView(input1);
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapter.getFilter().filter("");
+
+                    }
+                });
+                builder.setPositiveButton("Search", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        searchText = input1.getText().toString();
+
+                        adapter.getFilter().filter(searchText);
+
+                    }
+                });
+                builder.setCancelable(false);
+                builder.show();
+
+
+            }
+        });
 
         totalBedTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -250,7 +294,7 @@ public class TenantActivity extends AppCompatActivity {
                         ((ViewGroup) input.getParent()).removeView(input);
                     }
 
-                    input.setFilters(new InputFilter[] { new InputFilter.LengthFilter(2) });
+                    input.setFilters(new InputFilter[] { new InputFilter.LengthFilter(4) });
                     input.setInputType(InputType.TYPE_CLASS_NUMBER);
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(TenantActivity.this);
@@ -444,7 +488,7 @@ public class TenantActivity extends AppCompatActivity {
 
                                                 if (dataSnapshot.child("Tenants").child("UnderProcess").hasChild(phone.getText().toString())) {
 
-                                                    AlertDialog.Builder builder = new AlertDialog.Builder(TenantActivity.this);
+                                                    AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
                                                     builder.setMessage("Tenant with this number is already invited");
                                                     builder.setTitle("Error");
                                                     builder.setNeutralButton("Ok", null);

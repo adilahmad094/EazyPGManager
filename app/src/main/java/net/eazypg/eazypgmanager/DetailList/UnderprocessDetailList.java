@@ -2,6 +2,7 @@ package net.eazypg.eazypgmanager.DetailList;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.constraint.ConstraintLayout;
@@ -12,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.katepratik.msg91api.MSG91;
 
 import net.eazypg.eazypgmanager.Activities.TenantActivity;
@@ -26,11 +29,17 @@ public class UnderprocessDetailList extends RecyclerView.Adapter<UnderprocessDet
 
     List<UnderProcessTenantDetails> underprocessTenantsList;
     Context context;
+    String pgId;
 
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
-    public UnderprocessDetailList(List<UnderProcessTenantDetails> underprocessTenantsList, Context context) {
+    public UnderprocessDetailList(List<UnderProcessTenantDetails> underprocessTenantsList, Context context, String pgId) {
         this.underprocessTenantsList = underprocessTenantsList;
         this.context = context;
+        this.pgId = pgId;
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
     }
 
     @Override
@@ -68,6 +77,54 @@ public class UnderprocessDetailList extends RecyclerView.Adapter<UnderprocessDet
             }
         });
 
+        holder.underProcessConstraintLayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Delete Under Process Tenant");
+                builder.setMessage("Are you sure you want to delete " + holder.tenantNameTextView.getText().toString() + " from the list?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        databaseReference = firebaseDatabase.getReference("PG/" + pgId + "/Tenants/UnderProcess/");
+                        databaseReference.child(holder.contactNumberTextView.getText().toString()).setValue(null);
+
+                    }
+                });
+                builder.setNegativeButton("No", null);
+                builder.show();
+
+                return false;
+            }
+        });
+
+        holder.contactNumberTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Make call");
+                builder.setMessage("Call " + holder.tenantNameTextView.getText().toString() + "?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                        callIntent.setData(Uri.parse("tel:" + holder.contactNumberTextView.getText().toString()));
+                        context.startActivity(callIntent);
+
+                    }
+                });
+                builder.setNegativeButton("No", null);
+                builder.show();
+
+            }
+        });
+
+
+
     }
 
     @Override
@@ -78,7 +135,7 @@ public class UnderprocessDetailList extends RecyclerView.Adapter<UnderprocessDet
     public class MyHolder extends RecyclerView.ViewHolder{
 
         public TextView tenantNameTextView, tenantRoomTextView, contactNumberTextView;
-        public ConstraintLayout inviteTenantConstraintLayout;
+        public ConstraintLayout inviteTenantConstraintLayout, underProcessConstraintLayout;
 
         public MyHolder(View itemView){
             super(itemView);
@@ -87,7 +144,7 @@ public class UnderprocessDetailList extends RecyclerView.Adapter<UnderprocessDet
             tenantRoomTextView = itemView.findViewById(R.id.roomNoTextView);
             contactNumberTextView = itemView.findViewById(R.id.contactTenantTextView);
             inviteTenantConstraintLayout = itemView.findViewById(R.id.inviteTenantConstraintLayout);
+            underProcessConstraintLayout = itemView.findViewById(R.id.underProcessConstraintLayout);
         }
     }
-
 }

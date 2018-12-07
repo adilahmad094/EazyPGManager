@@ -62,7 +62,7 @@ public class UnpaidBillDetailList extends RecyclerView.Adapter<UnpaidBillDetailL
             @Override
             public void onClick(View view) {
                 MSG91 msg91 = new MSG91("163776AiifTBEVMZl5aae0bce");
-                msg91.composeMessage("EazyPG", "Hi " + tenantUnpaidDetails.get(position).name + ". Your rent is due for this month.");
+                msg91.composeMessage("EazyPG", "Hi " + tenantUnpaidDetails.get(position).name + ". Your bill is due for this month.");
                 msg91.to(tenantUnpaidDetails.get(position).phone);
                 String sendStatus = msg91.send();
 

@@ -69,9 +69,6 @@ public class UnderProcessTenants extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-      /*  emptyList = findViewById(R.id.emptyListUnderProcessTenant);
-        listView.setEmptyView(emptyList);
-*/
         tenantDetailsList = new ArrayList<>();
 
         backButton = findViewById(R.id.imageView3);
@@ -82,9 +79,6 @@ public class UnderProcessTenants extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
 
         underprocessRecyclerView = findViewById(R.id.UnderProcessTenantRecyclerView);
         context = UnderProcessTenants.this;
@@ -104,11 +98,13 @@ public class UnderProcessTenants extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
                     UnderProcessTenantDetails tenantDetails = snapshot.getValue(UnderProcessTenantDetails.class);
-                    tenantDetailsList.add(tenantDetails);
+
+                    if (!tenantDetails.flag)
+                       tenantDetailsList.add(tenantDetails);
 
                 }
 
-                underprocessDetailList = new UnderprocessDetailList(tenantDetailsList, context);
+                underprocessDetailList = new UnderprocessDetailList(tenantDetailsList, context, firebaseUser.getUid());
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
                 underprocessRecyclerView.setLayoutManager(layoutManager);
                 underprocessRecyclerView.setItemAnimator(new DefaultItemAnimator());

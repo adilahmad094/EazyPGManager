@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +36,7 @@ import net.eazypg.eazypgmanager.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TenantDetailList extends ArrayAdapter<TenantDetails> {
+public class TenantDetailList extends ArrayAdapter<TenantDetails> implements Filterable {
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -45,6 +47,8 @@ public class TenantDetailList extends ArrayAdapter<TenantDetails> {
 
     private Activity context;
     private List<TenantDetails> tenantList;
+    private List<TenantDetails> displayTenants;
+
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     public static final String EXTRA_MESSAGE2 = "com.example.myfirstapp.MESSAGE2";
     public static final String EXTRA_MESSAGE3 = "com.example.myfirstapp.MESSAGE3";
@@ -61,9 +65,16 @@ public class TenantDetailList extends ArrayAdapter<TenantDetails> {
 
         this.context = context;
         this.tenantList = tenantList;
+        this.displayTenants = tenantList;
     }
 
     List<String> ids = new ArrayList<>();
+
+    @Override
+    public int getCount() {
+
+        return displayTenants.size();
+    }
 
     @NonNull
     @Override
@@ -83,7 +94,7 @@ public class TenantDetailList extends ArrayAdapter<TenantDetails> {
         firebaseUser = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        final TenantDetails tenantDetails = tenantList.get(position);
+        final TenantDetails tenantDetails = displayTenants.get(position);
 
         rentAmount.setText(tenantDetails.rentAmount);
 
@@ -187,5 +198,55 @@ public class TenantDetailList extends ArrayAdapter<TenantDetails> {
 
         return listViewItemTenant;
 
+    }
+
+    @NonNull
+    @Override
+    public Filter getFilter() {
+
+        Filter filter = new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+
+                FilterResults results = new FilterResults();        // Holds the results of a filtering operation in values
+                ArrayList<TenantDetails> FilteredArrList = new ArrayList<>();
+
+                if (tenantList == null) {
+                    tenantList = new ArrayList<>(displayTenants); // saves the original data in mOriginalValues
+                }
+
+                if (constraint == null || constraint.length() == 0) {
+
+                    // set the Original result to return
+                    results.count = tenantList.size();
+                    results.values = tenantList;
+
+                } else {
+
+                    constraint = constraint.toString().toLowerCase();
+                    for (int i = 0; i < tenantList.size(); i++) {
+                        String data = tenantList.get(i).name;
+                        if (data.toLowerCase().contains(constraint.toString())) {
+                            FilteredArrList.add(new TenantDetails(tenantList.get(i).name,tenantList.get(i).phone, tenantList.get(i).room, tenantList.get(i).dateOfJoining, tenantList.get(i).rentAmount, tenantList.get(i).pgId, tenantList.get(i).id));
+                        }
+                    }
+                    // set the Filtered result to return
+                    results.count = FilteredArrList.size();
+                    results.values = FilteredArrList;
+                }
+
+                return results;
+            }
+
+            @SuppressWarnings("unchecked")
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+
+                displayTenants = (ArrayList<TenantDetails>) results.values;
+                notifyDataSetChanged();
+            }
+        };
+
+        return filter;
     }
 }

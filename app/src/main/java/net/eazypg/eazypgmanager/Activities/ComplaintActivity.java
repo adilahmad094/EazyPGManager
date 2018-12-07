@@ -20,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.firebase.auth.FirebaseAuth;
@@ -116,7 +117,6 @@ public class ComplaintActivity extends AppCompatActivity {
 
         backButton = findViewById(R.id.backButton);
 
-
         sharedPreferences = getSharedPreferences(complaintPreference, Context.MODE_PRIVATE);
         prevBedroomCount = sharedPreferences.getLong("BedroomCount", 0);
         prevFacilitiesCount = sharedPreferences.getLong("FacilitiesCount", 0);
@@ -135,20 +135,20 @@ public class ComplaintActivity extends AppCompatActivity {
 
                 if (currentBedroomCount != prevBedroomCount) {
 
+                    BadgeView badgeView = new BadgeView(ComplaintActivity.this, bedroomComplaint);
+                    badgeView.setText(Long.toString(currentBedroomCount - prevBedroomCount));
+                    badgeView.show();
+
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putLong("BedroomCount", currentBedroomCount);
                     editor.apply();
-
-                    BadgeView badgeView = new BadgeView(ComplaintActivity.this, bedroomComplaint);
-                    badgeView.setText(Long.toString(currentBedroomCount - prevBedroomCount));
-    //                badgeView.show();
 
                 }
                 else {
 
                     BadgeView badgeView = new BadgeView(ComplaintActivity.this, bedroomComplaint);
                     badgeView.setText("0");
-    //                badgeView.show();
+                    badgeView.show();
                 }
 
                 complaintDetailsList.clear();
@@ -182,19 +182,19 @@ public class ComplaintActivity extends AppCompatActivity {
 
                 if (currentMessCount != prevMessCount) {
 
+                    BadgeView badgeView = new BadgeView(ComplaintActivity.this, foodComplaint);
+                    badgeView.setText(Long.toString(currentMessCount - prevMessCount));
+                    badgeView.show();
+
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putLong("MessCount", currentMessCount);
                     editor.apply();
-
-                    BadgeView badgeView = new BadgeView(ComplaintActivity.this, foodComplaint);
-                    badgeView.setText(Long.toString(currentMessCount - prevMessCount));
-     //               badgeView.show();
                 }
                 else {
 
                     BadgeView badgeView = new BadgeView(ComplaintActivity.this, foodComplaint);
                     badgeView.setText("0");
-     //               badgeView.show();
+                    badgeView.show();
 
                 }
 
@@ -226,20 +226,20 @@ public class ComplaintActivity extends AppCompatActivity {
 
                 if (currentFacilitiesCount != prevFacilitiesCount) {
 
+                    BadgeView badgeView = new BadgeView(ComplaintActivity.this, facilityComplaint);
+                    badgeView.setText(Long.toString(currentFacilitiesCount - prevFacilitiesCount));
+                    badgeView.show();
+
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putLong("FacilitiesCount", currentFacilitiesCount);
                     editor.apply();
 
-
-                    BadgeView badgeView = new BadgeView(ComplaintActivity.this, facilityComplaint);
-                    badgeView.setText(Long.toString(currentFacilitiesCount - prevFacilitiesCount));
-     //               badgeView.show();
                 }
                 else {
 
                     BadgeView badgeView = new BadgeView(ComplaintActivity.this, facilityComplaint);
                     badgeView.setText("0");
-     //               badgeView.show();
+                    badgeView.show();
 
                 }
 
@@ -251,7 +251,9 @@ public class ComplaintActivity extends AppCompatActivity {
                         complaintDetailsList.add(complaintDetails1);
                     }
 
+
                 }
+
 
             }
 
@@ -273,20 +275,20 @@ public class ComplaintActivity extends AppCompatActivity {
 
                 if (currentSecurityCount != prevSecurityCount) {
 
+                    BadgeView badgeView = new BadgeView(ComplaintActivity.this, securityComplaint);
+                    badgeView.setText(Long.toString(currentSecurityCount - prevSecurityCount));
+                    badgeView.show();
+
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putLong("SecurityCount", currentSecurityCount);
                     editor.apply();
-
-                    BadgeView badgeView = new BadgeView(ComplaintActivity.this, securityComplaint);
-                    badgeView.setText(Long.toString(currentSecurityCount - prevSecurityCount));
-    //                badgeView.show();
 
                 }
                 else {
 
                     BadgeView badgeView = new BadgeView(ComplaintActivity.this, securityComplaint);
                     badgeView.setText("0");
-     //               badgeView.show();
+                    badgeView.show();
 
                 }
 
@@ -297,6 +299,7 @@ public class ComplaintActivity extends AppCompatActivity {
                     if (!complaintDetails1.status.equals("Resolved")) {
                         complaintDetailsList.add(complaintDetails1);
                     }
+
                 }
 
                 getComplaints();
@@ -350,16 +353,17 @@ public class ComplaintActivity extends AppCompatActivity {
             }
         });
 
-        if(complaintDetailsList.size() == 0)
+
+
+        /*if(complaintDetailsList.size() == 0)
         {
             recyclerView.setVisibility(View.GONE);
             emptyView.setVisibility(View.VISIBLE);
         }
         else
         {
-            recyclerView.setVisibility(View.VISIBLE);
-            emptyView.setVisibility(View.GONE);
-        }
+
+        }*/
 
     }
 
@@ -371,17 +375,29 @@ public class ComplaintActivity extends AppCompatActivity {
 
     public void getComplaints() {
 
+        if (complaintDetailsList.size() == 0) {
+
+            recyclerView.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
+        }
+        else {
+
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
+        }
+
         Collections.sort(complaintDetailsList, Collections.<ComplaintDetails>reverseOrder());
 
         dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
 
         if (complaintDetailsList.size() < 5) {
 
-            adapter = new RecentComplaintDetailList(complaintDetailsList);
+            adapter = new RecentComplaintDetailList(complaintDetailsList, ComplaintActivity.this);
 
         }
         else {
-            adapter = new RecentComplaintDetailList(complaintDetailsList.subList(0, 5));
+
+            adapter = new RecentComplaintDetailList(complaintDetailsList.subList(0, 5), ComplaintActivity.this);
 
         }
 
