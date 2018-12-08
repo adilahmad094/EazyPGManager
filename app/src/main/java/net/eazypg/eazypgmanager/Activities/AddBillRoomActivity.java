@@ -74,7 +74,6 @@ public class AddBillRoomActivity extends AppCompatActivity {
 
         Fabric.with(this, new Crashlytics());
 
-
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();

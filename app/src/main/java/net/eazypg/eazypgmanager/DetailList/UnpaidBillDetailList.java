@@ -25,10 +25,13 @@ import static net.eazypg.eazypgmanager.DetailList.RentCollectionPaidDetailList.E
 public class UnpaidBillDetailList extends RecyclerView.Adapter<UnpaidBillDetailList.MyHolder>{
 
     List<TenantDetails> tenantUnpaidDetails;
+    List<String> unpaidAmount;
     Context context;
 
-    public UnpaidBillDetailList(List<TenantDetails> tenantUnpaidDetails, Context context) {
+    public UnpaidBillDetailList(List<TenantDetails> tenantUnpaidDetails, List<String> unpaidAmount, Context context) {
+
         this.tenantUnpaidDetails = tenantUnpaidDetails;
+        this.unpaidAmount = unpaidAmount;
         this.context = context;
     }
 
@@ -44,10 +47,10 @@ public class UnpaidBillDetailList extends RecyclerView.Adapter<UnpaidBillDetailL
     @Override
     public void onBindViewHolder(MyHolder holder, final int position) {
 
-        holder.rentAmountTextView.setVisibility(View.GONE);
         holder.tenantRoomTextView.setText(tenantUnpaidDetails.get(position).room);
         holder.tenantNameTextView.setText(tenantUnpaidDetails.get(position).name);
-        holder.textView7.setVisibility(View.GONE);
+
+        holder.rentAmountTextView.setText(unpaidAmount.get(position));
 
         holder.phoneButton.setOnClickListener(new View.OnClickListener() {
             @Override

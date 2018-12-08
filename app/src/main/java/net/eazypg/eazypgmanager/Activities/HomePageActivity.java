@@ -228,13 +228,13 @@ public class HomePageActivity extends AppCompatActivity {
             }
         });
 
-       rentBill.setOnClickListener(new View.OnClickListener() {
+        rentBill.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
                startActivity(new Intent(HomePageActivity.this , RentBillCollectionActivity.class));
                finish();
            }
-       });
+        });
 
         addBill.setOnClickListener(new View.OnClickListener() {
             @Override

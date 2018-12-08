@@ -98,29 +98,6 @@ public class TenantDetailList extends ArrayAdapter<TenantDetails> implements Fil
 
         rentAmount.setText(tenantDetails.rentAmount);
 
-        /*databaseReference = FirebaseDatabase.getInstance().getReference("PG/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/Tenants/CurrentTenants");
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                ids.clear();
-
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-
-                    TenantDetails tenantDetails1 = snapshot.getValue(TenantDetails.class);
-                    id = tenantDetails1.id;
-                    ids.add(id);
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });*/
-
         listViewItemTenant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

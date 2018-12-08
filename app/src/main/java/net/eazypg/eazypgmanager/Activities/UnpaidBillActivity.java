@@ -2,12 +2,14 @@ package net.eazypg.eazypgmanager.Activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import net.eazypg.eazypgmanager.DetailList.RentCollectionUnpaidDetailList;
 import net.eazypg.eazypgmanager.DetailList.UnpaidBillDetailList;
+import net.eazypg.eazypgmanager.DetailsClasses.BillDetails;
 import net.eazypg.eazypgmanager.DetailsClasses.TenantDetails;
 import net.eazypg.eazypgmanager.R;
 
@@ -36,7 +39,10 @@ public class UnpaidBillActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, databaseReference1;
+
+    List<BillDetails> billList;
+    List<String> unpaidAmount;
 
 
     TextView numberBillPaidTextView, numberBillNotPaidTextView;
@@ -68,6 +74,9 @@ public class UnpaidBillActivity extends AppCompatActivity {
 
         context = UnpaidBillActivity.this;
 
+        billList = new ArrayList<>();
+        unpaidAmount = new ArrayList<>();
+
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         Date date = new Date();
         final String dateStr = dateFormat.format(date);
@@ -96,19 +105,55 @@ public class UnpaidBillActivity extends AppCompatActivity {
                         // rent paid
                     }
 
-                    // ToDo: Show bill in tenant. Fetch from tenant Accounts
-
                     else {
                         unpaidTenants.add(tenantDetails);
                     }
 
                 }
 
-                unpaidBillDetailList = new UnpaidBillDetailList(unpaidTenants, context);
-                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-                unpaidBillRecyclerView.setLayoutManager(layoutManager);
-                unpaidBillRecyclerView.setItemAnimator(new DefaultItemAnimator());
-                unpaidBillRecyclerView.setAdapter(unpaidBillDetailList);
+                for (final TenantDetails tenantDetails1 : unpaidTenants) {
+
+                    databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Tenants/CurrentTenants/" + tenantDetails1.id + "/Accounts/Bills/" + dateString);
+                    databaseReference1.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            billList.clear();
+
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                                BillDetails billDetails = snapshot.getValue(BillDetails.class);
+                                billList.add(billDetails);
+
+                            }
+
+                            int amount = 0;
+
+                            for (BillDetails billDetails1 : billList) {
+
+                                if (billDetails1.category.equalsIgnoreCase(typeOfBill)) {
+                                    amount += Float.parseFloat(billDetails1.amount);
+                                }
+
+                            }
+
+                            unpaidAmount.add(Integer.toString(amount));
+
+                            unpaidBillDetailList = new UnpaidBillDetailList(unpaidTenants, unpaidAmount, context);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+                            unpaidBillRecyclerView.setLayoutManager(layoutManager);
+                            unpaidBillRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                            unpaidBillRecyclerView.setAdapter(unpaidBillDetailList);
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+                }
 
 
             }
