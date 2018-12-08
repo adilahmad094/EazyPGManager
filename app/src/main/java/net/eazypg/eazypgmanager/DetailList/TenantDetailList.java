@@ -98,7 +98,7 @@ public class TenantDetailList extends ArrayAdapter<TenantDetails> implements Fil
 
         rentAmount.setText(tenantDetails.rentAmount);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("PG/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/Tenants/CurrentTenants");
+        /*databaseReference = FirebaseDatabase.getInstance().getReference("PG/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/Tenants/CurrentTenants");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -119,14 +119,14 @@ public class TenantDetailList extends ArrayAdapter<TenantDetails> implements Fil
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
         listViewItemTenant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(context, TenantDashboardFragmentActivity.class);
-                intent.putExtra(EXTRA_MESSAGE3, ids.get(position));
+                intent.putExtra(EXTRA_MESSAGE3, tenantDetails.getId());
                 intent.putExtra(EXTRA_MESSAGE4, tenantDetails.getRoom());
                 intent.putExtra(EXTRA_MESSAGE5, tenantDetails.getName());
                 context.startActivity(intent);
@@ -143,7 +143,7 @@ public class TenantDetailList extends ArrayAdapter<TenantDetails> implements Fil
             public void onClick(View v) {
 
                 Intent intent = new Intent(context, PaymentActivity.class);
-                intent.putExtra(EXTRA_MESSAGE, ids.get(position));
+                intent.putExtra(EXTRA_MESSAGE, tenantDetails.getId());
                 context.startActivity(intent);
             }
         });
@@ -176,14 +176,14 @@ public class TenantDetailList extends ArrayAdapter<TenantDetails> implements Fil
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 final EditText inputMessageEditText = new EditText(context);
                 builder.setView(inputMessageEditText);
-                inputMessageEditText.setText("Hi " + tenantList.get(position).name + ". ");
+                inputMessageEditText.setText("Hi " + displayTenants.get(position).name + ". ");
                 builder.setTitle("Send Message");
                 builder.setPositiveButton("Send", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String message = inputMessageEditText.getText().toString();
                         msg91.composeMessage("EazyPG", message);
-                        msg91.to(tenantList.get(position).phone);
+                        msg91.to(displayTenants.get(position).phone);
                         String sendStatus = msg91.send();
                     }
                 });
