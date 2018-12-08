@@ -9,63 +9,35 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/roomTypeEditText"
+        android:layout_width="225dp"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
-        android:orientation="horizontal"
+        android:background="@drawable/text_bg"
+        android:ems="10"
+        android:fontFamily="@font/productsans"
+        android:hint="No. of beds"
+        android:inputType="number"
+        android:maxLength="1"
+        android:paddingStart="16dp"
+        android:textColor="#000000"
+        android:textColorHint="#424242"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RadioButton
-            android:id="@+id/oneBedCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/productsansbold"
-            android:text="One Bed"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <RadioButton
-            android:id="@+id/twoBedCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/productsansbold"
-            android:text="Two Bed"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/oneBedCheckBox" />
-
-        <RadioButton
-            android:id="@+id/threeBedCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/productsansbold"
-            android:text="Three Bed"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/twoBedCheckBox" />
-
-    </RadioGroup>
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/roomNoEditText"
         android:layout_width="225dp"
         android:layout_height="40dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/text_bg"
         android:ems="10"
         android:fontFamily="@font/productsans"
@@ -76,28 +48,31 @@
         android:textColor="#000000"
         android:textColorHint="#424242"
         android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="@+id/floorEditText"
-        app:layout_constraintStart_toStartOf="@+id/floorEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/floorEditText" />
 
     <EditText
         android:id="@+id/floorEditText"
         android:layout_width="225dp"
         android:layout_height="40dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/text_bg"
+        android:ems="10"
         android:fontFamily="@font/productsans"
         android:hint="Floor"
-        android:maxLength="2"
         android:inputType="number"
+        android:maxLength="2"
         android:paddingStart="16dp"
         android:textColor="#000000"
         android:textColorHint="#424242"
         android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
-        app:layout_constraintStart_toStartOf="@+id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:layout_width="match_parent"

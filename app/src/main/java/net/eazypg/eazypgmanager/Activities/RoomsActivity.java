@@ -64,12 +64,13 @@ public class RoomsActivity extends AppCompatActivity {
 
     ImageView addRoom;
     TextView custom_title;
-    EditText roomEditText;
+    EditText roomEditText, roomTypeEditText;
 
     EditText floorsEditText;
 
     View view;
     LayoutInflater inflater;
+    String roomType = "";
 
     RadioGroup radioGroup;
     RadioButton radioButton;
@@ -198,9 +199,6 @@ public class RoomsActivity extends AppCompatActivity {
                     totalRoom = Integer.parseInt(dataSnapshot.child("noOfRooms").getValue(String.class));
 
                     totalRoomsTextView.setText(Integer.toString(totalRoom));
-/*
-                    Log.e("Hello", "there" + totalRoom);
-*/
 
                 }
 
@@ -288,10 +286,6 @@ public class RoomsActivity extends AppCompatActivity {
                                 semiVacantRooms++;
                             }
 
-
-
-
-
                             roomTenantMap.put(room, roomTenantList);
                             Log.e("room tenant map inside", "onDataChange: " + roomTenantMap.size());
 
@@ -329,8 +323,9 @@ public class RoomsActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 final View viewDialog = inflater.inflate(R.layout.dialog_room, null);
-                radioGroup = viewDialog.findViewById(R.id.radioGroup);
+
                 roomEditText = viewDialog.findViewById(R.id.roomNoEditText);
+                roomTypeEditText = viewDialog.findViewById(R.id.roomTypeEditText);
                 floorsEditText = viewDialog.findViewById(R.id.floorEditText);
 
                 acCheckBox = viewDialog.findViewById(R.id.acCheckBox);
@@ -381,10 +376,22 @@ public class RoomsActivity extends AppCompatActivity {
                             tagString += "Corner Room";
                         }
 
-                        int selectedButtonId = radioGroup.getCheckedRadioButtonId();
-                        radioButton = viewDialog.findViewById(selectedButtonId);
 
                         final String room = roomEditText.getText().toString();
+
+                        switch (roomTypeEditText.getText().toString()) {
+
+                            case "1" : roomType = "One Bed"; break;
+                            case "2" : roomType = "Two Bed"; break;
+                            case "3" : roomType = "Three Bed"; break;
+                            case "4" : roomType = "Four Bed"; break;
+                            case "5" : roomType = "Five Bed"; break;
+                            case "6" : roomType = "Six Bed"; break;
+                            case "7" : roomType = "Seven Bed"; break;
+                            case "8" : roomType = "Eight Bed"; break;
+                            case "9" : roomType = "Nine Bed"; break;
+
+                        }
 
                         switch (floorsEditText.getText().toString()) {
 
@@ -426,7 +433,7 @@ public class RoomsActivity extends AppCompatActivity {
                         }
 
 
-                        if(selectedButtonId == -1 || room.isEmpty())
+                        if(roomType.length() < 1 || room.isEmpty())
                         {
                             Toast.makeText(RoomsActivity.this, "All fields are required.", Toast.LENGTH_SHORT).show();
                         }
@@ -434,7 +441,6 @@ public class RoomsActivity extends AppCompatActivity {
 
                             Log.e("Tag String" ,"Hello"+ floors );
 
-                            String roomType = radioButton.getText().toString();
                             databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
                             databaseReference1.child("Rooms").child(room).child("Room Type").setValue(roomType);
                             databaseReference1.child("Rooms").child(room).child("Floors").setValue(floors);

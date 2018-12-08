@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.sip.SipSession;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -142,7 +143,7 @@ public class SignupActivity extends AppCompatActivity {
                                         String refreshedToken = instanceIdResult.getToken();
 
                                         databaseReference = firebaseDatabase.getReference("PG/" + mFirebaseAuth.getCurrentUser().getUid());
-                                        databaseReference.child("Token").child("tokenId").setValue(refreshedToken);
+                                        databaseReference.child("Token").child(refreshedToken).setValue(Build.MODEL);
 
                                     }
                                 });

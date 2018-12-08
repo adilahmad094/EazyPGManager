@@ -73,15 +73,14 @@ public class TenantActivity extends AppCompatActivity {
     View emptyList;
     List<TenantDetails> tenantDetailsList;
 
-    RadioGroup radioGroup;
     RadioButton radioButton;
 
     String eazyPGId;
 
-    EditText roomEditText;
+    EditText roomEditText, roomTypeEditText;
     TextView custom_title;
 
-    String searchText;
+    String searchText, roomType;
 
     CheckBox acCheckBox, washroomCheckBox, balconyCheckBox, ventilationCheckBox, largeRoomCheckBox, cornerRoomCheckBox;
 
@@ -114,7 +113,7 @@ public class TenantActivity extends AppCompatActivity {
 
     List<String> rooms;
 
-    String pgName, roomType;
+    String pgName;
     long tenantNumber;
     int roomTypeNumber;
 
@@ -468,13 +467,18 @@ public class TenantActivity extends AppCompatActivity {
                                         }
                                     });
 
-                                    Log.e("RoomType", roomType + "");
-
                                     switch (roomType) {
 
                                         case "One Bed" : roomTypeNumber = 1;    break;
                                         case "Two Bed" : roomTypeNumber = 2;    break;
                                         case "Three Bed" : roomTypeNumber = 3;  break;
+                                        case "Four Bed" : roomTypeNumber = 4;  break;
+                                        case "Five Bed" : roomTypeNumber = 5;  break;
+                                        case "Six Bed" : roomTypeNumber = 6;  break;
+                                        case "Seven Bed" : roomTypeNumber = 7;  break;
+                                        case "Eight Bed" : roomTypeNumber = 8;  break;
+                                        case "Nine Bed" : roomTypeNumber = 9;  break;
+
 
                                     }
 
@@ -556,8 +560,16 @@ public class TenantActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
 
                                     final View viewDialog = inflater.inflate(R.layout.dialog_room, null);
-                                    radioGroup = viewDialog.findViewById(R.id.radioGroup);
                                     roomEditText = viewDialog.findViewById(R.id.roomNoEditText);
+                                    roomTypeEditText = viewDialog.findViewById(R.id.roomTypeEditText);
+
+                                    acCheckBox = viewDialog.findViewById(R.id.acCheckBox);
+                                    washroomCheckBox = viewDialog.findViewById(R.id.washroomCheckBox);
+                                    balconyCheckBox = viewDialog.findViewById(R.id.balconyCheckBox);
+                                    ventilationCheckBox = viewDialog.findViewById(R.id.ventilationCheckBox);
+                                    largeRoomCheckBox = viewDialog.findViewById(R.id.largeRoomCheckBox);
+                                    cornerRoomCheckBox = viewDialog.findViewById(R.id.cornerRoomCheckBox);
+
 
                                     final View titleView = inflater.inflate(R.layout.custom_titleroom, null);
                                     custom_title = titleView.findViewById(R.id.roomCustomTitle);
@@ -574,17 +586,7 @@ public class TenantActivity extends AppCompatActivity {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
 
-                                            int selectedButtonId = radioGroup.getCheckedRadioButtonId();
-                                            radioButton = viewDialog.findViewById(selectedButtonId);
-
                                             floorsEditText = viewDialog.findViewById(R.id.floorEditText);
-
-                                            acCheckBox = viewDialog.findViewById(R.id.acCheckBox);
-                                            washroomCheckBox = viewDialog.findViewById(R.id.washroomCheckBox);
-                                            balconyCheckBox = viewDialog.findViewById(R.id.balconyCheckBox);
-                                            ventilationCheckBox = viewDialog.findViewById(R.id.ventilationCheckBox);
-                                            largeRoomCheckBox = viewDialog.findViewById(R.id.largeRoomCheckBox);
-                                            cornerRoomCheckBox = viewDialog.findViewById(R.id.cornerRoomCheckBox);
 
                                             switch (floorsEditText.getText().toString()) {
 
@@ -650,16 +652,29 @@ public class TenantActivity extends AppCompatActivity {
                                                 tagString += "Corner Room";
                                             }
 
+                                            switch (roomTypeEditText.getText().toString()) {
+
+                                                case "1" : roomType = "One Bed"; break;
+                                                case "2" : roomType = "Two Bed"; break;
+                                                case "3" : roomType = "Three Bed"; break;
+                                                case "4" : roomType = "Four Bed"; break;
+                                                case "5" : roomType = "Five Bed"; break;
+                                                case "6" : roomType = "Six Bed"; break;
+                                                case "7" : roomType = "Seven Bed"; break;
+                                                case "8" : roomType = "Eight Bed"; break;
+                                                case "9" : roomType = "Nine Bed"; break;
+
+                                            }
+
 
                                             final String room = roomEditText.getText().toString();
 
-                                            if(selectedButtonId == -1 || room.isEmpty())
+                                            if(roomTypeEditText.length() < 1 || room.isEmpty())
                                             {
                                                 Toast.makeText(TenantActivity.this, "All fields are required.", Toast.LENGTH_SHORT).show();
                                             }
                                             else {
 
-                                                String roomType = radioButton.getText().toString();
                                                 databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
                                                 databaseReference1.child("Rooms").child(room).child("Tags").setValue(tagString);
 
