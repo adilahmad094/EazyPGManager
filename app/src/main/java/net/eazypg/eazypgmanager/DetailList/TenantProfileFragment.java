@@ -1,10 +1,12 @@
 package net.eazypg.eazypgmanager.DetailList;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,7 +17,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -91,6 +96,32 @@ public class TenantProfileFragment extends Fragment {
             public void onSuccess(byte[] bytes) {
                 Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                 circleImageView.setImageBitmap(bitmap);
+            }
+        });
+
+        circleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Dialog builder = new Dialog(getContext());
+                builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                builder.getWindow().setBackgroundDrawable(
+                        new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+                ImageView imageView = new ImageView(getContext());
+
+                circleImageView.buildDrawingCache(true);
+
+                Bitmap bitmap = Bitmap.createBitmap(circleImageView.getDrawingCache(true));
+                imageView.setImageBitmap(bitmap);
+                builder.addContentView(imageView, new RelativeLayout.LayoutParams(
+                        1000,
+                        1000));
+                builder.setCancelable(true);
+
+                builder.show();
+
+
             }
         });
 

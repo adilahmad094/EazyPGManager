@@ -15,8 +15,8 @@ android {
         applicationId "net.eazypg.eazypgmanager"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 8
-        versionName "1.07"
+        versionCode 9
+        versionName "1.08"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -78,5 +78,5 @@ configurations.all
         }
 
 
-
+com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
 apply plugin: 'com.google.gms.google-services'

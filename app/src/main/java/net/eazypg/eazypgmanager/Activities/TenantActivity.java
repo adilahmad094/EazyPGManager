@@ -73,8 +73,6 @@ public class TenantActivity extends AppCompatActivity {
     View emptyList;
     List<TenantDetails> tenantDetailsList;
 
-    RadioButton radioButton;
-
     String eazyPGId;
 
     EditText roomEditText, roomTypeEditText;
@@ -128,7 +126,6 @@ public class TenantActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tenant);
 
         Fabric.with(this, new Crashlytics());
-
 
         Toolbar toolbar = findViewById(R.id.tenantToolbar);
         setSupportActionBar(toolbar);
@@ -347,7 +344,6 @@ public class TenantActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 // final View viewDialog = inflater.inflate(R.layout.dialog_tenant, null);
                 final Dialog dialog = new Dialog(TenantActivity.this);
 
@@ -421,7 +417,6 @@ public class TenantActivity extends AppCompatActivity {
                             }
 
                         }
-                        /**/
 
                         if (flag) {
 
@@ -498,6 +493,8 @@ public class TenantActivity extends AppCompatActivity {
                                                     builder.setNeutralButton("Ok", null);
                                                     builder.show();
 
+                                                    dialog.dismiss();
+
                                                 }
                                                 else {
                                                     UnderProcessTenantDetails tenantDetails = new UnderProcessTenantDetails(name.getText().toString(), phone.getText().toString(), room.getText().toString(), dateOfJoining.getText().toString(), rentAmount.getText().toString(), false);
@@ -510,6 +507,8 @@ public class TenantActivity extends AppCompatActivity {
                                                             builder.setMessage("An invitation message with link and details has been sent to " + name.getText().toString() + ".");
                                                             builder.setNeutralButton("Ok", null);
                                                             builder.show();
+
+                                                            dialog.dismiss();
 
                                                             //ToDo: Firebase Dynamic link will be sent to tenant using MSG91
 
@@ -549,6 +548,8 @@ public class TenantActivity extends AppCompatActivity {
                             });
 
                         }
+
+
                         /*If that particular room not present in the Room List*/
                         else {
 
@@ -584,7 +585,7 @@ public class TenantActivity extends AppCompatActivity {
 
                                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
-                                        public void onClick(DialogInterface dialog, int which) {
+                                        public void onClick(final DialogInterface dialog, int which) {
 
                                             floorsEditText = viewDialog.findViewById(R.id.floorEditText);
 
@@ -700,6 +701,8 @@ public class TenantActivity extends AppCompatActivity {
                                                                     builder.setNeutralButton("Ok", null);
                                                                     builder.show();
 
+                                                                    dialog.dismiss();
+
                                                                 }
                                                                 else {
                                                                     UnderProcessTenantDetails tenantDetails = new UnderProcessTenantDetails(name.getText().toString(), phone.getText().toString(), room, dateOfJoining.getText().toString(), rentAmount.getText().toString(), false);
@@ -710,8 +713,15 @@ public class TenantActivity extends AppCompatActivity {
                                                                             AlertDialog.Builder builder = new AlertDialog.Builder(TenantActivity.this);
                                                                             builder.setTitle("Tenant Invited");
                                                                             builder.setMessage("An invitation message with link and details has been sent to " + name.getText().toString() + ".");
-                                                                            builder.setNeutralButton("Ok", null);
+                                                                            builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                                                                @Override
+                                                                                public void onClick(DialogInterface dialog, int which) {
+                                                                                    dialog.dismiss();
+                                                                                }
+                                                                            });
                                                                             builder.show();
+
+                                                                            dialog.dismiss();
 
                                                                             //ToDo: Firebase Dynamic link will be sent to tenant using MSG91
 
@@ -754,6 +764,8 @@ public class TenantActivity extends AppCompatActivity {
                             builder.show();
 
                         }
+
+                        dialog.dismiss();
 
                     }
                 });
