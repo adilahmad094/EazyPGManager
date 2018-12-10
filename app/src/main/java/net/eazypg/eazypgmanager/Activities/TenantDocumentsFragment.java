@@ -2,7 +2,9 @@ package net.eazypg.eazypgmanager.Activities;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.DownloadManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -61,9 +64,10 @@ public class TenantDocumentsFragment extends Fragment {
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
     FirebaseUser firebaseUser;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, databaseReference1;
 
     String id;
+    Context context;
 
     TextView aadharFrontStatus, aadharBackStatus, collegeIDFrontStatus, collegeIDBackStatus;
 
@@ -95,6 +99,7 @@ public class TenantDocumentsFragment extends Fragment {
         collegeIDBackStatus = view.findViewById(R.id.collegeIDBackStatus);
 
         downloadButton = view.findViewById(R.id.downloadButton);
+        context = getContext();
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReferenceFromUrl("gs://eazypg-3dcb6.appspot.com").child("Documents");
@@ -569,7 +574,53 @@ public class TenantDocumentsFragment extends Fragment {
             }
         });
 
+        downloadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                databaseReference = firebaseDatabase.getReference("Tenants/" + id + "/Personal Detail/Documents/pdf");
+
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        if (dataSnapshot.child("pdfurl").exists()) {
+
+                            String url = dataSnapshot.child("pdfurl").getValue(String.class);
+                            downloadFile(context, "PoliceVerificationForm", ".pdf", Environment.getExternalStorageDirectory() + "/EazyPG/", url);
+
+                        }
+                        else {
+                            Toast.makeText(context, "URL not found", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+            }
+        });
+
 
         return view;
+    }
+
+    public long downloadFile(Context context, String fileName, String fileExtension, String destinationDirectory, String url) {
+
+
+        DownloadManager downloadmanager = (DownloadManager) context.
+                getSystemService(Context.DOWNLOAD_SERVICE);
+        Uri uri = Uri.parse(url);
+        DownloadManager.Request request = new DownloadManager.Request(uri);
+
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        request.setDestinationInExternalFilesDir(context, destinationDirectory, fileName + fileExtension);
+
+        return downloadmanager.enqueue(request);
     }
 }
