@@ -1,13 +1,17 @@
 package net.eazypg.eazypgmanager.DetailList;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -66,6 +70,30 @@ public class AllPassbookDetailList extends RecyclerView.Adapter<AllPassbookDetai
         holder.timestampTextView.setText(cashflowDetails.date);
         holder.paidTextView.setText(cashflowDetails.paidBy);
         holder.paidToTextView.setText(cashflowDetails.paidTo);
+
+        holder.billImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Dialog builder = new Dialog(context);
+                builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                builder.getWindow().setBackgroundDrawable(
+                        new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+                ImageView imageView = new ImageView(context);
+
+                holder.billImageView.buildDrawingCache(true);
+
+                Bitmap bitmap = Bitmap.createBitmap(holder.billImageView.getDrawingCache(true));
+                imageView.setImageBitmap(bitmap);
+                builder.addContentView(imageView, new RelativeLayout.LayoutParams(
+                        1000,
+                        1000));
+                builder.setCancelable(true);
+
+                builder.show();
+            }
+        });
 
         storageReference.child(firebaseUser.getUid()).child(cashflowDetails.expenseId).getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override

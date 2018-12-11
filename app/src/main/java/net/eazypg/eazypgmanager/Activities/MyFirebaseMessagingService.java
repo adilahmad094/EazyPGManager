@@ -91,7 +91,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 NotificationChannel mChannel = new NotificationChannel("0", title, NotificationManager.IMPORTANCE_DEFAULT);
                 mChannel.setDescription(body);
                 mChannel.enableVibration(true);
-                mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+                mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 300, 200, 100, 300});
                 notifManager.createNotificationChannel(mChannel);
             }
 
@@ -109,7 +109,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     .setBadgeIconType(R.drawable.icon_logo)
                     .setContentIntent(pendingIntent)
                     .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                    .setVibrate(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+                    .setVibrate(new long[]{100, 200, 300, 400, 300, 200, 100, 300});
         } else {
 
             builder = new NotificationCompat.Builder(this);
@@ -124,7 +124,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.icon_logo))
                     .setContentIntent(pendingIntent)
                     .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                    .setVibrate(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400})
+                    .setVibrate(new long[]{100, 200, 300, 400, 300, 200, 100, 300})
                     .setPriority(Notification.PRIORITY_HIGH);
         } // else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         Notification notification = builder.build();
