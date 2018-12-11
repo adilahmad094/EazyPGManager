@@ -7,11 +7,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,15 +39,15 @@ public class RoomsDetailList extends ArrayAdapter<String> {
 
     private Activity context;
     private List<String> roomList;
-    private TextView third , fourth, rentTextView, numberOfTenantsTextView;
+    private TextView third , fourth;
     private ListView dialogListView;
     private List<String> roomTypeList;
-    private Map<String, List<TenantDetails>> roomTenantMap;
     private List<TenantDetails> tenantList = new ArrayList<>();
     private List<String> tagList = new ArrayList<>();
     public List<String> floorsList = new ArrayList<>();
 
     TextView floorsTextView, acTextView, nonAcTextView, washroomTextView, balconyTextView, ventilationTextView, largeRoomTextView, cornerRoomTextView;
+    ImageView tenantImage1, tenantImage2, tenantImage3, tenantImage4, tenantImage5, tenantImage6, tenantImage7, tenantImage8, tenantImage9;
 
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     public static final String EXTRA_MESSAGE2 = "com.example.myfirstapp.MESSAGE2";
@@ -65,13 +67,12 @@ public class RoomsDetailList extends ArrayAdapter<String> {
     boolean isTenant = true;
 
 
-    public RoomsDetailList(Activity context, List<String> roomList, List<String> roomTypeList, Map<String, List<TenantDetails>> roomTenantMap, List<String> tagList, List<String> floorList) {
+    public RoomsDetailList(Activity context, List<String> roomList, List<String> roomTypeList, List<String> tagList, List<String> floorList) {
         super(context, R.layout.room_row, roomList);
 
         this.context = context;
         this.roomList = roomList;
         this.roomTypeList = roomTypeList;
-        this.roomTenantMap = roomTenantMap;
         this.tagList = tagList;
         this.floorsList = floorList;
 
@@ -92,8 +93,16 @@ public class RoomsDetailList extends ArrayAdapter<String> {
 
         third = listViewItemRoom.findViewById(R.id.thirdTextView);
         fourth = listViewItemRoom.findViewById(R.id.fourthTextView);
-        rentTextView = listViewItemRoom.findViewById(R.id.rentTextView);
-        numberOfTenantsTextView = listViewItemRoom.findViewById(R.id.numberOfTenantsTextView);
+
+        tenantImage1 = listViewItemRoom.findViewById(R.id.tenantImage1);
+        tenantImage2 = listViewItemRoom.findViewById(R.id.tenantImage2);
+        tenantImage3 = listViewItemRoom.findViewById(R.id.tenantImage3);
+        tenantImage4 = listViewItemRoom.findViewById(R.id.tenantImage4);
+        tenantImage5 = listViewItemRoom.findViewById(R.id.tenantImage5);
+        tenantImage6 = listViewItemRoom.findViewById(R.id.tenantImage6);
+        tenantImage7 = listViewItemRoom.findViewById(R.id.tenantImage7);
+        tenantImage8 = listViewItemRoom.findViewById(R.id.tenantImage8);
+        tenantImage9 = listViewItemRoom.findViewById(R.id.tenantImage9);
 
         acTextView = listViewItemRoom.findViewById(R.id.acTextView);
         nonAcTextView = listViewItemRoom.findViewById(R.id.nonAcTextView);
@@ -104,13 +113,88 @@ public class RoomsDetailList extends ArrayAdapter<String> {
         cornerRoomTextView = listViewItemRoom.findViewById(R.id.cornerRoomTextView);
         floorsTextView = listViewItemRoom.findViewById(R.id.floorsTextView);
 
-        /*databaseReference2 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Rooms/" + roomList.get(position));
+        databaseReference2 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Rooms/" + roomList.get(position) + "/Tenant/CurrentTenants");
         databaseReference2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String floors = dataSnapshot.child("Floors").getValue(String.class);
 
-                floorsTextView.setText(floors);
+                long count = dataSnapshot.getChildrenCount();
+
+                switch ((int)count) {
+
+                    case 1:
+                        tenantImage1.setAlpha(1.0f);
+                        break;
+
+                    case 2:
+                        tenantImage1.setAlpha(1.0f);
+                        tenantImage2.setAlpha(1.0f);
+                        break;
+
+                    case 3:
+                        tenantImage1.setAlpha(1.0f);
+                        tenantImage2.setAlpha(1.0f);
+                        tenantImage3.setAlpha(1.0f);
+                        break;
+
+                    case 4:
+                        tenantImage1.setAlpha(1.0f);
+                        tenantImage2.setAlpha(1.0f);
+                        tenantImage3.setAlpha(1.0f);
+                        tenantImage4.setAlpha(1.0f);
+                        break;
+
+                    case 5:
+                        tenantImage1.setAlpha(1.0f);
+                        tenantImage2.setAlpha(1.0f);
+                        tenantImage3.setAlpha(1.0f);
+                        tenantImage4.setAlpha(1.0f);
+                        tenantImage5.setAlpha(1.0f);
+                        break;
+
+                    case 6:
+                        tenantImage1.setAlpha(1.0f);
+                        tenantImage2.setAlpha(1.0f);
+                        tenantImage3.setAlpha(1.0f);
+                        tenantImage4.setAlpha(1.0f);
+                        tenantImage5.setAlpha(1.0f);
+                        tenantImage6.setAlpha(1.0f);
+                        break;
+
+                    case 7:
+                        tenantImage1.setAlpha(1.0f);
+                        tenantImage2.setAlpha(1.0f);
+                        tenantImage3.setAlpha(1.0f);
+                        tenantImage4.setAlpha(1.0f);
+                        tenantImage5.setAlpha(1.0f);
+                        tenantImage6.setAlpha(1.0f);
+                        tenantImage7.setAlpha(1.0f);
+                        break;
+
+                    case 8:
+                        tenantImage1.setAlpha(1.0f);
+                        tenantImage2.setAlpha(1.0f);
+                        tenantImage3.setAlpha(1.0f);
+                        tenantImage4.setAlpha(1.0f);
+                        tenantImage5.setAlpha(1.0f);
+                        tenantImage6.setAlpha(1.0f);
+                        tenantImage7.setAlpha(1.0f);
+                        tenantImage8.setAlpha(1.0f);
+                        break;
+
+                    case 9:
+                        tenantImage1.setAlpha(1.0f);
+                        tenantImage2.setAlpha(1.0f);
+                        tenantImage3.setAlpha(1.0f);
+                        tenantImage4.setAlpha(1.0f);
+                        tenantImage5.setAlpha(1.0f);
+                        tenantImage6.setAlpha(1.0f);
+                        tenantImage7.setAlpha(1.0f);
+                        tenantImage8.setAlpha(1.0f);
+                        tenantImage9.setAlpha(1.0f);
+                        break;
+
+                }
 
             }
 
@@ -118,9 +202,105 @@ public class RoomsDetailList extends ArrayAdapter<String> {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });*/
+        });
 
+        int maxBed = 0;
 
+        switch (roomTypeList.get(position)) {
+
+            case "One Bed" : maxBed = 1;    break;
+            case "Two Bed" : maxBed = 2;    break;
+            case "Three Bed" : maxBed = 3;    break;
+            case "Four Bed" : maxBed = 4;    break;
+            case "Five Bed" : maxBed = 5;    break;
+            case "Six Bed" : maxBed = 6;    break;
+            case "Seven Bed" : maxBed = 7;    break;
+            case "Eight Bed" : maxBed = 8;    break;
+            case "Nine Bed" : maxBed = 9;    break;
+
+        }
+
+        switch (maxBed) {
+
+            case 1:
+                tenantImage1.setVisibility(View.VISIBLE);
+                break;
+
+            case 2:
+                tenantImage1.setVisibility(View.VISIBLE);
+                tenantImage2.setVisibility(View.VISIBLE);
+                break;
+
+            case 3:
+                tenantImage1.setVisibility(View.VISIBLE);
+                tenantImage2.setVisibility(View.VISIBLE);
+                tenantImage3.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 4:
+                tenantImage1.setVisibility(View.VISIBLE);
+                tenantImage2.setVisibility(View.VISIBLE);
+                tenantImage3.setVisibility(View.VISIBLE);
+                tenantImage4.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 5:
+                tenantImage1.setVisibility(View.VISIBLE);
+                tenantImage2.setVisibility(View.VISIBLE);
+                tenantImage3.setVisibility(View.VISIBLE);
+                tenantImage4.setVisibility(View.VISIBLE);
+                tenantImage5.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 6:
+                tenantImage1.setVisibility(View.VISIBLE);
+                tenantImage2.setVisibility(View.VISIBLE);
+                tenantImage3.setVisibility(View.VISIBLE);
+                tenantImage4.setVisibility(View.VISIBLE);
+                tenantImage5.setVisibility(View.VISIBLE);
+                tenantImage6.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 7:
+                tenantImage1.setVisibility(View.VISIBLE);
+                tenantImage2.setVisibility(View.VISIBLE);
+                tenantImage3.setVisibility(View.VISIBLE);
+                tenantImage4.setVisibility(View.VISIBLE);
+                tenantImage5.setVisibility(View.VISIBLE);
+                tenantImage6.setVisibility(View.VISIBLE);
+                tenantImage7.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 8:
+                tenantImage1.setVisibility(View.VISIBLE);
+                tenantImage2.setVisibility(View.VISIBLE);
+                tenantImage3.setVisibility(View.VISIBLE);
+                tenantImage4.setVisibility(View.VISIBLE);
+                tenantImage5.setVisibility(View.VISIBLE);
+                tenantImage6.setVisibility(View.VISIBLE);
+                tenantImage7.setVisibility(View.VISIBLE);
+                tenantImage8.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 9:
+                tenantImage1.setVisibility(View.VISIBLE);
+                tenantImage2.setVisibility(View.VISIBLE);
+                tenantImage3.setVisibility(View.VISIBLE);
+                tenantImage4.setVisibility(View.VISIBLE);
+                tenantImage5.setVisibility(View.VISIBLE);
+                tenantImage6.setVisibility(View.VISIBLE);
+                tenantImage7.setVisibility(View.VISIBLE);
+                tenantImage8.setVisibility(View.VISIBLE);
+                tenantImage9.setVisibility(View.VISIBLE);
+
+                break;
+        }
 
         tagString = tagList.get(position);
 
@@ -170,31 +350,6 @@ public class RoomsDetailList extends ArrayAdapter<String> {
             }
         });
 
-        databaseReference = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Rooms/" + roomList.get(position) + "/Tenant/CurrentTenants/");
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                tenantList.clear();
-
-                String noOfTenant = "x " + Long.toString(dataSnapshot.getChildrenCount());
-
-                numberOfTenantsTextView.setText(noOfTenant);
-
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-
-                    rentTextView.setText(snapshot.child("rentAmount").getValue(String.class));
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
         listViewItemRoom.setOnLongClickListener(new View.OnLongClickListener() {
             @Override

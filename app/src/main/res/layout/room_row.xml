@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<LinearLayout android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android" >-->
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -89,6 +86,7 @@
                         android:text="Type"
                         android:textAlignment="center"
                         android:textSize="15dp"
+                        android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="@+id/thirdTextView"
                         app:layout_constraintStart_toEndOf="@+id/thirdTextView"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -96,45 +94,109 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/rentTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="4dp"
-                        android:fontFamily="@font/productsansbold"
-                        android:text=""
-                        android:visibility="gone"
-                        android:textColor="#212121"
-                        android:textSize="15sp" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/numberOfTenantsTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="4dp"
-                        android:fontFamily="@font/productsansbold"
-                        android:text=""
-                        android:visibility="gone"
-                        android:textColor="#212121"
-                        android:textSize="15sp" />
+            <LinearLayout
+                android:id="@+id/linearLayout16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
+                android:visibility="gone"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/tenantImage1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_marginStart="0dp"
+                    android:padding="2dp"
+                    android:visibility="gone"
+                    android:alpha="0.3"
+                    android:src="@drawable/user" />
 
-                </LinearLayout>
+                <ImageView
+                    android:id="@+id/tenantImage2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:padding="2dp"
+                    android:visibility="gone"
+                    android:alpha="0.3"
+                    android:src="@drawable/user" />
+
+                <ImageView
+                    android:id="@+id/tenantImage3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:padding="2dp"
+                    android:visibility="gone"
+                    android:alpha="0.3"
+                    android:src="@drawable/user" />
+
+                <ImageView
+                    android:id="@+id/tenantImage4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:padding="2dp"
+                    android:visibility="gone"
+                    android:alpha="0.3"
+                    android:src="@drawable/user" />
+
+                <ImageView
+                    android:id="@+id/tenantImage5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:padding="2dp"
+                    android:visibility="gone"
+                    android:alpha="0.3"
+                    android:src="@drawable/user" />
+
+                <ImageView
+                    android:id="@+id/tenantImage6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:padding="2dp"
+                    android:visibility="gone"
+                    android:alpha="0.3"
+                    android:src="@drawable/user" />
+
+                <ImageView
+                    android:id="@+id/tenantImage7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:padding="2dp"
+                    android:visibility="gone"
+                    android:alpha="0.3"
+                    android:src="@drawable/user" />
+
+                <ImageView
+                    android:id="@+id/tenantImage8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:padding="2dp"
+                    android:visibility="gone"
+                    android:alpha="0.3"
+                    android:src="@drawable/user" />
+
+                <ImageView
+                    android:id="@+id/tenantImage9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:padding="2dp"
+                    android:visibility="gone"
+                    android:alpha="0.3"
+                    android:src="@drawable/user" />
 
             </LinearLayout>
 
@@ -143,7 +205,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginEnd="8dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"

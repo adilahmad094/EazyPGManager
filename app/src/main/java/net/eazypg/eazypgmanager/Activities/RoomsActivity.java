@@ -84,7 +84,7 @@ public class RoomsActivity extends AppCompatActivity {
 
     List<String> rooms;
     List<String> roomTypeList;
-
+    List<Long> noOfTenantInRoom;
     List<String> tagList;
     List<String> floorList;
 
@@ -112,8 +112,6 @@ public class RoomsActivity extends AppCompatActivity {
 
     List<RoomApplianceDetails> roomApplianceDetailsList = new ArrayList<>();
 
-
-
     ListView listView;
     View emptyList;
 
@@ -123,8 +121,6 @@ public class RoomsActivity extends AppCompatActivity {
 
     int totalRoom, vacantRooms, semiVacantRooms;
 
-    final Map<String, List<TenantDetails>> roomTenantMap = new HashMap<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,7 +129,6 @@ public class RoomsActivity extends AppCompatActivity {
         Fabric.with(this, new Crashlytics());
 
         addRoom = findViewById(R.id.addRoom);
-
 
         inflater = getLayoutInflater();
 
@@ -151,10 +146,9 @@ public class RoomsActivity extends AppCompatActivity {
 
         rooms = new ArrayList<>();
         roomTypeList = new ArrayList<>();
-
+        noOfTenantInRoom = new ArrayList<>();
         tagList = new ArrayList<>();
         floorList = new ArrayList<>();
-
         tenantList = new ArrayList<>();
 
         acList = new ArrayList<>();
@@ -235,39 +229,43 @@ public class RoomsActivity extends AppCompatActivity {
                 rooms.clear();
                 floorList.clear();
 
-        /*Adding tags in the room rows*/
+                /*Adding tags in the room rows*/
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String room = snapshot.getKey();
                     rooms.add(room);
+
 
                     String roomType = snapshot.child("Room Type").getValue(String.class);
                     roomTypeList.add(roomType);
 
                     String tags = snapshot.child("Tags").getValue(String.class);
-                    Log.e("Tags", ""+tags);
                     tagList.add(tags);
 
                     String floors = snapshot.child("Floors").getValue(String.class);
                     floorList.add(floors);
                 }
 
-                Log.e("rooms", "onDataChange: " + rooms.size());
-                Log.e("room type list", "onDataChange: " + roomTypeList.size());
+
 
                 vacantRooms = totalRoom - rooms.size();
 
                 for(int i = 0; i < rooms.size(); i++){
 
                     final String room = rooms.get(i);
-                    Log.e("Room", "onDataChange: " + room);
+
                     final List<TenantDetails> roomTenantList = new ArrayList<>();
                     final DatabaseReference databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid() + "/Rooms/" + rooms.get(i) + "/Tenant/CurrentTenants/");
-                    Log.e("db reference", "PG/" + firebaseUser.getUid() + "/Rooms/" + rooms.get(i) + "/Tenant/CurrentTenants/");
+
                     final int finalI = i;
                     databaseReference1.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            long noOfTenant = dataSnapshot.getChildrenCount();
+                            noOfTenantInRoom.add(noOfTenant);
+
                             roomTenantList.clear();
+
                             for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                                 TenantDetails tenantDetails = snapshot.getValue(TenantDetails.class);
                                 roomTenantList.add(tenantDetails);
@@ -276,18 +274,27 @@ public class RoomsActivity extends AppCompatActivity {
                             if(roomTenantList.size()==0)
                                 vacantRooms++;
 
-                            if (roomTypeList.get(finalI).equals("Two Bed") && roomTenantList.size() == 1) {
+                            int maxBed = 0;
 
-                                semiVacantRooms++;
-                                Log.e("Semi Vacant", semiVacantRooms + "");
+                            switch (roomTypeList.get(finalI)) {
+
+                                case "One Bed" : maxBed = 1;    break;
+                                case "Two Bed" : maxBed = 2;    break;
+                                case "Three Bed" : maxBed = 3;    break;
+                                case "Four Bed" : maxBed = 4;    break;
+                                case "Five Bed" : maxBed = 5;    break;
+                                case "Six Bed" : maxBed = 6;    break;
+                                case "Seven Bed" : maxBed = 7;    break;
+                                case "Eight Bed" : maxBed = 8;    break;
+                                case "Nine Bed" : maxBed = 9;    break;
+
+
                             }
-                            if (roomTypeList.get(finalI).equals("Three Bed") && (roomTenantList.size() == 1 || roomTenantList.size() == 2)) {
 
+                            if (roomTenantList.size() < maxBed) {
                                 semiVacantRooms++;
                             }
 
-                            roomTenantMap.put(room, roomTenantList);
-                            Log.e("room tenant map inside", "onDataChange: " + roomTenantMap.size());
 
                             semiVacantTextView.setText(Integer.toString(semiVacantRooms));
                             vacantRoomsTextView.setText(Integer.toString(vacantRooms));
@@ -301,14 +308,10 @@ public class RoomsActivity extends AppCompatActivity {
                         }
                     });
 
-                    Log.e("RA", "onDataChange: " + roomTenantMap.size());
 
                 }
 
-
-                Log.e("room tenant map", "onDataChange: " + roomTenantMap.size());
-
-                RoomsDetailList adapter = new RoomsDetailList(RoomsActivity.this, rooms, roomTypeList, roomTenantMap, tagList, floorList);
+                RoomsDetailList adapter = new RoomsDetailList(RoomsActivity.this, rooms, roomTypeList, tagList, floorList);
                 listView.setAdapter(adapter);
             }
 
@@ -438,8 +441,6 @@ public class RoomsActivity extends AppCompatActivity {
                             Toast.makeText(RoomsActivity.this, "All fields are required.", Toast.LENGTH_SHORT).show();
                         }
                         else {
-
-                            Log.e("Tag String" ,"Hello"+ floors );
 
                             databaseReference1 = firebaseDatabase.getReference("PG/" + firebaseUser.getUid());
                             databaseReference1.child("Rooms").child(room).child("Room Type").setValue(roomType);
