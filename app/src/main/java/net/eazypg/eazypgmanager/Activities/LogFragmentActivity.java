@@ -44,7 +44,7 @@ public class LogFragmentActivity extends AppCompatActivity {
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
         adapter.addFragment(new HostAFriendLogFragment(), "Host A Friend Log");
         adapter.addFragment(new LateCheckInLogFragment(), "Late Check in Log");
-        adapter.addFragment(new NotificationLogFragment(),"Notifications");
+    //    adapter.addFragment(new NotificationLogFragment(),"Notifications");
 
         pager.setAdapter(adapter);
         tabLayout.setupWithViewPager(pager);

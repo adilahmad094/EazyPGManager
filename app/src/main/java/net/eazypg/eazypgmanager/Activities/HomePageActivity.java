@@ -34,18 +34,8 @@ import io.fabric.sdk.android.Fabric;
 
 public class HomePageActivity extends AppCompatActivity {
 
-    CardView profileCard;
-    ImageView notifications;
-    CardView accounts;
-    CardView rentBill;
-    CardView addBill;
-    CardView tenant;
-    CardView room;
-    CardView feedback;
-    CardView staff;
-    CardView food;
-    CardView complaints;
-    ImageView appliances;
+    CardView profileCard, accounts, rentBill, addBill, tenant, room, feedback, staff, food, complaints;
+    ImageView appliances, logout, notifications;
 
     float rating;
 
@@ -101,6 +91,7 @@ public class HomePageActivity extends AppCompatActivity {
         food = findViewById(R.id.foodButton);
         appliances = findViewById(R.id.appliancesCardView);
         complaints = findViewById(R.id.complaintsCardView);
+        logout = findViewById(R.id.logoutImageView);
 
         pgNameTextView = findViewById(R.id.pgNameTextView);
 
@@ -153,6 +144,15 @@ public class HomePageActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth.signOut();
+                startActivity(new Intent(HomePageActivity.this, LoginActivity.class));
+                finish();
             }
         });
 

@@ -487,7 +487,7 @@ public class TenantActivity extends AppCompatActivity {
 
                                                 if (dataSnapshot.child("Tenants").child("UnderProcess").hasChild(phone.getText().toString())) {
 
-                                                    AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                                                    AlertDialog.Builder builder = new AlertDialog.Builder(TenantActivity.this);
                                                     builder.setMessage("Tenant with this number is already invited");
                                                     builder.setTitle("Error");
                                                     builder.setNeutralButton("Ok", null);

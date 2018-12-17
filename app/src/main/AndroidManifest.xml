@@ -50,7 +50,6 @@
         <activity android:name=".Activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -73,21 +72,37 @@
         <activity
             android:name=".Activities.LoginActivity"
             android:screenOrientation="portrait" />
+
         <activity android:name=".Activities.AccountsFragmentActivity">
             <intent-filter>
                 <action android:name="ManagerPassbookActivity" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.RentBillCollectionActivity" />
-        <activity android:name=".Activities.LogFragmentActivity" />
+
+        <activity android:name=".Activities.RentBillCollectionActivity" >
+            <intent-filter>
+                <action android:name="RentBillActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activities.LogFragmentActivity" >
+            <intent-filter>
+                <action android:name="ManagerLogActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Activities.HomePageActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.TenantActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="ManagerTenantActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Activities.StaffActivity"
             android:screenOrientation="portrait" />
@@ -118,22 +133,46 @@
             android:name=".Activities.RoomsActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".Activities.TenantDashboardFragmentActivity" />
-        <activity android:name=".Activities.FoodActivity" />
+        <activity android:name=".Activities.FoodActivity" >
+            <intent-filter>
+                <action android:name="FoodActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Activities.RoomApplianceDetailsActivity" />
         <activity android:name=".Activities.RoomTenantDetailsActivity" />
         <activity android:name=".Activities.PreviousTenantsActivity" />
         <activity android:name=".Activities.PreviousRoomTenantsActivity" />
-        <activity android:name=".Activities.BedroomComplaintsFragmentActivity" />
-        <activity android:name=".Activities.FacilityComplaintsFragmentActivity" />
-        <activity android:name=".Activities.FoodComplaintsFragmentActivity" />
-        <activity android:name=".Activities.SecurityComplaintsFragmentActivity" />
+        <activity android:name=".Activities.BedroomComplaintsFragmentActivity" >
+            <intent-filter>
+                <action android:name="ManagerBedroomActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activities.FacilityComplaintsFragmentActivity" >
+            <intent-filter>
+                <action android:name="ManagerFacilityActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activities.FoodComplaintsFragmentActivity" >
+            <intent-filter>
+                <action android:name="ManagerFoodActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activities.SecurityComplaintsFragmentActivity" >
+            <intent-filter>
+                <action android:name="ManagerSecurityActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Activities.AddBillActivity" />
         <activity android:name=".Activities.AddBillRoomActivity" />
         <activity android:name=".Activities.FineRentBillActivity" />
         <activity android:name=".Activities.FeedbackActivity">
             <intent-filter>
                 <action android:name="ManagerFeedbackActivity" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

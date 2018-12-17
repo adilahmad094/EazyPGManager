@@ -13,6 +13,7 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
@@ -124,6 +125,7 @@ public class MyPGActivity extends AppCompatActivity {
     LinearLayout pgAvailableForLinearLayout;
     LinearLayout lastLateCheckInLinearLayout;
 
+    ConstraintLayout constraintLayout;
 
     TextView pgAvailableForTextView;
     TextView lastlateCheckInTime;
@@ -163,11 +165,11 @@ public class MyPGActivity extends AppCompatActivity {
 
         Fabric.with(this, new Crashlytics());
 
-
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
         idTextView = findViewById(R.id.idTextView);
+        constraintLayout = findViewById(R.id.constraintLayout);
 
         lastlateCheckInTime = findViewById(R.id.lastLateCheckInTimeID);
         lastEntryTimeTextView = findViewById(R.id.lastEntryTimeTextView);
@@ -223,7 +225,17 @@ public class MyPGActivity extends AppCompatActivity {
             }
         });
 
+        constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                if (editButton.getVisibility() == View.VISIBLE) {
+                    Toast.makeText(MyPGActivity.this, "Click edit button to edit", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        });
 
         setLocationButton = findViewById(R.id.setLocationButton);
 
@@ -287,7 +299,6 @@ public class MyPGActivity extends AppCompatActivity {
         messRate = findViewById(R.id.messRateEditText);
         personalContact = findViewById(R.id.ownerPersonalContactTextView);
         personalEmail = findViewById(R.id.personalEmailEditText);
-
 
         pgNameTIL.setHintAnimationEnabled(false);
         landmarkTIL.setHintAnimationEnabled(false);

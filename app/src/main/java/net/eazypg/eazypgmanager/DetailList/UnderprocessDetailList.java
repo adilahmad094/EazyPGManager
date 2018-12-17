@@ -14,8 +14,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.dynamiclinks.DynamicLink;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.katepratik.msg91api.MSG91;
 
 import net.eazypg.eazypgmanager.Activities.TenantActivity;
@@ -70,10 +73,18 @@ public class UnderprocessDetailList extends RecyclerView.Adapter<UnderprocessDet
                 builder.setNeutralButton("Ok", null);
                 builder.show();
 
+                DynamicLink dynamicLink = FirebaseDynamicLinks.getInstance().createDynamicLink()
+                        .setLink(Uri.parse("http://eazypg.in"))
+                        .setDomainUriPrefix("https://eazypg.page.link")
+                        .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("TenantFeedbackActivity").build())
+                        .buildDynamicLink();
+
+                Uri dynamicLinkUri = dynamicLink.getUri();
+
                 //ToDo: Firebase Dynamic link will be sent to tenant using MSG91
 
                 MSG91 msg91 = new MSG91("163776AiifTBEVMZl5aae0bce");
-                msg91.composeMessage("EazyPG", "Hi " + holder.tenantNameTextView.getText().toString() + ". Your EazyPG ID is " + eazypgID + ". Get your EazyPG App now https://goo.gl/M3jEhQ");
+                msg91.composeMessage("EazyPG", "Hi " + holder.tenantNameTextView.getText().toString() + ". Your EazyPG ID is " + eazypgID + ". Get your EazyPG App now " + dynamicLinkUri.toString());
                 msg91.to(holder.contactNumberTextView.getText().toString());
                 String sendStatus = msg91.send();
 

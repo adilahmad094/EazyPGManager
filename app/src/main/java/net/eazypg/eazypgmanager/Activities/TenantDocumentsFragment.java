@@ -168,7 +168,7 @@ public class TenantDocumentsFragment extends Fragment {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setTitle("Change Status");
-                    builder.setMessage("To change the status from verified to reject, write to research@eazypg.net. Do you want to send the mail now?");
+                    builder.setMessage("To change the status from verified to reject, write to owner@eazypg.net. Do you want to send the mail now?");
                     builder.setNegativeButton("Not yet", null);
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
@@ -176,7 +176,7 @@ public class TenantDocumentsFragment extends Fragment {
 
                             Intent i = new Intent(Intent.ACTION_SEND);
                             i.setType("message/rfc822");
-                            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"research@eazypg.net"});
+                            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"owner@eazypg.net"});
                             i.putExtra(Intent.EXTRA_SUBJECT, "Change Document Status");
                             String text = "Hello Admin, I want to change my tenant document status to Rejected. \nPG Id: " + firebaseUser.getUid() + "\nTenant Id: " + id + "\nDocument Name: Aadhar Front";
                             i.putExtra(Intent.EXTRA_TEXT, text);
@@ -242,7 +242,7 @@ public class TenantDocumentsFragment extends Fragment {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setTitle("Change Status");
-                    builder.setMessage("To change the status from verified to reject, write to research@eazypg.net. Do you want to send the mail now?");
+                    builder.setMessage("To change the status from verified to reject, write to owner@eazypg.net. Do you want to send the mail now?");
                     builder.setNegativeButton("Not yet", null);
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
@@ -250,7 +250,7 @@ public class TenantDocumentsFragment extends Fragment {
 
                             Intent i = new Intent(Intent.ACTION_SEND);
                             i.setType("message/rfc822");
-                            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"research@eazypg.net"});
+                            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"owner@eazypg.net"});
                             i.putExtra(Intent.EXTRA_SUBJECT, "Change Document Status");
                             String text = "Hello Admin, I want to change my tenant document status to Rejected. \nPG Id: " + firebaseUser.getUid() + "\nTenant Id: " + id + "\nDocument Name: Aadhar Front";
                             i.putExtra(Intent.EXTRA_TEXT, text);
@@ -318,7 +318,7 @@ public class TenantDocumentsFragment extends Fragment {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setTitle("Change Status");
-                    builder.setMessage("To change the status from verified to reject, write to research@eazypg.net. Do you want to send the mail now?");
+                    builder.setMessage("To change the status from verified to reject, write to owner@eazypg.net. Do you want to send the mail now?");
                     builder.setNegativeButton("Not yet", null);
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
@@ -326,7 +326,7 @@ public class TenantDocumentsFragment extends Fragment {
 
                             Intent i = new Intent(Intent.ACTION_SEND);
                             i.setType("message/rfc822");
-                            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"research@eazypg.net"});
+                            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"owner@eazypg.net"});
                             i.putExtra(Intent.EXTRA_SUBJECT, "Change Document Status");
                             String text = "Hello Admin, I want to change my tenant document status to Rejected. \nPG Id: " + firebaseUser.getUid() + "\nTenant Id: " + id + "\nDocument Name: CollegeID Front";
                             i.putExtra(Intent.EXTRA_TEXT, text);
@@ -393,7 +393,7 @@ public class TenantDocumentsFragment extends Fragment {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setTitle("Change Status");
-                    builder.setMessage("To change the status from verified to reject, write to research@eazypg.net. Do you want to send the mail now?");
+                    builder.setMessage("To change the status from verified to reject, write to owner@eazypg.net. Do you want to send the mail now?");
                     builder.setNegativeButton("Not yet", null);
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
@@ -401,7 +401,7 @@ public class TenantDocumentsFragment extends Fragment {
 
                             Intent i = new Intent(Intent.ACTION_SEND);
                             i.setType("message/rfc822");
-                            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"research@eazypg.net"});
+                            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"owner@eazypg.net"});
                             i.putExtra(Intent.EXTRA_SUBJECT, "Change Document Status");
                             String text = "Hello Admin, I want to change my tenant document status to Rejected. \nPG Id: " + firebaseUser.getUid() + "\nTenant Id: " + id + "\nDocument Name: CollegeID Back";
                             i.putExtra(Intent.EXTRA_TEXT, text);
